@@ -14,15 +14,27 @@ var mongoose = require('mongoose'),
  var MerchantSchema = new Schema({
 
   type: String,
-  name: String,
-  manager: [{
-    name: String
-    }],
+  storefrontName: String,
+  generalManager: String,
+  basicInfo: {
+    address: String,
+    phoneNumber: Number,
+    website: String
+  },
   bankPayoutInfo: {
+    legalCompanyName: String,
     routingNumber: Number,
     accountNumber: Number
   } ,  // routing number? account number?
   locations: {
+    basicInfo: {
+      address: String,
+      phoneNumber: Number,
+      website: String
+    },
+    manager: String,
+    account: String,
+    tricons: String,
     kickbackSplit : [{
       merchant: String,
       percentage: Number
@@ -31,7 +43,7 @@ var mongoose = require('mongoose'),
       name: String
     }],
     transactions [{
-      amount: Number,
+      amountSpent: Number,
       timestamp: {
         type: Date,
         default: Date.now

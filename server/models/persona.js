@@ -13,7 +13,7 @@ var mongoose = require('mongoose'),
 var PersonaSchema = newSchema({
 
     mobileNumber: Number,
-    name: String, // At what point in user's path do we obtain address? basic info? as mentioned in google doc
+    firstName: String, // At what point in user's path do we obtain address? basic info? as mentioned in google doc
     cardsGiven: [{
       card: Number // is card a number or string? is this proper way to instantiate an array?
     }],

@@ -15,16 +15,32 @@ var mongoose = require('mongoose'),
 
  var TransactionSchema = new Schema({
 
-  amount: Number,
-  percentage: Number,
-  timestamp: {
-    type: Date,
-    default: Date.now
+  authentication: {
+    tricon: String,
+    secret: String,
   },
-  from: String, // Persona
-  to: String,   // Persona | Merchant(Clerk)
-  buy: String,
-  spend: String
+  ledger: Number, // linked to Subledger API
+  // BP API ?
+  getCredit: {
+    from: String, // Persona | Merchant(Clerk)
+    to: String // Persona
+    timestamp: {
+      type: Date,
+      default: Date.now
+    }
+  },
+  spendCredit: {
+    merchant: String,
+    amount: Number,
+    clerk: String,
+    from: String, // Persona
+    to: String, // Persona | Merchant(Clerk)
+    timestamp: {
+      type: Date,
+      default: Date.now
+    }
+  }
+  percentage: Number,
 
  });
 
