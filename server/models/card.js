@@ -13,12 +13,13 @@ var mongoose = require('mongoose'),
 var CardSchema = new Schema({
 
     districtNumber: Number, // phone number on card. Do we have to parse out the numbers from input?
+    keyword: String, // currently 'Gift'
     status: {         
-      type: String,         // ‘new | touched | activated | received’
+      type: String,         // new | touched | activated | received
       default: 'new'
     } 
     amount: Number,
-    kickbackAmount: Number // or is this going to be a percentage?
+    kickbackAmount: Number // percentage?
 
 });
 
