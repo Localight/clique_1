@@ -12,8 +12,17 @@ var mongoose = require('mongoose'),
 
 var PersonaSchema = newSchema({
 
-    mobileNumber: Number,
-    firstName: String, // At what point in user's path do we obtain address? basic info? as mentioned in google doc
+    contact: {
+      mobileNumber: Number,
+      email: {
+        type: String,
+        match: [/.+\@.+\..+/, 'Please enter a valid email']
+      }
+    },
+    basicProfile: {
+      firstName: String
+    },
+    status: String, // Recipient/Patron/Clerk/Dormant(old user, no response)/Zombie(never clicked anything)
     cardsGiven: [{
       card: Number // is card a number or string? is this proper way to instantiate an array?
     }],
@@ -21,13 +30,14 @@ var PersonaSchema = newSchema({
       card: Number // is this proper way to instantiate an array?
     }],
     account: {
+      ledger: Number, // linked to Subledger API - credits/refunds
       amount: Number, // need money math module
       transactions: [{
+        amountSpent: Number,
         timestamp: {
           type: Date,
           default: Date.now
         },
-        spent: Number
       }]
     }
 
