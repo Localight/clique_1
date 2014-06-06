@@ -38,6 +38,10 @@ angular.module('mean.auth').config(['$stateProvider',
                 resolve: {
                     loggedin: checkLoggedOut
                 }
+            })
+            .state('auth.test', {
+                url: '/test',
+                templateUrl: 'public/auth/views/test.html'
             });
     }
 ]);

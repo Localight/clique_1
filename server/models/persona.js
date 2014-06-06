@@ -4,13 +4,13 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
+    Schema = mongoose.Schema;
 
 /**
  * Persona Schema
  */
 
-var PersonaSchema = newSchema({
+var PersonaSchema = new Schema({
 
     contact: {
       mobileNumber: Number,
@@ -43,6 +43,6 @@ var PersonaSchema = newSchema({
 
 });
 
-mongoose.model('Persona', PersonaSchema);
+mongoose.model('persona', PersonaSchema);
 
 // module.exports = mongoose.model('Persona', PersonaSchema);

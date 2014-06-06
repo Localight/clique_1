@@ -65,4 +65,20 @@ angular.module('mean.controllers.login', [])
                     });
             };
         }
+    ])
+    .controller('testCtrl', ['$scope', '$rootScope', '$http', '$location', 
+        function($scope, $rootScope, $http, $location) {
+
+            $scope.testModel = {};
+
+            $scope.saveTest = function() {
+                $rootScope.data = {
+                    districtNumber: $scope.test.districtNumber,
+                    keyword: $scope.test.keyword,
+                    status: $scope.test.status,
+                    amount: $scope.test.amount,
+                    kickbackAmount: $scope.test.kickbackAmount
+                };
+            };
+        }
     ]);

@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
+    Schema = mongoose.Schema;
 
 /**
  * Transaction Schema
@@ -23,7 +23,7 @@ var mongoose = require('mongoose'),
   // BP API ?
   getCredit: {
     from: String, // Persona | Merchant(Clerk)
-    to: String // Persona
+    to: String, // Persona
     timestamp: {
       type: Date,
       default: Date.now
@@ -39,11 +39,11 @@ var mongoose = require('mongoose'),
       type: Date,
       default: Date.now
     }
-  }
+  },
   percentage: Number,
 
  });
 
- mongoose.model('Transaction', TransactionSchema);
+ mongoose.model('transaction', TransactionSchema);
 
  // module.exports = mongoose.model('Transaction', TransactionSchema);

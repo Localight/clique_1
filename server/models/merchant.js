@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
+    Schema = mongoose.Schema;
 
 /**
  * Merchant Schema
@@ -42,7 +42,7 @@ var mongoose = require('mongoose'),
     clerks: [{
       name: String
     }],
-    transactions [{
+    transactions: [{
       amountSpent: Number,
       timestamp: {
         type: Date,
@@ -53,7 +53,7 @@ var mongoose = require('mongoose'),
 
  });
 
- mongoose.model('Merchant', MerchantSchema);
+ mongoose.model('merchant', MerchantSchema);
 
  // module.exports = mongoose.model('Merchant', MerchantSchema);
 
