@@ -72,13 +72,26 @@ angular.module('mean.controllers.login', [])
             $scope.testModel = {};
 
             $scope.saveTest = function() {
-                $rootScope.data = {
-                    districtNumber: $scope.test.districtNumber,
-                    keyword: $scope.test.keyword,
-                    status: $scope.test.status,
-                    amount: $scope.test.amount,
-                    kickbackAmount: $scope.test.kickbackAmount
-                };
+                $http.post('/test', {
+                    districtNumber: $scope.testModel.districtNumber,
+                    keyword: $scope.testModel.keyword,
+                    status: $scope.testModel.status,
+                    amount: $scope.testModel.amount,
+                    kickbackAmount: $scope.testModel.kickbackAmount 
+                })
+                .success(function(){
+                    $scope.registerError = 0;
+                    $rootScope.testModel = $scope.testModel ;
+                });
+
+
+                // $rootScope.data = {
+                //     districtNumber: $scope.testModel.districtNumber,
+                //     keyword: $scope.testModel.keyword,
+                //     status: $scope.testModel.status,
+                //     amount: $scope.testModel.amount,
+                //     kickbackAmount: $scope.testModel.kickbackAmount
+                // };
             };
         }
     ]);
