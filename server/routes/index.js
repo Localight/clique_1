@@ -1,5 +1,12 @@
 'use strict';
 
+var twillioService = require('./twillio-service');
+
+var gifts = require('../controllers/gifts');
+
+
+
+
 module.exports = function(app) {
 
     // Home route
@@ -7,5 +14,10 @@ module.exports = function(app) {
 
     app.route('/')
         .get(index.render);
+
+    app.post('/hooks/twillio', twillioService.hook);
+
+    app.get('/gifts/:giftId', gifts.render);
+    app.post('/gifts', gifts.postGift);
 
 };

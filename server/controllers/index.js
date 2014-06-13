@@ -2,6 +2,8 @@
 
 var mean = require('meanio');
 
+var twillios = require('./twillio-controller');
+
 exports.render = function(req, res) {
 
     var modules = [];

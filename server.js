@@ -16,6 +16,8 @@ var mongoose = require('mongoose'),
 var config = require('./server/config/config');
 var db = mongoose.connect(config.db);
 
+twillioService.init(config.twillio.key);
+
 // Bootstrap Models, Dependencies, Routes and the app as an express app
 var app = require('./server/config/system/bootstrap')(passport, db);
 
