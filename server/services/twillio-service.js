@@ -7,11 +7,12 @@
  */
 
 var twilio = require('twilio');
+var client;
 
-function init () {
-  var acctSid = 'ACe8d75f03c7da98de3c02c0a83e5650d1';
-  var authToken = 'b7a0fe30122543a393a07707bcb419b6';
-  var client = twilio(accountSid, authToken);
+function init (acctSid, authToken) {
+  
+  client = twilio(acctSid, authToken);
+
 }
 
 function hook (req, res) {

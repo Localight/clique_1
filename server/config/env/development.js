@@ -29,5 +29,9 @@ module.exports = {
         clientID: 'API_KEY',
         clientSecret: 'SECRET_KEY',
         callbackURL: 'http://localhost:3000/auth/linkedin/callback'
+    },
+    twilio: {
+        acctSid: 'ACe8d75f03c7da98de3c02c0a83e5650d1',
+        authToken: 'b7a0fe30122543a393a07707bcb419b6'
     }
 };

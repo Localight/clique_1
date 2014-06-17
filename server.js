@@ -7,6 +7,8 @@ var mongoose = require('mongoose'),
     passport = require('passport'),
     logger = require('mean-logger');
 
+var twilioService = require('./server/services/twillio-service');
+
 // var twilio = require('twilio');
 // // var twilioInit = require('services/twilio-service.js');
 // var accountSid = 'ACe8d75f03c7da98de3c02c0a83e5650d1';
@@ -28,9 +30,10 @@ var mongoose = require('mongoose'),
 
 // Initializing system variables
 var config = require('./server/config/config');
+console.log(config);
 var db = mongoose.connect(config.db);
 
-// twillioService.init(config.twillio.key);
+twilioService.init(config.twilio.acctSid, config.twilio.authToken);
 
 // Bootstrap Models, Dependencies, Routes and the app as an express app
 var app = require('./server/config/system/bootstrap')(passport, db);
