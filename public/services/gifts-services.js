@@ -1,9 +1,11 @@
-angular.module('clique.services').
-    controller('api', [function(){
-        var api = {
-            sendGift: function(){
+'use strict';
 
-            }
-        }
-        return api;
-    }]);
+// angular.module('clique.services').
+//     controller('api', [function(){
+//         var api = {
+//             sendGift: function(){
+
+//             };
+//         }
+//         return api;
+//     }]);

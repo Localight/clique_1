@@ -14,4 +14,4 @@ function postGift(req, res) {
 module.exports = {
     render: render,
     postGift: postGift
-}
+};
