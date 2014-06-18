@@ -12,6 +12,7 @@ var mongoose = require('mongoose'),
 
 var PersonaSchema = new Schema({
 
+    districtNumber: Number,
     contact: {
       mobileNumber: Number,
       email: {

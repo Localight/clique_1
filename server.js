@@ -9,20 +9,6 @@ var mongoose = require('mongoose'),
 
 var twilioService = require('./server/services/twillio-service');
 
-// var twilio = require('twilio');
-// // var twilioInit = require('services/twilio-service.js');
-// var accountSid = 'ACe8d75f03c7da98de3c02c0a83e5650d1';
-// var authToken = 'b7a0fe30122543a393a07707bcb419b6';
-// var client = twilio(accountSid, authToken);
-
-// client.messages.create({
-//     body: 'this is what it looks like when twilio works with node. -alex',
-//     to: '+17143569284',
-//     from: '+16572207232'
-// }, function(err, message) {
-//     process.stdout.write(message.sid);
-// });
-
 /**
  * Main application entry file.
  * Please note that the order of loading is important.
@@ -30,9 +16,9 @@ var twilioService = require('./server/services/twillio-service');
 
 // Initializing system variables
 var config = require('./server/config/config');
-console.log(config);
 var db = mongoose.connect(config.db);
 
+// Initialize Twilio
 twilioService.init(config.twilio.acctSid, config.twilio.authToken);
 
 // Bootstrap Models, Dependencies, Routes and the app as an express app

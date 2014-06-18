@@ -32,6 +32,7 @@ module.exports = {
     },
     twilio: {
         acctSid: 'ACe8d75f03c7da98de3c02c0a83e5650d1',
-        authToken: 'b7a0fe30122543a393a07707bcb419b6'
+        authToken: 'b7a0fe30122543a393a07707bcb419b6',
+        disableSigCheck: false,
     }
 };

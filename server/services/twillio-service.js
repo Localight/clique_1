@@ -10,23 +10,25 @@ var twilio = require('twilio');
 var client;
 
 function init (acctSid, authToken) {
-  
+
   client = twilio(acctSid, authToken);
 
 }
 
-function hook (req, res) {
-    // create personas or load existing etc
-    //
-}
+// function hook (req, res) {
+//     // create personas or load existing etc
+//     // district # bought from twilio
+//     // when twilio gets a text from this number 
+// }
 
-function send () {
+function send (message, to, from, callback) {
 
   client.messages.create({
-      body: 'this is what it looks like when twilio works with node. -alex',
-      to: '+17143569284',
-      from: '+16572207232'
+      body: message,
+      to: to, 
+      from: from, 
   }, function(err, message) {
+      callback(err);
       process.stdout.write(message.sid);
   });
 
@@ -34,7 +36,7 @@ function send () {
 
 module.exports = {
     init: init,
-    hook: hook,
+    // hook: hook,
     send: send,
     // twilio: {
     //   accountSid: 'ACe8d75f03c7da98de3c02c0a83e5650d1',
