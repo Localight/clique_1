@@ -21,23 +21,23 @@ function init (acctSid, authToken) {
 //     // when twilio gets a text from this number 
 // }
 
-function send (message, to, from, callback) {
+// function send (message, to, from, callback) {
 
-  client.messages.create({
-      body: message,
-      to: to, 
-      from: from, 
-  }, function(err, message) {
-      callback(err);
-      process.stdout.write(message.sid);
-  });
+//   client.messages.create({
+//       body: message,
+//       to: to, 
+//       from: from, 
+//   }, function(err, message) {
+//       callback(err);
+//       process.stdout.write(message.sid);
+//   });
 
-}
+// }
 
 module.exports = {
     init: init,
     // hook: hook,
-    send: send,
+    // send: send,
     // twilio: {
     //   accountSid: 'ACe8d75f03c7da98de3c02c0a83e5650d1',
     //   authToken: 'b7a0fe30122543a393a07707bcb419b6'
