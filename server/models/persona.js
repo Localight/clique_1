@@ -73,10 +73,6 @@ var PersonaSchema = new Schema({
 * 3. call back :)
 */
 
-// PersonaSchema.methods.test = function(cb) {
-//   console.log('Persona Method');
-// };
-
 PersonaSchema.methods.generateCreditLink = function(options, callback) {
   
   // create random id
@@ -96,7 +92,7 @@ PersonaSchema.methods.generateCreditLink = function(options, callback) {
     console.log('newCredit error: ', err);
     // return callback(err);
   }
-    callback(null, 'https://48531bed.ngrok.com/new-gift-card/' + uniqueLink);
+    callback(err, 'https://48531bed.ngrok.com/new-gift-card/' + uniqueLink);
   });
 
 };
@@ -108,6 +104,21 @@ PersonaSchema.methods.generateCreditLink = function(options, callback) {
 * find or create persona plugin
 **/
 
+PersonaSchema.methods.findOrCreate = function(options, callback) {
+  var self = this;
+
+  console.log(self.contact.mobileNumber);
+  this.model('personas').find({
+    contact: {
+      mobileNumber: self.contact.mobileNumber
+    }
+  }, function(err, data){
+    if (err) {
+      console.log('kill me', data);
+    }
+    console.log(data);
+  });
+};
 // function findOrCreate = function(options, callback) {
 // var self = this;
 // // 1. try to find a persona with this mobile num.

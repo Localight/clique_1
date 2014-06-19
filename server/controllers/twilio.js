@@ -4,7 +4,7 @@
 var twilio = require('twilio');
 var Persona = require('../models/persona');
 
-// initial response text from Twilio & findOrCreates Persona
+// initial response text from Twilio & findOrCreate Persona
 function initialResponseSavePersona(request, response) {
 
   // create URL here
@@ -23,6 +23,9 @@ function initialResponseSavePersona(request, response) {
       mobileNumber: request.body.From
     }
   });
+
+  // check if person already exists
+  person.findOrCreate();
 
   // create new credit link
   person.generateCreditLink({
