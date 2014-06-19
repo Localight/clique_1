@@ -20,6 +20,11 @@ module.exports = function(app) {
   // app.post('/app/numbers/:districtNumber/sms', function(request, response) {
   app.post('/app/sms', twilio.initialResponseSavePersona);
 
+  app.get('/new-gift-card/:id', function(request, response){
+    console.log(request.params.id);
+    response.end('Unique Credit Link: '+ request.params.id);
+  });
+
   app.route('/')
       .get(index.render);
 

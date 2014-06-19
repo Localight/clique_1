@@ -29,13 +29,16 @@ function initialResponseSavePersona(request, response) {
     districtNumber: request.body.To,
     keyword: request.body.Body,
   },
-  function(err, thatCoolUniqueThingy) {
+  function(err, uniqueCreditLink) {
     if(err) {
       console.log('fuck my life');
     }
-    console.log('made it');
-    twiml.message('Click here and give us all yer money: ', + thatCoolUniqueThingy);
-    twiml.send();
+    // twiml.message('Click here and give us all yer money: ', + uniqueCreditLink);
+    // twiml.send();
+    var twiml = new twilio.TwimlResponse();
+    twiml.message('Follow this link to send a Clique Gift Card: ' + uniqueCreditLink);
+    response.type('text/xml');  
+    response.send(twiml.toString());
   }
   );
 
@@ -58,17 +61,18 @@ function initialResponseSavePersona(request, response) {
    // });
 
   // save Persona here
-  person.save(function(err, person){
-    if (err) {
-      console.log('Unable to save persona; ', err);
-      twiml.message('Sorry, there was an error. Please contact Localism');
-      response.type('text/xml');  
-      response.send(twiml.toString());
-    }
-      // send text message
-      response.type('text/xml');  
-      response.send(twiml.toString());
-  });
+  // person.save(function(err, person){
+  //   if (err) {
+  //     console.log('Unable to save persona; ', err);
+  //     twiml.message('Sorry, there was an error. Please contact Localism');
+  //     response.type('text/xml');  
+  //     response.send(twiml.toString());
+  //   }
+  //     // send text message
+  //     // response.type('text/xml');  
+  //     // response.send(twiml.toString());
+  //     console.log('person save');
+  // });
 
 }
 

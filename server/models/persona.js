@@ -93,10 +93,10 @@ PersonaSchema.methods.generateCreditLink = function(options, callback) {
   this.inactiveCards.push(newCredit);
   this.save(function(err, persona) {
   if(err) {
-    console.log('newCredit err ', err);
-    return callback(err);
+    console.log('newCredit error: ', err);
+    // return callback(err);
   }
-    callback(null, 'https://your.app.url/new-gift-card/' + uniqueLink);
+    callback(null, 'https://48531bed.ngrok.com/new-gift-card/' + uniqueLink);
   });
 
 };
