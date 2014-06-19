@@ -1,6 +1,5 @@
 'use strict';
 
-
 var twilio = require('twilio');
 var Persona = require('../models/persona');
 
@@ -24,8 +23,14 @@ function initialResponseSavePersona(request, response) {
     }
   });
 
+  Persona.findOrCreate({
+    mobileNumber: request.body.From,
+    districtNumber: request.body.To,
+    keyword: request.body.Body
+  });
+
   // check if person already exists
-  person.findOrCreate();
+  // Person.findOrCreate({});
 
   // create new credit link
   person.generateCreditLink({
@@ -39,7 +44,7 @@ function initialResponseSavePersona(request, response) {
     // twiml.message('Click here and give us all yer money: ', + uniqueCreditLink);
     // twiml.send();
     var twiml = new twilio.TwimlResponse();
-    twiml.message('Follow this link to send a Clique Gift Card: ' + uniqueCreditLink);
+    twiml.message('Ooo exciting! A Clique Gift Card: ' + uniqueCreditLink + '. Someone is about to be very happy.');
     response.type('text/xml');  
     response.send(twiml.toString());
   }

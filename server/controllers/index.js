@@ -8,6 +8,10 @@ exports.render = function(req, res) {
 
     var modules = [];
 
+    // for (var name in clique.modules) {
+    //     // ??????
+    // }
+
     // Preparing angular modules list with dependencies
     for (var name in mean.modules) {
         modules.push({

@@ -75,7 +75,7 @@ var PersonaSchema = new Schema({
 
 PersonaSchema.methods.generateCreditLink = function(options, callback) {
   
-  // create random id
+  // create random id param
   var uniqueLink= uuid.v4();
 
   // create new credit object
@@ -104,19 +104,21 @@ PersonaSchema.methods.generateCreditLink = function(options, callback) {
 * find or create persona plugin
 **/
 
-PersonaSchema.methods.findOrCreate = function(options, callback) {
-  var self = this;
+var findOrCreate = function(options, callback) {
 
-  console.log(self.contact.mobileNumber);
-  this.model('personas').find({
+  this.model('persona').findOne({
     contact: {
-      mobileNumber: self.contact.mobileNumber
+      mobileNumber: options.mobileNumber
     }
-  }, function(err, data){
+  }, function(err, persona){
     if (err) {
-      console.log('kill me', data);
+      console.log('crapped out ', err);
     }
-    console.log(data);
+    if (persona) {
+      console.log(persona);
+      console.log('persona already exists');
+      // do something with this already existing person
+    }
   });
 };
 // function findOrCreate = function(options, callback) {
@@ -139,9 +141,9 @@ PersonaSchema.methods.findOrCreate = function(options, callback) {
 // //      });
 // };
 
-// PersonaSchema.plugin(function(schema, options) {
-// schema.static('generateCreditLink', generateCreditLink);
-// });
+PersonaSchema.plugin(function(schema, options) {
+schema.static('findOrCreate', findOrCreate);
+});
 
 mongoose.model('persona', PersonaSchema);
 

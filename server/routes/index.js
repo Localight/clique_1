@@ -17,6 +17,10 @@ module.exports = function(app) {
   //   });
   // });
 
+  // app.get('/home', function(req, res) {
+  //     res.sendfile('../../public/clique/views/home.html');
+  // });
+
   // app.post('/app/numbers/:districtNumber/sms', function(request, response) {
   app.post('/app/sms', twilio.initialResponseSavePersona);
 
