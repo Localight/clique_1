@@ -105,6 +105,8 @@ PersonaSchema.methods.generateCreditLink = function(options, callback) {
 **/
 
 var findOrCreate = function(options, callback) {
+ 
+  var Persona = this.model('persona');
 
   this.model('persona').findOne({
     contact: {
@@ -115,11 +117,21 @@ var findOrCreate = function(options, callback) {
       console.log('crapped out ', err);
     }
     if (persona) {
-      console.log(persona);
+      // console.log(persona);
       console.log('persona already exists');
-      // do something with this already existing person
+      return callback(null, persona);
     }
+    console.log('create new persona');
+    persona = new Persona({
+      contact: {
+        mobileNumber: options.mobileNumber
+      },
+      districtNumber: options.districtNumber,
+      keyword: options.keyword
+    });
+    persona.save(callback);
   });
+
 };
 // function findOrCreate = function(options, callback) {
 // var self = this;

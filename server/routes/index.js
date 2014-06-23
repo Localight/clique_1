@@ -1,6 +1,8 @@
 'use strict';
 
 var twilio = require('../controllers/twilio');
+var gifts = require('../controllers/gifts-ctrl');
+var ambassador = require('../controllers/ambassador')
 
 module.exports = function(app) {
 
@@ -24,10 +26,9 @@ module.exports = function(app) {
   // app.post('/app/numbers/:districtNumber/sms', function(request, response) {
   app.post('/app/sms', twilio.initialResponseSavePersona);
 
-  app.get('/new-gift-card/:id', function(request, response){
-    console.log(request.params.id);
-    response.end('Unique Credit Link: '+ request.params.id);
-  });
+  app.post('/api/locationinfo', ambassador.createInfo)
+
+  app.get('/new-gift-card/:id', gifts.render);
 
   app.route('/')
       .get(index.render);

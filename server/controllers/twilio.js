@@ -27,28 +27,52 @@ function initialResponseSavePersona(request, response) {
     mobileNumber: request.body.From,
     districtNumber: request.body.To,
     keyword: request.body.Body
+  }, function(err, person) {
+    if (err) {
+      console.log('dammit ', err);
+    }
+    person.generateCreditLink({
+      districtNumber: request.body.To,
+      keyword: request.body.Body,
+    },
+    function(err, uniqueCreditLink) {
+      if(err) {
+        console.log('fix this ', err);
+      }
+      // twiml.message('Click here and give us all yer money: ', + uniqueCreditLink);
+      // twiml.send();
+      var twiml = new twilio.TwimlResponse();
+      twiml.message('Ooo exciting! A Clique Gift Card: ' + uniqueCreditLink + '. Someone is about to be very happy.');
+      response.type('text/xml');  
+      response.send(twiml.toString());
+    });
   });
 
   // check if person already exists
   // Person.findOrCreate({});
 
   // create new credit link
-  person.generateCreditLink({
-    districtNumber: request.body.To,
-    keyword: request.body.Body,
-  },
-  function(err, uniqueCreditLink) {
-    if(err) {
-      console.log('fuck my life');
-    }
-    // twiml.message('Click here and give us all yer money: ', + uniqueCreditLink);
-    // twiml.send();
-    var twiml = new twilio.TwimlResponse();
-    twiml.message('Ooo exciting! A Clique Gift Card: ' + uniqueCreditLink + '. Someone is about to be very happy.');
-    response.type('text/xml');  
-    response.send(twiml.toString());
-  }
-  );
+  // person.generateCreditLink({
+  //   districtNumber: request.body.To,
+  //   keyword: request.body.Body,
+  // },
+  // function(err, uniqueCreditLink) {
+  //   if(err) {
+  //     console.log('fuck my life');
+  //   }
+  //   // twiml.message('Click here and give us all yer money: ', + uniqueCreditLink);
+  //   // twiml.send();
+  //   var twiml = new twilio.TwimlResponse();
+  //   twiml.message('Ooo exciting! A Clique Gift Card: ' + uniqueCreditLink + '. Someone is about to be very happy.');
+  //   response.type('text/xml');  
+  //   response.send(twiml.toString());
+  // }
+  // );
+
+
+
+
+
 
 
   // Persona.findOrCreate({
