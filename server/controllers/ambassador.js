@@ -2,7 +2,7 @@
 
 var LocationInfo = require('../models/location-info');
 
-function createInfo(request) {
+function createInfo(request, response) {
 
   console.log('in the ambassador controller');
   console.log(request);
@@ -20,7 +20,9 @@ function createInfo(request) {
       typeOfEstablishment: request.body,
       details: request.body
 
-  })
+  });
+
+  location.save();
 
 }
 

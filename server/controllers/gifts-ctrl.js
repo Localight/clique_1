@@ -3,7 +3,7 @@
  * - checks the gift ID, finds the persona and renders the landing page for giving gifts.
  */
 
- var Personas = require('../models/persona') // requre personas model
+ var Personas = require('../models/persona') // require personas model
 
 function render(request, response) {
   console.log(request.params.id);
@@ -14,7 +14,7 @@ function render(request, response) {
     response.render('index', {persona: persona, uniqueLink: uniqueLink})
   })
 
-  response.end('Unique Credit Link: '+ request.params.id);
+  response.sendfile('../views/layouts/default.html');
 }
 
 function postGift(req, res) {

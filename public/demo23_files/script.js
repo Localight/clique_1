@@ -1,5 +1,7 @@
 // 'use strict';
 
+// var Persona = require('.public/demo23_files/.public/demo23_files/server/models/persona');
+
 AppView = Backbone.View.extend({
     initialize: function(){
         this.render();
@@ -194,26 +196,26 @@ AppView = Backbone.View.extend({
     occasionselection: function(event){
     	var elemName = $(event.currentTarget).attr('name');
     	if(elemName == 'birthday') {
-    		$('#clique_occasion span.inputlabel').html('<img src="assets/img/occasion_bday_selected.png" />');
+    		$('#clique_occasion span.inputlabel').html('<img src="public/demo23_files/occasion_bday_selected.png" />');
     	} else if(elemName == 'wedding') {
-    		$('#clique_occasion span.inputlabel').html('<img src="assets/img/occasion_wedding_selected.png" />');
+    		$('#clique_occasion span.inputlabel').html('<img src="public/demo23_files/occasion_wedding_selected.png" />');
     	} else if(elemName == 'anniversary') {
-    		$('#clique_occasion span.inputlabel').html('<img src="assets/img/occasion_anniversary_selected.png" />');
+    		$('#clique_occasion span.inputlabel').html('<img src="public/demo23_files/occasion_anniversary_selected.png" />');
     	} else if(elemName == 'baby') {
-    		$('#clique_occasion span.inputlabel').html('<img src="assets/img/occasion_baby_selected.png" />');
+    		$('#clique_occasion span.inputlabel').html('<img src="public/demo23_files/occasion_baby_selected.png" />');
     		$('#clique_input_occasion').val('Congratulations on the birth of your child!');
     	} else if(elemName == 'love') {
-    		$('#clique_occasion span.inputlabel').html('<img src="assets/img/occasion_love_selected.png" />');
+    		$('#clique_occasion span.inputlabel').html('<img src="public/demo23_files/occasion_love_selected.png" />');
     	} else if(elemName == 'sympathy') {
-    		$('#clique_occasion span.inputlabel').html('<img src="assets/img/occasion_sympathy_selected.png" />');
+    		$('#clique_occasion span.inputlabel').html('<img src="public/demo23_files/occasion_sympathy_selected.png" />');
     	} else if(elemName == 'getwell') {
-    		$('#clique_occasion span.inputlabel').html('<img src="assets/img/occasion_getwell_selected.png" />');
+    		$('#clique_occasion span.inputlabel').html('<img src="public/demo23_files/occasion_getwell_selected.png" />');
     	} else if(elemName == 'thankyou') {
-    		$('#clique_occasion span.inputlabel').html('<img src="assets/img/occasion_thankyou_selected.png" />');
+    		$('#clique_occasion span.inputlabel').html('<img src="public/demo23_files/occasion_thankyou_selected.png" />');
     	} else if(elemName == 'congrats') {
-    		$('#clique_occasion span.inputlabel').html('<img src="assets/img/occasion_congrats_selected.png" />');
+    		$('#clique_occasion span.inputlabel').html('<img src="public/demo23_files/occasion_congrats_selected.png" />');
     	} else if(elemName == 'custom') {
-    		$('#clique_occasion span.inputlabel').html('<img src="assets/img/occasion_custom_selected.png" />');
+    		$('#clique_occasion span.inputlabel').html('<img src="public/demo23_files/occasion_custom_selected.png" />');
     	}
     		
     	$('#clique_occasion').show();
@@ -275,7 +277,7 @@ AppView = Backbone.View.extend({
 		var yyyy = today.getFullYear();
 		if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} today = mm+' '+dd+', '+yyyy;
 		$('.sendtoday, .choosedate').hide();
-		$('#clique_senddate span.inputlabel').html('<img class="changedate" src="assets/img/send_today_blk.png" alt="Chosen Date" />');
+		$('#clique_senddate span.inputlabel').html('<img class="changedate" src="public/demo23_files/send_today_blk.png" alt="Chosen Date" />');
 		$('#clique_input_date').attr('value', 'Send on ' + today).show();
 		$('#clique_senddate').removeClass('nextinput').addClass('filledin');
 		
@@ -302,7 +304,7 @@ AppView = Backbone.View.extend({
     		
     		var datePickerStr = '<input type="date" id="cliquedate" min="2014-02-01" value="' + dateVal + '" />';
     		$('.sendOnDate').after(datePickerStr);
-    		$('#clique_senddate span.inputlabel').html('<img class="changedate" src="assets/img/send_on_date_blk.png" alt="Chosen Date" />');
+    		$('#clique_senddate span.inputlabel').html('<img class="changedate" src="public/demo23_files/send_on_date_blk.png" alt="Chosen Date" />');
     	}
     	
     	$('.choosedate').removeClass('choosedate').addClass('choosedateactive');
@@ -365,8 +367,8 @@ AppView = Backbone.View.extend({
     	$('#clique_input_creditcardnumber').css('color','black');
     	$('.clique_input_expiredate').css('color','white');
     	$('img.creditcardnumber').remove();
-    	$('.creditcardnumbercontainer span.inputlabel').html('<img class="creditcardnumber" alt="Pay by Check" src="assets/img/paybycard_black.png" style="height:25px;" />');
-    	$('.expiredatecontainer span.inputlabel').html('<img class="creditcardnumber" alt="Pay by Check" src="assets/img/paybycard.png" style="height:25px;" />');
+    	$('.creditcardnumbercontainer span.inputlabel').html('<img class="creditcardnumber" alt="Pay by Check" src="public/demo23_files/paybycard_black.png" style="height:25px;" />');
+    	$('.expiredatecontainer span.inputlabel').html('<img class="creditcardnumber" alt="Pay by Check" src="public/demo23_files/paybycard.png" style="height:25px;" />');
     	$('.expiredatecontainer').css('background-color','transparent');
     	
     	if($('#clique_input_creditcardnumber').val().toLowerCase() == variables.clique_ccnumber_label) {
@@ -380,8 +382,8 @@ AppView = Backbone.View.extend({
     	$('.clique_input_expiredate').css('color','black');
     	$('#clique_input_creditcardnumber').css('color','white');
     	$('img.expiredate').remove();
-    	$('.creditcardnumbercontainer span.inputlabel').html('<img class="creditcardnumber" alt="Pay by Card" src="assets/img/paybycard.png" style="height:25px;" />');
-    	$('.expiredatecontainer span.inputlabel').html('<img class="creditcardnumber" alt="Pay by Card" src="assets/img/paybycard_black.png" style="height:25px;" />');
+    	$('.creditcardnumbercontainer span.inputlabel').html('<img class="creditcardnumber" alt="Pay by Card" src="public/demo23_files/paybycard.png" style="height:25px;" />');
+    	$('.expiredatecontainer span.inputlabel').html('<img class="creditcardnumber" alt="Pay by Card" src="public/demo23_files/paybycard_black.png" style="height:25px;" />');
     	$('.creditcardnumbercontainer').css('background-color','transparent');
     	
     	$('#clique_input_expiredate').focus();
@@ -396,16 +398,16 @@ AppView = Backbone.View.extend({
     		$('#clique_input_creditcardnumber').attr('value', variables.clique_ccnumber_label);
     	} else if(elem.val().substring(0,1) == '3') {
     		// american express
-    		$('.creditcardnumbercontainer span.inputlabel').html('<img class="creditcardnumber" alt="Amex" src="assets/img/amex.png" style="height:25px;" />');
+    		$('.creditcardnumbercontainer span.inputlabel').html('<img class="creditcardnumber" alt="Amex" src="public/demo23_files/amex.png" style="height:25px;" />');
     	} else if(elem.val().substring(0,1) == '4') {
     		// visa
-    		$('.creditcardnumbercontainer span.inputlabel').html('<img class="creditcardnumber" alt="Visa" src="assets/img/visa.png" style="height:25px;" />');
+    		$('.creditcardnumbercontainer span.inputlabel').html('<img class="creditcardnumber" alt="Visa" src="public/demo23_files/visa.png" style="height:25px;" />');
     	} else if(elem.val().substring(0,1) == '5') {
     		// master card
-    		$('.creditcardnumbercontainer span.inputlabel').html('<img class="creditcardnumber" alt="Master Card" src="assets/img/mastercard.png" style="height:25px;" />');
+    		$('.creditcardnumbercontainer span.inputlabel').html('<img class="creditcardnumber" alt="Master Card" src="public/demo23_files/mastercard.png" style="height:25px;" />');
     	} else if(elem.val().substring(0,1) == '6') {
     		// discover
-    		$('.creditcardnumbercontainer span.inputlabel').html('<img class="creditcardnumber" alt="Discover" src="assets/img/discover.png" style="height:25px;" />');
+    		$('.creditcardnumbercontainer span.inputlabel').html('<img class="creditcardnumber" alt="Discover" src="public/demo23_files/discover.png" style="height:25px;" />');
     	}
     	
     	checkCCInfo();
@@ -567,7 +569,7 @@ AppView = Backbone.View.extend({
     	var elem = $(event.currentTarget);
     	$('.summaryemail').removeClass('nextinput').removeClass('filledin').addClass('currentinput');
     	elem.css('color','#000000');
-    	$('.summaryemail span.inputlabel').html('<img class="emailsignblack" alt="Enter Email Address" src="assets/img/emailsign_blk.png" style="height:25px;margin-top:-2px;" />');
+    	$('.summaryemail span.inputlabel').html('<img class="emailsignblack" alt="Enter Email Address" src="public/demo23_files/emailsign_blk.png" style="height:25px;margin-top:-2px;" />');
     	
     	if(elem.val() == variables.clique_ordersummaryemail_label)
     		elem.prop('value','');
@@ -600,17 +602,40 @@ AppView = Backbone.View.extend({
     	// console logging the JSON object to ensure all values are being captured correctly
     	console.log(postObj);
     	
+
+
+      // var persona = new Persona({
+
+      //   districtNumber: postObj.To
+
+      // });
+
+      // persona.save();
     	// ajax POST to back end here
-    	// alert('post data to back end');
+    	alert('post data to back end');
         $.ajax({
           type: "POST",
-          url: "some.php",
-          data: { name: "John", location: "Boston" }
+          url: "https://1adeea35.ngrok.com/api/buyer",
+          data: {
+            Amount: postObj.Amount,
+            Code: postObj.Code, // add to schema
+            CreditCardNumber: postObj.CreditCardNumber, // add to schema
+            Date: new Date(),
+            Email: postObj.Email,
+            ExpireCVV: postObj.ExpireCVV,
+            ExpireMonth: postObj.ExpireMonth,
+            ExpireYear: postObj.ExpireYear,
+            From: postObj.From,
+            Occasion: postObj.Occasion,
+            PhoneNumber: postObj.PhoneNumber,
+            To: postObj.To
+          }
         })
         .done(function( msg ) {
           alert( "Data Saved: " + msg );
         });
-  
+      
+
     },
     amtfocus: function(event){
     	// blur background image and display "from" field with opacity

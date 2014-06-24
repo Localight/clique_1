@@ -92,7 +92,7 @@ PersonaSchema.methods.generateCreditLink = function(options, callback) {
     console.log('newCredit error: ', err);
     // return callback(err);
   }
-    callback(err, 'https://48531bed.ngrok.com/new-gift-card/' + uniqueLink);
+    callback(err, 'https://1adeea35.ngrok.com/new-gift-card/' + uniqueLink);
   });
 
 };
