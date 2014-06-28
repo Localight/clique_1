@@ -31,8 +31,8 @@ module.exports = {
         callbackURL: 'http://localhost:3000/auth/linkedin/callback'
     },
     twilio: {
-        acctSid: 'ACe8d75f03c7da98de3c02c0a83e5650d1',
-        authToken: 'b7a0fe30122543a393a07707bcb419b6',
+        acctSid: 'AC9bfd970cef5934b23e69f1ef72812a23',
+        authToken: 'a6bfeeed497cfb9b8d10c329ce721759',
         disableSigCheck: false,
     }
 };

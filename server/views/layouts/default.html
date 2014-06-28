@@ -3,16 +3,15 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta name="apple-mobile-web-app-capable" content="yes">
-        <link type="text/css" rel="stylesheet" href="public/demo23_files/style.css">
+        <link type="text/css" rel="stylesheet" href="../public/demo23_files/style.css">
     </head>
     <body>
         {% block content %} {% endblock %}
-        <script type="text/javascript" src="public/demo23_files/hidescrollbar.js"></script>
+
+        <script type="text/javascript" src="../public/demo23_files/hidescrollbar.js"></script>
         
         <!--  -->
         <script type="text/template" id="clique_main_template">
-
-
 
             <div id="clique_logo">
                 <span class="first">The</span>
@@ -21,7 +20,7 @@
             </div>
             
             <div class="clear"></div>
-            <img class="bowtie hide" alt="Bowtie" src="public/demo23_files/bowtie.png" />
+            <img class="bowtie hide" alt="Bowtie" src="../public/demo23_files/bowtie.png" />
             <div id="clique_section">
                 <div id="clique_to" class="hide currentinput textinput">
                     <span class="inputlabel"><%= clique_to_label %></span>
@@ -64,14 +63,14 @@
                             <span class="last">Gift Card</span>
                         </div>
                         <div class="back">
-                            <img class="hide" src="public/demo23_files/circle-outline.gif" alt="Clique Code Outline" />
+                            <img class="hide" src="../public/demo23_files/circle-outline.gif" alt="Clique Code Outline" />
                             <span class="blackstrip">xxxxxx</span>
                         </div>
                     </div>
                 </div>
                 
                 <div id="clique_code" class="hide nextinput textinput inactive">
-                    <img class="checkmark hide" alt="Checkmark" src="public/demo23_files/checkmark.png" />
+                    <img class="checkmark hide" alt="Checkmark" src="../public/demo23_files/checkmark.png" />
                     <span class="inputlabel"><%= clique_code_label %></span>
                     <input type="text" id="clique_input_code" autocorrect="off" autocapitalize="off" class="heart textinput" value="<%= clique_code_label_name %>" />
                 </div>
@@ -83,24 +82,24 @@
                 </div>
                 
                 <div id="clique_occasion_selection" style="display:none;">
-                    <div name="birthday"><img src="public/demo23_files/occasion_bday.png" alt="Birthday" /></div>
-                    <div name="wedding" style="float:right;"><img src="public/demo23_files/occasion_wedding.png" alt="Wedding" /></div>
-                    <div name="anniversary"><img src="public/demo23_files/occasion_anniversary.png" alt="Anniversary" /></div>
-                    <div name="baby" style="float:right;"><img src="public/demo23_files/occasion_baby.png" alt="Baby" /></div>
-                    <div name="love"><img src="public/demo23_files/occasion_love.png" alt="I Love You" /></div>
-                    <div name="sympathy" style="float:right;"><img src="public/demo23_files/occasion_sympathy.png" alt="Sympathy" /></div>
-                    <div name="getwell"><img src="public/demo23_files/occasion_getwell.png" alt="Get Well" /></div>
-                    <div name="thankyou" style="float:right;"><img src="public/demo23_files/occasion_thankyou.png" alt="Thank You" /></div>
-                    <div name="congrats"><img src="public/demo23_files/occasion_congrats.png" alt="Congrats" /></div>
-                    <div name="custom" style="float:right;"><img src="public/demo23_files/occasion_custom.png" alt="Custom" /></div>
+                    <div name="birthday"><img src="../public/demo23_files/occasion_bday.png" alt="Birthday" /></div>
+                    <div name="wedding" style="float:right;"><img src="../public/demo23_files/occasion_wedding.png" alt="Wedding" /></div>
+                    <div name="anniversary"><img src="../public/demo23_files/occasion_anniversary.png" alt="Anniversary" /></div>
+                    <div name="baby" style="float:right;"><img src="../public/demo23_files/occasion_baby.png" alt="Baby" /></div>
+                    <div name="love"><img src="../public/demo23_files/occasion_love.png" alt="I Love You" /></div>
+                    <div name="sympathy" style="float:right;"><img src="../public/demo23_files/occasion_sympathy.png" alt="Sympathy" /></div>
+                    <div name="getwell"><img src="../public/demo23_files/occasion_getwell.png" alt="Get Well" /></div>
+                    <div name="thankyou" style="float:right;"><img src="../public/demo23_files/occasion_thankyou.png" alt="Thank You" /></div>
+                    <div name="congrats"><img src="../public/demo23_files/occasion_congrats.png" alt="Congrats" /></div>
+                    <div name="custom" style="float:right;"><img src="../public/demo23_files/occasion_custom.png" alt="Custom" /></div>
                 </div>
                 
                 <div id="clique_senddate" class="hide textinput nextinput">
                     <span class="inputlabel"><%= clique_senddate_label %></span>
                     <input readonly="readonly" type="text" id="clique_input_date" class="hide heart textinput" />
-                    <div class="sendtoday"><img src="public/demo23_files/sendtoday.png" alt="Send Today" style="padding-top:5px;" /></div>
+                    <div class="sendtoday"><img src="../public/demo23_files/sendtoday.png" alt="Send Today" style="padding-top:5px;" /></div>
                     <div class="choosedate">
-                        <img class="sendOnDate" src="public/demo23_files/sendondate.png" alt="Choose a Date" style="padding-top:5px;" />
+                        <img class="sendOnDate" src="../public/demo23_files/sendondate.png" alt="Choose a Date" style="padding-top:5px;" />
                         <input type="date" class="hide" id="cliquedate" value="2013-12-31" min="2014-02-01" />
                         <input type="text" id="clique_input_enterdate" class="textinput hide" style="width:100%;" value="mm/dd/yyyy" />
                     </div>
@@ -108,18 +107,18 @@
                 
                 <div id="clique_paymenttype" class="hide nextinput textinput">
                     <span style="width:53%;" class="inputlabel"><%= clique_paymenttype_label %></span>
-                    <img class="paybycheck" alt="Pay by Check" src="public/demo23_files/paybycheck.png" />
-                    <img class="paybycard" alt="Pay by Card" src="public/demo23_files/paybycard.png" style="margin-left:5px;" />
+                    <img class="paybycheck" alt="Pay by Check" src="../public/demo23_files/paybycheck.png" />
+                    <img class="paybycard" alt="Pay by Card" src="../public/demo23_files/paybycard.png" style="margin-left:5px;" />
                 </div>
                 
                 <!-- *** The pay by check section is not functional yet ***
                 <div id="clique_paymenttypeselectedcheck" class="hide nextinput textinput">
                     <div class="accountnumbercontainer paymenttypecontainer textinput currentinput">
-                        <img class="accountnumber" alt="Pay by Check" src="public/demo23_files/paybycheck.png" />
+                        <img class="accountnumber" alt="Pay by Check" src="../public/demo23_files/paybycheck.png" />
                         <input type="text" id="clique_input_accountnumber" class="textinput hide" style="width:100%;" value="mm/dd/yyyy" />
                     </div>
                     <div class="routingnumbercontainer paymenttypecontainer">
-                        <img class="routingnumber" alt="Pay by Card" src="public/demo23_files/paybycheck.png" style="margin-left:5px;" />
+                        <img class="routingnumber" alt="Pay by Card" src="../public/demo23_files/paybycheck.png" style="margin-left:5px;" />
                         <input type="text" id="clique_input_routingnumber" class="textinput hide" style="width:100%;" value="mm/dd/yyyy" />
                     </div>
                 </div>
@@ -128,7 +127,7 @@
                 <div id="clique_paymenttypeselectedcard" class="hide nextinput textinput" style="height:88px; overflow:hidden;">
                     <div class="creditcardnumbercontainer paymenttypecontainer textinput currentinput" style="height:44px;">
                         <span class="inputlabel">
-                            <img class="creditcardnumber" alt="Pay by Check" src="public/demo23_files/paybycard_black.png" style="height:25px;" />
+                            <img class="creditcardnumber" alt="Pay by Check" src="../public/demo23_files/paybycard_black.png" style="height:25px;" />
                         </span>
                         <input type="text" id="clique_input_creditcardnumber" class="heart textinput" value="<%= clique_ccnumber_label %>" />
                     </div>
@@ -144,7 +143,7 @@
                 <div id="clique_ordersummary" class="hide">
                     <div class="summaryordertotal">
                         <span class="inputlabel">
-                            <img alt="Bowtie" src="public/demo23_files/bowtie.png" />
+                            <img alt="Bowtie" src="../public/demo23_files/bowtie.png" />
                         </span>
                         <span class="giftamount"><%= clique_ordersummarysendgift_label %> <span class="chosengiftamt"><!-- added dynamically via js --></span></span>
                     </div>
@@ -155,7 +154,7 @@
                     <br style="clear:left;" />
                     <div class="summaryphonenumber currentinput textinput">
                         <span class="inputlabel">
-                            <img class="phonenumber" alt="Enter Phone Number" src="public/demo23_files/phone.png" style="height:25px;" />
+                            <img class="phonenumber" alt="Enter Phone Number" src="../public/demo23_files/phone.png" style="height:25px;" />
                         </span>
                         <input id="clique_input_phonenumber" class="heart textinput" value="<%= clique_ordersummaryphone_label %>" />
                     </div>
@@ -171,13 +170,13 @@
                     <br style="clear:left;" />
                     <div class="summaryemail textinput nextinput">
                         <span class="inputlabel">
-                            <img class="emailsign" alt="Enter Email Address" src="public/demo23_files/emailsign.png" style="height:25px;margin-top:-2px;" />
+                            <img class="emailsign" alt="Enter Email Address" src="../public/demo23_files/emailsign.png" style="height:25px;margin-top:-2px;" />
                         </span>
                         <input id="clique_input_email" class="heart textinput" value="<%= clique_ordersummaryemail_label %>" />
                     </div>
                     <div id="clique_schedulegift" class="hide">
-                        <img class="cliquelogo" alt="Clique Logo" src="public/demo23_files/clique.png" />
-                        <img class="scheduleorder" alt="Pay by Check" src="public/demo23_files/scheduleorder.png" />
+                        <img class="cliquelogo" alt="Clique Logo" src="../public/demo23_files/clique.png" />
+                        <img class="scheduleorder" alt="Pay by Check" src="../public/demo23_files/scheduleorder.png" />
                     </div>
                     <div id="clique_logo">
                         <span class="first">The</span>
@@ -188,8 +187,8 @@
                 <!-- End order summary -->
                 
                 <div id="clique_revieworder" class="hide">
-                    <img class="cliquelogo" alt="Clique Logo" src="public/demo23_files/clique.png" />
-                    <img class="revieworder" alt="Pay by Check" src="public/demo23_files/revieworder.png" />
+                    <img class="cliquelogo" alt="Clique Logo" src="../public/demo23_files/clique.png" />
+                    <img class="revieworder" alt="Pay by Check" src="../public/demo23_files/revieworder.png" />
                 </div>
             </div>
         </script>
@@ -205,7 +204,7 @@
             </div>
             
             <div class="clear"></div>
-            <img class="bowtie hide" alt="Bowtie" src="public/demo23_files/bowtie.png" style="display: inline;">
+            <img class="bowtie hide" alt="Bowtie" src="../public/demo23_files/bowtie.png" style="display: inline;">
             <div id="clique_section">
                 <div id="clique_to" class="hide currentinput textinput" style="display: block;">
                     <span class="inputlabel">To</span>
@@ -248,14 +247,14 @@
                             <span class="last">Gift Card</span>
                         </div>
                         <div class="back">
-                            <img class="hide" src="public/demo23_files/circle-outline.gif" alt="Clique Code Outline">
+                            <img class="hide" src="../public/demo23_files/circle-outline.gif" alt="Clique Code Outline">
                             <span class="blackstrip">xxxxxx</span>
                         </div>
                     </div>
                 </div>
                 
                 <div id="clique_code" class="hide nextinput textinput inactive">
-                    <img class="checkmark hide" alt="Checkmark" src="public/demo23_files/checkmark.png">
+                    <img class="checkmark hide" alt="Checkmark" src="../public/demo23_files/checkmark.png">
                     <span class="inputlabel">Clique</span>
                     <input type="text" id="clique_input_code" autocorrect="off" autocapitalize="off" class="heart textinput" value="Code">
                 </div>
@@ -267,24 +266,24 @@
                 </div>
                 
                 <div id="clique_occasion_selection" style="display:none;">
-                    <div name="birthday"><img src="public/demo23_files/occasion_bday.png" alt="Birthday"></div>
-                    <div name="wedding" style="float:right;"><img src="public/demo23_files/occasion_wedding.png" alt="Wedding"></div>
-                    <div name="anniversary"><img src="public/demo23_files/occasion_anniversary.png" alt="Anniversary"></div>
-                    <div name="baby" style="float:right;"><img src="public/demo23_files/occasion_baby.png" alt="Baby"></div>
-                    <div name="love"><img src="public/demo23_files/occasion_love.png" alt="I Love You"></div>
-                    <div name="sympathy" style="float:right;"><img src="public/demo23_files/occasion_sympathy.png" alt="Sympathy"></div>
-                    <div name="getwell"><img src="public/demo23_files/occasion_getwell.png" alt="Get Well"></div>
-                    <div name="thankyou" style="float:right;"><img src="public/demo23_files/occasion_thankyou.png" alt="Thank You"></div>
-                    <div name="congrats"><img src="public/demo23_files/occasion_congrats.png" alt="Congrats"></div>
-                    <div name="custom" style="float:right;"><img src="public/demo23_files/occasion_custom.png" alt="Custom"></div>
+                    <div name="birthday"><img src="../public/demo23_files/occasion_bday.png" alt="Birthday"></div>
+                    <div name="wedding" style="float:right;"><img src="../public/demo23_files/occasion_wedding.png" alt="Wedding"></div>
+                    <div name="anniversary"><img src="../public/demo23_files/occasion_anniversary.png" alt="Anniversary"></div>
+                    <div name="baby" style="float:right;"><img src="../public/demo23_files/occasion_baby.png" alt="Baby"></div>
+                    <div name="love"><img src="../public/demo23_files/occasion_love.png" alt="I Love You"></div>
+                    <div name="sympathy" style="float:right;"><img src="../public/demo23_files/occasion_sympathy.png" alt="Sympathy"></div>
+                    <div name="getwell"><img src="../public/demo23_files/occasion_getwell.png" alt="Get Well"></div>
+                    <div name="thankyou" style="float:right;"><img src="../public/demo23_files/occasion_thankyou.png" alt="Thank You"></div>
+                    <div name="congrats"><img src="../public/demo23_files/occasion_congrats.png" alt="Congrats"></div>
+                    <div name="custom" style="float:right;"><img src="../public/demo23_files/occasion_custom.png" alt="Custom"></div>
                 </div>
                 
                 <div id="clique_senddate" class="hide textinput nextinput">
                     <span class="inputlabel">Send</span>
                     <input readonly="readonly" type="text" id="clique_input_date" class="hide heart textinput">
-                    <div class="sendtoday"><img src="public/demo23_files/sendtoday.png" alt="Send Today" style="padding-top:5px;"></div>
+                    <div class="sendtoday"><img src="../public/demo23_files/sendtoday.png" alt="Send Today" style="padding-top:5px;"></div>
                     <div class="choosedate">
-                        <img class="sendOnDate" src="public/demo23_files/sendondate.png" alt="Choose a Date" style="padding-top:5px;">
+                        <img class="sendOnDate" src="../public/demo23_files/sendondate.png" alt="Choose a Date" style="padding-top:5px;">
                         <input type="date" class="hide" id="cliquedate" value="2013-12-31" min="2014-02-01">
                         <input type="text" id="clique_input_enterdate" class="textinput hide" style="width:100%;" value="mm/dd/yyyy">
                     </div>
@@ -292,18 +291,18 @@
                 
                 <div id="clique_paymenttype" class="hide nextinput textinput">
                     <span style="width:53%;" class="inputlabel">Check or Card?</span>
-                    <img class="paybycheck" alt="Pay by Check" src="public/demo23_files/paybycheck.png">
-                    <img class="paybycard" alt="Pay by Card" src="public/demo23_files/paybycard.png" style="margin-left:5px;">
+                    <img class="paybycheck" alt="Pay by Check" src="../public/demo23_files/paybycheck.png">
+                    <img class="paybycard" alt="Pay by Card" src="../public/demo23_files/paybycard.png" style="margin-left:5px;">
                 </div>
                 
                 <!-- *** The pay by check section is not functional yet ***
                 <div id="clique_paymenttypeselectedcheck" class="hide nextinput textinput">
                     <div class="accountnumbercontainer paymenttypecontainer textinput currentinput">
-                        <img class="accountnumber" alt="Pay by Check" src="public/demo23_files/paybycheck.png" />
+                        <img class="accountnumber" alt="Pay by Check" src="../public/demo23_files/paybycheck.png" />
                         <input type="text" id="clique_input_accountnumber" class="textinput hide" style="width:100%;" value="mm/dd/yyyy" />
                     </div>
                     <div class="routingnumbercontainer paymenttypecontainer">
-                        <img class="routingnumber" alt="Pay by Card" src="public/demo23_files/paybycheck.png" style="margin-left:5px;" />
+                        <img class="routingnumber" alt="Pay by Card" src="../public/demo23_files/paybycheck.png" style="margin-left:5px;" />
                         <input type="text" id="clique_input_routingnumber" class="textinput hide" style="width:100%;" value="mm/dd/yyyy" />
                     </div>
                 </div>
@@ -312,7 +311,7 @@
                 <div id="clique_paymenttypeselectedcard" class="hide nextinput textinput" style="height:88px; overflow:hidden;">
                     <div class="creditcardnumbercontainer paymenttypecontainer textinput currentinput" style="height:44px;">
                         <span class="inputlabel">
-                            <img class="creditcardnumber" alt="Pay by Check" src="public/demo23_files/paybycard_black.png" style="height:25px;">
+                            <img class="creditcardnumber" alt="Pay by Check" src="../public/demo23_files/paybycard_black.png" style="height:25px;">
                         </span>
                         <input type="text" id="clique_input_creditcardnumber" class="heart textinput" value="xxxx xxxx xxxx xxxx">
                     </div>
@@ -328,7 +327,7 @@
                 <div id="clique_ordersummary" class="hide">
                     <div class="summaryordertotal">
                         <span class="inputlabel">
-                            <img alt="Bowtie" src="public/demo23_files/bowtie.png">
+                            <img alt="Bowtie" src="../public/demo23_files/bowtie.png">
                         </span>
                         <span class="giftamount">Send this gift of <span class="chosengiftamt"><!-- added dynamically via js --></span></span>
                     </div>
@@ -339,7 +338,7 @@
                     <br style="clear:left;">
                     <div class="summaryphonenumber currentinput textinput">
                         <span class="inputlabel">
-                            <img class="phonenumber" alt="Enter Phone Number" src="public/demo23_files/phone.png" style="height:25px;">
+                            <img class="phonenumber" alt="Enter Phone Number" src="../public/demo23_files/phone.png" style="height:25px;">
                         </span>
                         <input id="clique_input_phonenumber" class="heart textinput" value="(xxx)-xxx-xxxx">
                     </div>
@@ -355,13 +354,13 @@
                     <br style="clear:left;">
                     <div class="summaryemail textinput nextinput">
                         <span class="inputlabel">
-                            <img class="emailsign" alt="Enter Email Address" src="public/demo23_files/emailsign.png" style="height:25px;margin-top:-2px;">
+                            <img class="emailsign" alt="Enter Email Address" src="../public/demo23_files/emailsign.png" style="height:25px;margin-top:-2px;">
                         </span>
                         <input id="clique_input_email" class="heart textinput" value="you@email.com">
                     </div>
                     <div id="clique_schedulegift" class="hide">
-                        <img class="cliquelogo" alt="Clique Logo" src="public/demo23_files/clique.png">
-                        <img class="scheduleorder" alt="Pay by Check" src="public/demo23_files/scheduleorder.png">
+                        <img class="cliquelogo" alt="Clique Logo" src="../public/demo23_files/clique.png">
+                        <img class="scheduleorder" alt="Pay by Check" src="../public/demo23_files/scheduleorder.png">
                     </div>
                     <div id="clique_logo">
                         <span class="first">The</span>
@@ -372,21 +371,23 @@
                 <!-- End order summary -->
                 
                 <div id="clique_revieworder" class="hide">
-                    <img class="cliquelogo" alt="Clique Logo" src="public/demo23_files/clique.png">
-                    <img class="revieworder" alt="Pay by Check" src="public/demo23_files/revieworder.png">
+                    <img class="cliquelogo" alt="Clique Logo" src="../public/demo23_files/clique.png">
+                    <img class="revieworder" alt="Pay by Check" src="../public/demo23_files/revieworder.png">
                 </div>
             </div>
         </div>
                 <div id="localstreet" style="top: 200px;">
-                    <!--<img src="public/demo23_files/local-street-low_small.png" />-->
-                    <img src="public/demo23_files/local-street-low2.png">
+                    <!--<img src="../public/demo23_files/local-street-low_small.png" />-->
+                    <img src="../public/demo23_files/local-street-low2.png">
                 </div>
                 <div class="clear"></div>
             </div>
         </div>
-    
-    <script type="text/javascript" src="public/demo23_files/jquery.min.js"></script>
-    <script type="text/javascript" src="public/demo23_files/underscore.js"></script>
-    <script type="text/javascript" src="public/demo23_files/backbone-min.js"></script>
-    <script type="text/javascript" src="public/demo23_files/script.js"></script>
+    <script type="text/javascript">
+        window.uniqueLink="{{ uniqueLink }}";
+    </script>
+    <script type="text/javascript" src="../public/demo23_files/jquery.min.js"></script>
+    <script type="text/javascript" src="../public/demo23_files/underscore.js"></script>
+    <script type="text/javascript" src="../public/demo23_files/backbone-min.js"></script>
+    <script type="text/javascript" src="../public/demo23_files/script.js"></script>
 </body></html>

@@ -87,7 +87,8 @@
     "view-helpers": "^0.1.4",
     "money-math": "^1.1.0",
     "ngrok": "^0.1.94",
-    "node-uuid": "^1.4.1"
+    "node-uuid": "^1.4.1",
+    "ejs": "^1.0.0"
   },
   "devDependencies": {
     "grunt-karma": "^0.8.2",

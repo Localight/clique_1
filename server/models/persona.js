@@ -24,6 +24,11 @@ var PersonaSchema = new Schema({
   basicProfile: {
     firstName: String
   },
+  creditCards: [{
+    creditCardNumber: Number, // is card a number or string? is this proper way to instantiate an array?
+    expireMonth: Number,
+    expireYear: Number
+  }],
   status: String, // Recipient/Patron/Clerk/Dormant(old user, no response)/Zombie(never clicked anything)
   inactiveCards: [{    // holds all cards user has texted for, but not yet activated.
     districtNumber: String,
@@ -32,7 +37,15 @@ var PersonaSchema = new Schema({
     status: String
    }],
   cardsGiven: [{
-    card: Number // is card a number or string? is this proper way to instantiate an array?
+    cardPurchaseInfo: {
+      creditCardNumber: Number, // is card a number or string? is this proper way to instantiate an array?
+      expireMonth: Number,
+      expireYear: Number
+    },
+    giftRecipient: String,
+    occassion: String,
+    cliqueCardCode: Number,
+    mobileNumber: String
   }],
   cardsReceived: [{
     card: Number // is this proper way to instantiate an array?
@@ -41,6 +54,8 @@ var PersonaSchema = new Schema({
     ledger: Number, // linked to Subledger API - credits/refunds
     amount: Number, // need money math module
     transactions: [{
+      giftsPurchased: Number,
+      giftsReceived: Number,
       amountSpent: Number,
       timestamp: {
         type: Date,
@@ -77,7 +92,7 @@ PersonaSchema.methods.generateCreditLink = function(options, callback) {
   
   // create random id param
   var uniqueLink= uuid.v4();
-
+  console.log(options);
   // create new credit object
   var newCredit = {
     districtNumber: options.districtNumber,
@@ -96,13 +111,6 @@ PersonaSchema.methods.generateCreditLink = function(options, callback) {
   });
 
 };
-
-// PersonaSchema.methods.makeLinkActive = function(link, callback) {
-// blink();
-// };
-/**
-* find or create persona plugin
-**/
 
 var findOrCreate = function(options, callback) {
  
@@ -133,44 +141,9 @@ var findOrCreate = function(options, callback) {
   });
 
 };
-// function findOrCreate = function(options, callback) {
-// var self = this;
-// // 1. try to find a persona with this mobile num.
-// // - if you find it, call the callback with it as a (second) param
-// // eg. Persona.find({contact.districtNumber: options.mobileNumber})
-// //      self.mobile
-// //      .exec(function(err, persona) {
-// //          if(err) {
-// //              return callback (err);
-// //          }
-// //          if(persona !== null) {
-// //              return callback(null, persona);
-// //          };
-// //          // if we reached up to here, means there's no such person.
-// //          so create a new person with options.mobileNumber and options.districtNumber and persona.save(and within the cb here, 
-// //          call back the original callback;
-// //          
-// //      });
-// };
 
 PersonaSchema.plugin(function(schema, options) {
 schema.static('findOrCreate', findOrCreate);
 });
-
-mongoose.model('persona', PersonaSchema);
-
-// Persona.findOrCreate({
-// mobileNumber: '1234',
-// districtNumber: '321',
-// name: 'Super Me!'
-//    }, function(err, person) {
-//         // twilio.send or create that link or something.
-//    });
-
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
-
-
-
 
 module.exports = mongoose.model('persona', PersonaSchema);

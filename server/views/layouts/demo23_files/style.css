@@ -1,21 +1,21 @@
 @font-face {
     font-family: 'always_in_my_heartregular';
-    src: url('../fonts/always_in_my_heart-webfont.eot');
-    src: url('../fonts/always_in_my_heart-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/always_in_my_heart-webfont.woff') format('woff'),
-         url('../fonts/always_in_my_heart-webfont.ttf') format('truetype'),
-         url('../fonts/always_in_my_heart-webfont.svg#always_in_my_heartregular') format('svg');
+    src: url('../demo23/fonts/always_in_my_heart-webfont.eot');
+    src: url('../demo23/fonts/always_in_my_heart-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../demo23/fonts/always_in_my_heart-webfont.woff') format('woff'),
+         url('../demo23/fonts/always_in_my_heart-webfont.ttf') format('truetype'),
+         url('../demo23/fonts/always_in_my_heart-webfont.svg#always_in_my_heartregular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'profontwindowsregular';
-    src: url('../fonts/ProFontWindows-webfont.eot');
-    src: url('../fonts/ProFontWindows-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/ProFontWindows-webfont.woff') format('woff'),
-         url('../fonts/ProFontWindows-webfont.ttf') format('truetype'),
-         url('../fonts/ProFontWindows-webfont.svg#profontwindowsregular') format('svg');
+    src: url('../demo23/fonts/ProFontWindows-webfont.eot');
+    src: url('../demo23/fonts/ProFontWindows-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../demo23/fonts/ProFontWindows-webfont.woff') format('woff'),
+         url('../demo23/fonts/ProFontWindows-webfont.ttf') format('truetype'),
+         url('../demo23/fonts/ProFontWindows-webfont.svg#profontwindowsregular') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -58,7 +58,7 @@ body
 
 .wrapper
 {
-	/*background-image: url('../img/local-street-low.png');*/
+	/*background-image: url('../demo23/img/local-street-low.png');*/
 	background-position: center -900px;
 	background-repeat: no-repeat;
 	background-color: #58e6df;

@@ -18,13 +18,13 @@ module.exports = function(grunt) {
         assets: grunt.file.readJSON('server/config/assets.json'),
         clean: ['public/build'],
         watch: {
-            js: {
-                files: paths.js,
-                tasks: ['jshint'],
-                options: {
-                    livereload: true
-                }
-            },
+            // js: {
+            //     files: paths.js,
+            //     tasks: ['jshint'],
+            //     options: {
+            //         livereload: true
+            //     }
+            // },
             html: {
                 files: paths.html,
                 options: {
