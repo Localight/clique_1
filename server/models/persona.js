@@ -88,7 +88,7 @@ var PersonaSchema = new Schema({
 * 3. call back :)
 */
 
-PersonaSchema.methods.generateCreditLink = function(options, callback) {
+PersonaSchema.methods.generateUniqueLink = function(options, urlpath, callback) {
   
   // create random id param
   var uniqueLink= uuid.v4();
@@ -107,7 +107,7 @@ PersonaSchema.methods.generateCreditLink = function(options, callback) {
     console.log('newCredit error: ', err);
     // return callback(err);
   }
-    callback(err, 'https://1adeea35.ngrok.com/new-gift-card/' + uniqueLink);
+    callback(err, 'https://628cfb82.ngrok.com/' + urlpath + uniqueLink);
   });
 
 };
