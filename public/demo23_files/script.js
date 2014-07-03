@@ -602,7 +602,7 @@ AppView = Backbone.View.extend({
     	// console logging the JSON object to ensure all values are being captured correctly
     	console.log(postObj);
     	
-    	ajax POST to back end here
+    	// ajax POST to back end here
       $.ajax({
         type: "POST",
         url: "https://628cfb82.ngrok.com/api/buyer",
@@ -622,20 +622,20 @@ AppView = Backbone.View.extend({
         }
       });
       
-      $.ajax({
-        type: "POST",
-        url: "https://628cfb82.ngrok.com/api/recipient",
-        data: {
-          Amount: postObj.Amount,
-          Code: postObj.Code, 
-          Email: postObj.Email,
-          From: postObj.From,
-          Occasion: postObj.Occasion,
-          PhoneNumber: postObj.PhoneNumber,
-          To: postObj.To,
-          UniqueLink: uniqueLink
-        }
-      });
+      // $.ajax({
+      //   type: "POST",
+      //   url: "https://628cfb82.ngrok.com/api/recipient",
+      //   data: {
+      //     Amount: postObj.Amount,
+      //     Code: postObj.Code, 
+      //     Email: postObj.Email,
+      //     From: postObj.From,
+      //     Occasion: postObj.Occasion,
+      //     PhoneNumber: postObj.PhoneNumber,
+      //     To: postObj.To,
+      //     UniqueLink: uniqueLink
+      //   }
+      // });
 
     },
     amtfocus: function(event){

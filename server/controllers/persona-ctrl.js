@@ -9,7 +9,7 @@ function createBuyer(request, response) {
 
   // validate from for twilio message
 
-  // var message = "Your Clique Gift Card is on its way!";
+  var message = "Your Clique Gift Card is on its way!";
 
   // for some (scope) reason request.body.UniqueLink/To gets lost in the exec callback so I declared it here so it can be used globally
   var link = request.body.UniqueLink;
@@ -93,16 +93,16 @@ function createBuyer(request, response) {
       if (err) {
         // handle error
       }
-      // twilio.giftConfirmationText(to, from, message, 
-      //   function(err, twilioResponse){
-      //     if (err){
-      //       console.log('twilio error ', err);
-      //       response.json(500, {message: "Twilio message not sent"});
-      //       return;
-      //     }
-      //     console.log(twilioResponse);
-      //     response.json({message: "Twilio message sent"});
-      // });
+      twilio.giftConfirmationText(to, from, message, 
+        function(err, twilioResponse){
+          if (err){
+            console.log('twilio error ', err);
+            response.json(500, {message: "Twilio message not sent"});
+            return;
+          }
+          console.log(twilioResponse);
+          response.json({message: "Twilio message sent"});
+      });
     });
 
   });

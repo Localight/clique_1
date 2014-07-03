@@ -24,10 +24,11 @@ function initialResponseSavePersona(request, response) {
     if (err) {
       console.log('dammit ', err);
     }
-    person.generateCreditLink({
+    person.generateUniqueLink({
       districtNumber: request.body.To,
       keyword: request.body.Body,
     },
+    'new-gift-card/',
     function(err, uniqueCreditLink) {
       if(err) {
         console.log('fix this ', err);

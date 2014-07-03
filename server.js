@@ -7,7 +7,11 @@ var mongoose = require('mongoose'),
     passport = require('passport'),
     logger = require('mean-logger');
 
-var twilioService = require('./server/services/twillio-service');
+/**
+ * services
+ */
+var twilioService = require('./server/services/twillio-service'),
+    mailerService = require('./server/services/mailgun-service');
 
 /**
  * Main application entry file.
@@ -20,6 +24,9 @@ var db = mongoose.connect(config.db);
 
 // Initialize Twilio
 twilioService.init(config.twilio.acctSid, config.twilio.authToken);
+
+// Initialize Mailgun
+mailerService.setup(config.mailgun);
 
 // Bootstrap Models, Dependencies, Routes and the app as an express app
 var app = require('./server/config/system/bootstrap')(passport, db);
