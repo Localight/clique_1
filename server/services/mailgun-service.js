@@ -17,7 +17,7 @@ var Mailgun = require('mailgun').Mailgun,
     emailTemplates = require('email-templates');
 
 // Setup function to be used on server activation
-function setup(config) {
+function init(config) {
     key = config.apiKey;
     domain = config.domain;
     mg = new Mailgun(key);
@@ -66,7 +66,7 @@ function sendEmail(to, subject, body, html, attachments){
 
 module.exports = {
 
-  setup: setup,
+  init: init,
   sendEmail: sendEmail,
   // test: test
 

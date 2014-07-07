@@ -11,7 +11,8 @@ var mongoose = require('mongoose'),
  * services
  */
 var twilioService = require('./server/services/twillio-service'),
-    mailerService = require('./server/services/mailgun-service');
+    mailerService = require('./server/services/mailgun-service'),
+    balancedService = require('./server/services/balanced-payments-service');
 
 /**
  * Main application entry file.
@@ -22,11 +23,34 @@ var twilioService = require('./server/services/twillio-service'),
 var config = require('./server/config/config');
 var db = mongoose.connect(config.db);
 
-// Initialize Twilio
-twilioService.init(config.twilio.acctSid, config.twilio.authToken);
+// Initialize Modules ************
 
-// Initialize Mailgun
-mailerService.setup(config.mailgun);
+twilioService.init(config.twilio.acctSid, config.twilio.authToken); // Twilio
+
+mailerService.init(config.mailgun); // Mailgun
+
+balancedService.init(config.balancedPayments); // Balanced Payments
+
+// ********************************
+
+
+
+// ********************************
+// **********Test Shit*************
+
+// balancedService.createCard();
+
+// balancedService.debitCard();
+
+// balancedService.creditAccount();
+
+
+
+
+// ********************************
+// ********************************
+
+
 
 // Bootstrap Models, Dependencies, Routes and the app as an express app
 var app = require('./server/config/system/bootstrap')(passport, db);
