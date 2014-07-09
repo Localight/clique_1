@@ -18,7 +18,10 @@ module.exports = function(app) {
   app.post('/app/sms', twilio.initialResponseSavePersona);
 
   // link credit buyer follows
-  app.get('/new-gift-card/:id', gifts.render);
+  app.get('/new-gift-card/:id', gifts.renderBuyer);
+
+  // recipient view
+  app.get('/recipient', gifts.renderRecipient);
 
   // collect buyer info
   app.post('/api/buyer', person.createBuyer);

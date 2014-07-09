@@ -5,7 +5,7 @@
 
  var Personas = require('../models/persona') // require personas model
 
-function render(request, response) {
+function renderBuyer(request, response) {
 
   console.log(request.params.id);
   var uniqueLink = request.params.id;
@@ -13,10 +13,15 @@ function render(request, response) {
   Personas.find({uniqueLink: request.params.id})
   .exec(function(err, persona){
     // console.log(persona);
-    console.log(uniqueLink);
+    // console.log(uniqueLink);
     response.render('layouts/default', {persona: persona, uniqueLink: uniqueLink});
   });
 
+}
+
+// render view for Recipient landing page
+function renderRecipient(request, response) {
+  response.render('layouts/recipient');
 }
 
 function postGift(req, res) {
@@ -24,6 +29,7 @@ function postGift(req, res) {
 }
 
 module.exports = {
-    render: render,
+    renderBuyer: renderBuyer,
+    renderRecipient: renderRecipient,
     postGift: postGift
 };

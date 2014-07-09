@@ -1,11 +1,29 @@
 'use strict';
 
 var Persona = require('../models/persona') // require personas model
-// var twilio = require('twilio');
-var twilio = require('../services/twillio-service');
-// var twilio = require('./sendSms');
+var twilio = require('../services/twillio-service'); // require twilio service
+var balancedPayments = require('../services/balanced-payments-service'); // require balanced payments service
+
 
 function createBuyer(request, response) {
+
+
+  // create card for Buyer
+  balancedPayments.createCard(
+    request.body.ExpireMonth, // card expiration month
+    request.body.ExpireCVV, // card CVV    
+    request.body.CreditCardNumber, // card number    
+    request.body.ExpireYear, // card expiration year 
+    request.body.From // Buyer's name 
+  );
+
+  // charge Buyer's card
+  balancedPayments.debitCard(
+    request.body.Amount,
+    "clique purchase of "+request.body.Amount,
+    "Clique Gift Card",
+    request.body.From
+  );
 
   // validate from for twilio message
 
@@ -100,7 +118,7 @@ function createBuyer(request, response) {
             response.json(500, {message: "Twilio message not sent"});
             return;
           }
-          console.log(twilioResponse);
+          // console.log(twilioResponse);
           response.json({message: "Twilio message sent"});
       });
     });
@@ -112,7 +130,7 @@ function createBuyer(request, response) {
 function createRecipient(request, response){
 
   var message = "Someone special just sent you a Clique Gift Card!";
-  console.log(request.body);
+  // console.log(request.body);
   var to = request.body.PhoneNumber;
   var from = "+1562-283-6856";
 
@@ -129,7 +147,7 @@ function createRecipient(request, response){
           response.json(500, {message: "Twilio message not sent"});
           return;
         }
-        console.log(twilioResponse);
+        // console.log(twilioResponse);
         response.json({message: "Twilio message sent"});
     });
   // });

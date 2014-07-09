@@ -6,27 +6,29 @@ function init(apiKey) {
 
 }
 
-// add params: request/response for testing
-function createCard() {
-
+// add callback?
+function createCard(month, cvv, number, year, name) {
+  console.log('create card');
   // create card
   balanced.marketplace.cards.create({
-      "expiration_month": "12", 
-      "cvv": "123", 
-      "number": "5105105105105100", 
-      "expiration_year": "2020"
+      "expiration_month": month, 
+      "cvv": cvv, 
+      "number": number, 
+      "expiration_year": "20"+year, // balanced payments format must be full year
+      "name": name
   });
 
 }
 
 // charge card
-function debitCard() {
+function debitCard(amount, description, statement, name) {
 
   // card_href is the stored href for the card
   balanced.get('/cards').debit({
-      "appears_on_statement_as": "Statement text", 
-      "amount": 5000, 
-      "description": "Test3"
+      "appears_on_statement_as": statement, 
+      "amount": amount, 
+      "description": description,
+      "name": name
   });
 
 }
