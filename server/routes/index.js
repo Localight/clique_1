@@ -21,7 +21,7 @@ module.exports = function(app) {
   app.get('/new-gift-card/:id', gifts.renderBuyer);
 
   // recipient view
-  app.get('/recipient', gifts.renderRecipient);
+  app.get('/recipient/:id', gifts.renderRecipient);
 
   // collect buyer info
   app.post('/api/buyer', person.createBuyer);

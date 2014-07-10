@@ -3,6 +3,7 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> 
         <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <link type="text/css" rel="stylesheet" href="../public/demo23_files/style.css">
     </head>
     <body>
@@ -72,7 +73,7 @@
                 <div id="clique_code" class="hide nextinput textinput inactive">
                     <img class="checkmark hide" alt="Checkmark" src="../public/demo23_files/checkmark.png" />
                     <span class="inputlabel"><%= clique_code_label %></span>
-                    <input type="text" id="clique_input_code" autocorrect="off" autocapitalize="off" class="heart textinput" value="<%= clique_code_label_name %>" />
+                    <input type="text" pattern="\d*" id="clique_input_code" autocorrect="off" autocapitalize="off" class="heart textinput" value="<%= clique_code_label_name %>" />
                 </div>
                 
                 <div id="clique_occasion" class="hide textinput currentinput" style="position:relative;">
@@ -129,13 +130,13 @@
                         <span class="inputlabel">
                             <img class="creditcardnumber" alt="Pay by Check" src="../public/demo23_files/paybycard_black.png" style="height:25px;" />
                         </span>
-                        <input type="text" id="clique_input_creditcardnumber" class="heart textinput" value="<%= clique_ccnumber_label %>" />
+                        <input type="text" pattern="\d*" id="clique_input_creditcardnumber" class="heart textinput" value="<%= clique_ccnumber_label %>" />
                     </div>
                     <div class="expiredatecontainer paymenttypecontainer textinput currentinput" style="height:44px;">
-                        <input style="width:15% !important;margin-left:9%;" type="text" id="expiredate_month" class="clique_input_expiredate heart textinput" value="<%= clique_expiredatemonth_label %>" />
-                        <input style="width:15% !important;" type="text" id="expiredate_year" class="clique_input_expiredate heart textinput" value="<%= clique_expiredateyear_label %>" />
-                        <input style="width:20% !important;" type="text" id="expiredate_cvv" class="clique_input_expiredate heart textinput" value="<%= clique_expiredatecvv_label %>" />
-                        <input style="width:40% !important;" type="text" id="expiredate_zip" class="clique_input_expiredate heart textinput" value="<%= clique_expiredatezip_label %>" />
+                        <input style="width:15% !important;margin-left:9%;" type="text" pattern="\d*" id="expiredate_month" class="clique_input_expiredate heart textinput" value="<%= clique_expiredatemonth_label %>" />
+                        <input style="width:15% !important;" type="text" pattern="\d*" id="expiredate_year" class="clique_input_expiredate heart textinput" value="<%= clique_expiredateyear_label %>" />
+                        <input style="width:20% !important;" type="text" pattern="\d*" id="expiredate_cvv" class="clique_input_expiredate heart textinput" value="<%= clique_expiredatecvv_label %>" />
+                        <input style="width:40% !important;" type="text" pattern="\d*" id="expiredate_zip" class="clique_input_expiredate heart textinput" value="<%= clique_expiredatezip_label %>" />
                     </div>
                 </div>
                 
@@ -156,7 +157,7 @@
                         <span class="inputlabel">
                             <img class="phonenumber" alt="Enter Phone Number" src="../public/demo23_files/phone.png" style="height:25px;" />
                         </span>
-                        <input id="clique_input_phonenumber" class="heart textinput" value="<%= clique_ordersummaryphone_label %>" />
+                        <input id="clique_input_phonenumber" pattern="\d*" class="heart textinput" value="<%= clique_ordersummaryphone_label %>" />
                     </div>
                     <br style="clear:left;" />
                     <div class="summaryfrom">
