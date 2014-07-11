@@ -14,13 +14,14 @@ exports.render = function(req, res) {
 
     // Preparing angular modules list with dependencies
     for (var name in mean.modules) {
+        // console.log(modules);
         modules.push({
             name: name,
             module: 'mean.' + name,
             angularDependencies: mean.modules[name].angularDependencies
         });
     }
-
+    console.log(modules);
     function isAdmin() {
         return req.user && req.user.roles.indexOf('admin') !== -1;
     }

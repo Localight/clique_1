@@ -1,3 +1,6 @@
+
+/* THIS IS USED FOR BOTH RECIPIENT AND REDEMPTION VIEWS */
+
 @font-face {
     font-family: 'always_in_my_heartregular';
     src: url('../demo23/fonts/always_in_my_heart-webfont.eot');
@@ -52,12 +55,6 @@ body
   position: relative;
   z-index: 20;
 }
-
-/*.wrapper #localstreet img
-{
-  max-width: 100%;
-  z-index: -10;
-}*/
 
 .wrapper #localstreet
 {
@@ -161,3 +158,44 @@ body
 #useLater {
   color: #B22222;
 }
+
+
+/* THIS IS USED FOR ONLY THE REDEMPTION VIEW */
+
+div.overlay {
+    opacity: .6;
+    background-color: black;
+    position: fixed;
+    left: 0; top: 0; height: 105%; width: 100%;
+    top: -5%;
+}
+
+.tricon {
+  height: 17%;
+  width: 32%; 
+  border-radius: 60%; 
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+span > .tricon {
+  margin-top:5%
+}
+
+.txtUpsideDown 
+{
+  filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=2);  /* IE6,IE7 */
+  ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)"; /* IE8 */
+  -moz-transform: rotate(-180deg);  /* FF3.5+ */
+  -o-transform: rotate(-180deg);  /* Opera 10.5 */
+  -webkit-transform: rotate(-180deg);  /* Safari 3.1+, Chrome */
+  position: relative; 
+}
+
+#showScreen {
+  display: table-cell;
+  vertical-align: middle;
+  color: black;  
+  text-align: left;
+}
+
+

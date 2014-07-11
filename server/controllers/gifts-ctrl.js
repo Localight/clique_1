@@ -3,8 +3,9 @@
  * - checks the gift ID, finds the persona and renders the landing page for giving gifts.
  */
 
- var Personas = require('../models/persona') // require personas model
+var Personas = require('../models/persona') // require personas model
 
+// render view for Buyer landing page
 function renderBuyer(request, response) {
 
   console.log(request.params.id);
@@ -24,6 +25,11 @@ function renderRecipient(request, response) {
   response.render('layouts/recipient');
 }
 
+// render view for Redemption landing page
+function renderRedemption(request, response) {
+  response.render('layouts/redemption');
+}
+
 function postGift(req, res) {
 
 }
@@ -31,5 +37,6 @@ function postGift(req, res) {
 module.exports = {
     renderBuyer: renderBuyer,
     renderRecipient: renderRecipient,
+    renderRedemption: renderRedemption,
     postGift: postGift
 };
