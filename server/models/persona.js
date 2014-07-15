@@ -48,7 +48,8 @@ var PersonaSchema = new Schema({
     mobileNumber: String
   }],
   cardsReceived: [{
-    card: Number // is this proper way to instantiate an array?
+    card: String, // is this proper way to instantiate an array?
+    amount: String
   }],
   account: {
     ledger: Number, // linked to Subledger API - credits/refunds
@@ -92,7 +93,7 @@ PersonaSchema.methods.generateUniqueLink = function(options, urlpath, callback) 
   
   // create random id param
   var uniqueLink= uuid.v4();
-  console.log(options);
+
   // create new credit object
   var newCredit = {
     districtNumber: options.districtNumber,
@@ -135,7 +136,7 @@ var findOrCreate = function(options, callback) {
         mobileNumber: options.mobileNumber
       },
       districtNumber: options.districtNumber,
-      keyword: options.keyword
+      keyword: options.keyword // possibly take this out because recipient can't use this immediately
     });
     persona.save(callback);
   });

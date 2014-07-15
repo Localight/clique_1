@@ -8,13 +8,12 @@ var Personas = require('../models/persona') // require personas model
 // render view for Buyer landing page
 function renderBuyer(request, response) {
 
-  console.log(request.params.id);
+  // console.log(request.params.id);
   var uniqueLink = request.params.id;
+
   // find person by param then render index page
   Personas.find({uniqueLink: request.params.id})
   .exec(function(err, persona){
-    // console.log(persona);
-    // console.log(uniqueLink);
     response.render('layouts/default', {persona: persona, uniqueLink: uniqueLink});
   });
 
@@ -22,7 +21,15 @@ function renderBuyer(request, response) {
 
 // render view for Recipient landing page
 function renderRecipient(request, response) {
-  response.render('layouts/recipient');
+
+  var uniqueLink = request.params.id;
+
+  // find person by param then render index page
+  Personas.find({uniqueLink: request.params.id})
+  .exec(function(err, persona){
+    response.render('layouts/recipient', {persona: persona, uniqueLink: uniqueLink});
+  })  
+  // response.render('layouts/recipient');
 }
 
 // render view for Redemption landing page

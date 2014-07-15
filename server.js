@@ -44,8 +44,7 @@ balancedService.init(config.balancedPayments); // Balanced Payments
 
 // balancedService.creditAccount();
 
-
-
+// mailerService.test();
 
 // ********************************
 // ********************************

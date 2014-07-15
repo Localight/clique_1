@@ -26,39 +26,38 @@ function init(config) {
 
 // function test(){
 
-// mg.sendRaw('noreply@clique.cc',
-//         'ag.saldivar@gmail.com',
-//         'From: ag.saldivar@gmail.com' +
-//           '\nTo: ' + 'recipient1@example.com, http://example.com/recipient2' +
-//           '\nContent-Type: text/html; charset=utf-8' +
-//           '\nSubject: I Love Email' +
-//           '\n\nBecause it\'s just so awesome',
-//         function(err) { err && console.log(err) });
+//   console.log('testing mailgun service');
+
+//   mg.sendRaw('gift-confirm@clique.cc',
+//           'ag.saldivar@gmail.com',
+//           'From: gift-confirm@clique.cc' +
+//             '\nTo: ' + 'ag.saldivar@gmail.com' +
+//             '\nContent-Type: text/html; charset=utf-8' +
+//             '\nSubject: Your Clique Card has been sent!' +
+//             '\n\nYou have just sent Zlatko a $25 Clique Gift Card',
+//           function(err) { err && console.log(err) });
 
 // }
 
-function sendEmail(to, subject, body, html, attachments){
+// function sendEmail(to, subject, body, html, attachments){
+function sendEmail(from, to, body){
 
-  var mailComposer = new Mailcomposer(); // Create new Mailcomposer instance
+  // var mailComposer = new Mailcomposer(); // Create new Mailcomposer instance
 
-  // setup message data
-  mailComposer.setMessageOption({
-      from: from
-      , to: to
-      , subject: subject
-      , body: body || html
-      , html: html
-  });
+  // // setup message data
+  // mailComposer.setMessageOption({
+  //     from: from
+  //     , to: to
+  //     , subject: subject
+  //     , body: body || html
+  //     , html: html
+  // });
 
   // Create dynamic message that is sent
   mg.sendRaw(
     from, // email sender
     to, // email recipient
-    'From: sender@example.com' +
-      '\nTo: ' + 'recipient1@example.com, http://example.com/recipient2' +
-      '\nContent-Type: text/html; charset=utf-8' +
-      '\nSubject: I Love Email' +
-      '\n\nBecause it\'s just so awesome',
+    body,
     function(err) { err && console.log(err) }
   );
 
