@@ -699,3 +699,17 @@ img.changedate
 	font-size: 22px;
 }
 /* end order summary styles */
+
+#finalOverlay {
+    opacity: 1;
+    background-color: black;
+    position: fixed;
+    left: 0; top: 0; height: 105%; width: 100%;
+    top: -5%;
+    /*animation: fadein 1s;*/
+}
+
+#finalOverlay > img {
+	margin-left: 23%;
+	margin-top: 50%;
+}

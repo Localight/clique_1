@@ -54,6 +54,8 @@ AppView = Backbone.View.extend({
             	$('#clique_to, #clique_amt_scrollwindow, span.rightarrow, span.leftarrow, img.bowtie').show();
             });
        	});
+        var elemsToHide = '#finalOverlay, #cliqueOverlay';
+        $(elemsToHide).hide();
     },
     /*
     Specify any events that are needed in the block below. Format of events are:
@@ -584,6 +586,10 @@ AppView = Backbone.View.extend({
     	}
     },
     click_schedulegift: function(event){
+        $('body').addClass('overlay');
+        $('#finalOverlay').fadeIn(2000);
+        $('#finalOverlay').show();
+
     	var postObj = {
     		To: $('#clique_input_to').val(),
     		Amount: $('#clique_amt span.heart').html(),
