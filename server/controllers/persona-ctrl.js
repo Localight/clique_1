@@ -142,7 +142,7 @@ function createRecipient(request, response){
   console.log('to in createRecipient: '+request.body.PhoneNumber);
 
   var to = request.body.PhoneNumber;
-  var from = '15622762944';
+  var from = '15622836856';
 
   // create random id param
   var uniqueLink= uuid.v4();
@@ -156,7 +156,9 @@ function createRecipient(request, response){
     },
     cardsReceived: [{
       card: request.body.UniqueLink,
-      amount: request.body.Amount
+      amount: request.body.Amount,
+      occassion: request.body.Occasion,
+      giftBuyer: request.body.From
     }]
   });
 
@@ -167,7 +169,7 @@ function createRecipient(request, response){
     // create unique link for recipient landing page
     console.log('recipient saved');
 
-    var uniqueCreditLink = 'https://628cfb82.ngrok.com/recipient-gift-card/' + uniqueLink;
+    var uniqueCreditLink = 'https://6ccf6310.ngrok.com/recipient-gift-card/' + uniqueLink;
 
     var message = 'Someone special just sent you a Clique Gift Card! Follow this link: ' + uniqueCreditLink+ 'to use your present at one of Long Beachs unique local shops.';
 

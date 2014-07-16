@@ -49,7 +49,9 @@ var PersonaSchema = new Schema({
   }],
   cardsReceived: [{
     card: String, // is this proper way to instantiate an array?
-    amount: String
+    amount: String,
+    occassion: String,
+    giftBuyer: String
   }],
   account: {
     ledger: Number, // linked to Subledger API - credits/refunds
@@ -108,7 +110,7 @@ PersonaSchema.methods.generateUniqueLink = function(options, urlpath, callback) 
     console.log('newCredit error: ', err);
     // return callback(err);
   }
-    callback(err, 'https://628cfb82.ngrok.com/' + urlpath + uniqueLink);
+    callback(err, 'https://6ccf6310.ngrok.com/' + urlpath + uniqueLink);
   });
 
 };

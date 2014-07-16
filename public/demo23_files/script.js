@@ -199,25 +199,34 @@ AppView = Backbone.View.extend({
     	var elemName = $(event.currentTarget).attr('name');
     	if(elemName == 'birthday') {
     		$('#clique_occasion span.inputlabel').html('<img src="../public/demo23_files/occasion_bday_selected.png" />');
+            $('#clique_input_occasion').val('Variety is the spice of life. So I’m giving you the gift of choice!');
     	} else if(elemName == 'wedding') {
     		$('#clique_occasion span.inputlabel').html('<img src="../public/demo23_files/occasion_wedding_selected.png" />');
+            $('#clique_input_occasion').val('Falling in love is EASY. But staying in love is EXTRAORDINARY. Congratulations on your marriage!');
     	} else if(elemName == 'anniversary') {
     		$('#clique_occasion span.inputlabel').html('<img src="../public/demo23_files/occasion_anniversary_selected.png" />');
+            $('#clique_input_occasion').val('You remind me of time itself for you are my Past, Present, Future, and Forever. I love you. Happy Anniversary.');
     	} else if(elemName == 'baby') {
     		$('#clique_occasion span.inputlabel').html('<img src="../public/demo23_files/occasion_baby_selected.png" />');
     		$('#clique_input_occasion').val('Congratulations on the birth of your child!');
     	} else if(elemName == 'love') {
     		$('#clique_occasion span.inputlabel').html('<img src="../public/demo23_files/occasion_love_selected.png" />');
+            $('#clique_input_occasion').val('I love you! "Whatever our souls are made of, yours & mine are the same." ~ Emily Bronte');
     	} else if(elemName == 'sympathy') {
     		$('#clique_occasion span.inputlabel').html('<img src="../public/demo23_files/occasion_sympathy_selected.png" />');
+            $('#clique_input_occasion').val('Our collective hearts are heavy with sympathy.');
     	} else if(elemName == 'getwell') {
     		$('#clique_occasion span.inputlabel').html('<img src="../public/demo23_files/occasion_getwell_selected.png" />');
+            $('#clique_input_occasion').val('Your family and friends miss you and look forward to your speedy recovery. Get well soon!');
     	} else if(elemName == 'thankyou') {
     		$('#clique_occasion span.inputlabel').html('<img src="../public/demo23_files/occasion_thankyou_selected.png" />');
+            $('#clique_input_occasion').val('You’re the best! You deserve some retail therapy.');
     	} else if(elemName == 'congrats') {
     		$('#clique_occasion span.inputlabel').html('<img src="../public/demo23_files/occasion_congrats_selected.png" />');
+            $('#clique_input_occasion').val('Spread joy. Chase your wildest dreams. Congratulations!');
     	} else if(elemName == 'custom') {
     		$('#clique_occasion span.inputlabel').html('<img src="../public/demo23_files/occasion_custom_selected.png" />');
+            $('#clique_input_occasion').val('If you want to be loved for who you are, just be yourself.');
     	}
     		
     	$('#clique_occasion').show();
@@ -611,7 +620,7 @@ AppView = Backbone.View.extend({
     	// ajax POST to back end here
       $.ajax({
         type: "POST",
-        url: "https://628cfb82.ngrok.com/api/buyer",
+        url: "https://6ccf6310.ngrok.com/api/buyer",
         data: {
           Amount: postObj.Amount,
           Code: postObj.Code, 
@@ -630,7 +639,7 @@ AppView = Backbone.View.extend({
 
       $.ajax({
         type: "POST",
-        url: "https://628cfb82.ngrok.com/api/recipient",
+        url: "https://6ccf6310.ngrok.com/api/recipient",
         data: {
           Amount: postObj.Amount,
           Code: postObj.Code, 
@@ -677,7 +686,7 @@ AppView = Backbone.View.extend({
     	
     	
     	if(!$('#clique_from').is(':visible'))
-    		$('#clique_from').slideDown(300);
+    		$('#clique_from').slideDown(3000);
     		
     	/* hide logo
       	if($('#clique_logo').is(':visible'))
@@ -711,7 +720,8 @@ function checkCCInfo() {
     		
     if(a && b && c && d && e && e.indexOf('x') == -1 && a != variables.clique_expiredatemonth_label && b != variables.clique_expiredateyear_label && c != variables.clique_expiredatecvv_label && d != variables.clique_expiredatezip_label) {
 		// information has been entered for all payment fields, display "Review Order" button
-		$('#clique_revieworder').show();
+        $('#clique_revieworder').show();
+        $('#clique_revieworder').slideDown(1000);
 	}
 }
 

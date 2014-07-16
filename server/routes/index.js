@@ -35,7 +35,7 @@ module.exports = function(app) {
   // save info of persona activating card
   // app.post('/api/credit-buyer', buyer.addInfo);
 
-
+/***
   ///////////////////////////iOS Routes/////////////////////////////
 
   app.post('/api/locationinfo', ambassador.createInfo);
@@ -45,6 +45,14 @@ module.exports = function(app) {
   app.post('api/tricon', ambassador.createTricon)
 
   ///////////////////////end iOS Routes/////////////////////////////
+// ***/
+
+
+  ///////////////////////////BalancedPayments.js Routes/////////////
+
+  
+
+  ///////////////////////////end BalancedPayments.js Routes/////////
 
   // app.get('/gifts/:giftId', gifts.render);
   // app.post('/gifts', gifts.postGift);

@@ -713,3 +713,11 @@ img.changedate
 	margin-left: 23%;
 	margin-top: 50%;
 }
+
+.overlayText {
+	font-family: 'always_in_my_heartregular';
+	color: #58e6df;
+	font-size: 2em;
+	margin-top: 8%;
+	margin-left: 35%;	
+}
