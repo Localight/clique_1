@@ -169,7 +169,7 @@ function createRecipient(request, response){
     // create unique link for recipient landing page
     console.log('recipient saved');
 
-    var uniqueCreditLink = 'https://clique.cc/recipient-gift-card/' + uniqueLink;
+    var uniqueCreditLink = 'clique.cc/recipient-gift-card/' + uniqueLink;
 
     var message = 'Someone special just sent you a Clique Gift Card! Follow this link: ' + uniqueCreditLink+ 'to use your present at one of Long Beachs unique local shops.';
 
