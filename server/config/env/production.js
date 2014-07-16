@@ -8,27 +8,27 @@ module.exports = {
     facebook: {
         clientID: 'APP_ID',
         clientSecret: 'APP_SECRET',
-        callbackURL: 'http://localhost:3000/auth/facebook/callback'
+        callbackURL: 'http://clique.cc/auth/facebook/callback'
     },
     twitter: {
         clientID: 'CONSUMER_KEY',
         clientSecret: 'CONSUMER_SECRET',
-        callbackURL: 'http://localhost:3000/auth/twitter/callback'
+        callbackURL: 'http://clique.cc/auth/twitter/callback'
     },
     github: {
         clientID: 'APP_ID',
         clientSecret: 'APP_SECRET',
-        callbackURL: 'http://localhost:3000/auth/github/callback'
+        callbackURL: 'http://clique.cc/auth/github/callback'
     },
     google: {
         clientID: 'APP_ID',
         clientSecret: 'APP_SECRET',
-        callbackURL: 'http://localhost:3000/auth/google/callback'
+        callbackURL: 'http://clique.cc/auth/google/callback'
     },
     linkedin: {
         clientID: 'API_KEY',
         clientSecret: 'SECRET_KEY',
-        callbackURL: 'http://localhost:3000/auth/linkedin/callback'
+        callbackURL: 'http://clique.cc/auth/linkedin/callback'
     },
     twilio: {
         acctSid: 'AC9bfd970cef5934b23e69f1ef72812a23',

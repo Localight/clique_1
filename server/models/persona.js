@@ -110,7 +110,7 @@ PersonaSchema.methods.generateUniqueLink = function(options, urlpath, callback) 
     console.log('newCredit error: ', err);
     // return callback(err);
   }
-    callback(err, 'https://6ccf6310.ngrok.com/' + urlpath + uniqueLink);
+    callback(err, 'https://clique.cc/' + urlpath + uniqueLink);
   });
 
 };
