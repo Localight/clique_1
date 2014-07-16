@@ -171,7 +171,7 @@ function createRecipient(request, response){
 
     var uniqueCreditLink = 'clique.cc/recipient-gift-card/' + uniqueLink;
 
-    var message = 'Someone special just sent you a Clique Gift Card! Follow this link: ' + uniqueCreditLink+ 'to use your present at one of Long Beachs unique local shops.';
+    var message = 'Someone special just sent you a Clique Gift Card! Follow this link: ' + uniqueCreditLink+ ' and use your present at one of Long Beachs unique local shops.';
 
     // text unique recipient landing page
     twilio.giftConfirmationText(to, from, message, 
