@@ -620,7 +620,7 @@ AppView = Backbone.View.extend({
     	// ajax POST to back end here
       $.ajax({
         type: "POST",
-        url: "clique.cc/api/buyer",
+        url: "http://clique.cc/api/buyer",
         data: {
           Amount: postObj.Amount,
           Code: postObj.Code, 
@@ -639,7 +639,7 @@ AppView = Backbone.View.extend({
 
       $.ajax({
         type: "POST",
-        url: "clique.cc/api/recipient",
+        url: "http://clique.cc/api/recipient",
         data: {
           Amount: postObj.Amount,
           Code: postObj.Code, 
