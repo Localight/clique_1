@@ -27,10 +27,10 @@ module.exports = function(app) {
   app.get('/redemption', gifts.renderRedemption);
 
   // collect buyer info
-  app.post('/api/buyer', person.createBuyer);
+  app.post('/buyer', person.createBuyer);
 
   // collect recipient info and sends recipient text with 
-  app.post('/api/recipient', person.createRecipient);
+  app.post('/recipient', person.createRecipient);
 
   // save info of persona activating card
   // app.post('/api/credit-buyer', buyer.addInfo);
