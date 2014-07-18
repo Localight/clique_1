@@ -5,6 +5,8 @@ var twilio = require('../controllers/twilio');
 var gifts = require('../controllers/gifts-ctrl');
 var ambassador = require('../controllers/ambassador');
 var person = require('../controllers/persona-ctrl');
+var cards = require('../controllers/cards-ctrl');
+var balanced = require('../controllers/balanced-ctrl');
 
 module.exports = function(app) {
 
@@ -35,6 +37,12 @@ module.exports = function(app) {
   // save info of persona activating card
   // app.post('/api/credit-buyer', buyer.addInfo);
 
+  ///////////////////////// API Routes ///////////////
+
+  app.get('/api/cards', cards.getCardInfo)
+
+  ///////////////////////// API Routes ///////////////
+
 /***
   ///////////////////////////iOS Routes/////////////////////////////
 
@@ -50,7 +58,7 @@ module.exports = function(app) {
 
   ///////////////////////////BalancedPayments.js Routes/////////////
 
-  
+  app.get('/new-merchant', balanced.registerMerchant)
 
   ///////////////////////////end BalancedPayments.js Routes/////////
 

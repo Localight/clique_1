@@ -3,14 +3,13 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <!-- <link rel="stylesheet" href="/public/system/lib/bootstrap/dist/css/bootstrap.css"> -->
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <style type="text/css">
-
-        </style> 
-    <link type="text/css" rel="stylesheet" href="../public/demo23_files/style2.css"> 
+        <link type="text/css" rel="stylesheet" href="../public/demo23_files/style2.css"> 
+        <script src="http://code.angularjs.org/1.2.13/angular.js"></script>
+        <script src="../../public/clique-angular/script.js"></script>
     </head>
-    <body>
+    <body ng-app="CliqueApp">
 
-      <div class="wrapper">
+      <div class="wrapper" ng-controller="RecipientCtrl">
         <div class="content">
           <div id="container">
 
@@ -20,7 +19,9 @@
               <!-- hookup ng for icon -->
               <div class="col-xs-2 icon"></div>
               <!-- hookup ng for buyer's message -->
-              <div class="col-xs-10" id="buyerMessage"></div>
+              <div class="col-xs-10" id="buyerMessage" ng-bind="message"></div>
+
+              <div class="col-xs-10" id="buyerMessage" ng-bind="from"></div>
 
               </div>
             <!-- </div> -->
