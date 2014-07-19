@@ -6,7 +6,7 @@ function init(apiKey) {
 
 }
 
-// add callback?
+// this is the callback to PCI-Compliant balanced.js function
 function createCard(month, cvv, number, year, name) {
   console.log('create card');
   // create card

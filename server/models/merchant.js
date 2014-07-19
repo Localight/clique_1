@@ -53,7 +53,7 @@ var mongoose = require('mongoose'),
 
  });
 
- mongoose.model('merchant', MerchantSchema);
+ // mongoose.model('merchant', MerchantSchema);
 
- // module.exports = mongoose.model('Merchant', MerchantSchema);
+ module.exports = mongoose.model('Merchant', MerchantSchema);
 

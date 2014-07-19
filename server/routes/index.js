@@ -33,6 +33,7 @@ module.exports = function(app) {
 
   // collect recipient info and sends recipient text with 
   app.post('/recipient', person.createRecipient);
+  app.post('/create', balanced.createMerchantBankAccount)
 
   // save info of persona activating card
   // app.post('/api/credit-buyer', buyer.addInfo);
@@ -59,6 +60,8 @@ module.exports = function(app) {
   ///////////////////////////BalancedPayments.js Routes/////////////
 
   app.get('/new-merchant', balanced.registerMerchant)
+
+  // app.post('/create', balanced.createMerchantBankAccount)
 
   ///////////////////////////end BalancedPayments.js Routes/////////
 
