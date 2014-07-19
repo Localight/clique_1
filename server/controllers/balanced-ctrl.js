@@ -19,7 +19,7 @@ function registerMerchant(request, response) {
 // }
 
 function createMerchantBankAccount(request, response) {
-
+  console.log('in createMerchantBankAccount');
   var merchant = new Merchant({
     bankPayoutInfo: {
       legalCompanyName: request.body.name,
