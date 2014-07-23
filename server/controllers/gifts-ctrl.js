@@ -27,7 +27,7 @@ function renderRecipient(request, response) {
   // find person by param then render index page
   Personas.find({uniqueLink: request.params.id})
   .exec(function(err, persona){
-    response.render('layouts/recipient', {persona: persona, uniqueLink: uniqueLink});
+    response.render('layouts/dolys', {persona: persona, uniqueLink: uniqueLink});
   })  
   // response.render('layouts/recipient');
 }

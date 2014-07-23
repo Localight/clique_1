@@ -40,8 +40,10 @@ function init(config) {
 // }
 
 // function sendEmail(to, subject, body, html, attachments){
-function sendEmail(from, to, body){
-
+function sendEmail(from, to, body, callback){
+  if (!callback){
+    callback = function(){};
+  }
   // var mailComposer = new Mailcomposer(); // Create new Mailcomposer instance
 
   // // setup message data
@@ -58,7 +60,14 @@ function sendEmail(from, to, body){
     from, // email sender
     to, // email recipient
     body,
-    function(err) { err && console.log(err) }
+    function(err) {
+      if (err) {
+        callback(err)
+      }
+      else {
+        callback()
+      }
+    }
   );
 
 }

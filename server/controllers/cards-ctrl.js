@@ -12,9 +12,15 @@ function getCardInfo(request, response, filter) {
     
   // }
 
-  Card.find({})
+// find by unique link id
+  Card.findOne([{
+    cardsReceived: {
+      amount: "75"
+    }
+  }])
   .exec(function(err, data){
-      response.json(data);
+      // response.json(data.cardsReceived[0].occasion);
+      response.json(data.cardsReceived[0]);
   });
 
 }

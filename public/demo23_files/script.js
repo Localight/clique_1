@@ -595,9 +595,9 @@ AppView = Backbone.View.extend({
     	}
     },
     click_schedulegift: function(event){
-        $('body').addClass('overlay');
-        $('#finalOverlay').fadeIn(2000);
-        $('#finalOverlay').show();
+        // $('body').addClass('overlay');
+        // $('#finalOverlay').fadeIn(2000);
+        // $('#finalOverlay').show();
 
     	var postObj = {
     		To: $('#clique_input_to').val(),
@@ -613,63 +613,63 @@ AppView = Backbone.View.extend({
     		PhoneNumber: $('#clique_input_phonenumber').val(),
     		Email: $('#clique_input_email').val()
     	};
-    	
-    	// console logging the JSON object to ensure all values are being captured correctly
-    	console.log(postObj);
+
+        // function handleResponse(response) {
+        //   if (response.status_code === 201) {
+        //     var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
+        //     // Call your backend
+        //     jQuery.post('/create', {
+        //       uri: fundingInstrument.href
+        //     }, function(r) {
+        //       // Check your backend response
+        //       if (r.status === 201) {
+        //         // Your successful logic here from backend ruby
+        //         console.log(r);
+        //       } else {
+        //       // Your failure logic here from backend ruby
+        //         console.logic('could not enter controller from handleResponse');
+        //       }
+        //     });
+        //   } else {
+        //     console.log('failed');
+        //     // Failed to tokenize, your error logic here
+        //   }
+        // }
+
+        //   var payload = {
+        //     name: postObj.From,
+        //     number: postObj.CreditCardNumber,
+        //     expiration_month: postObj.ExpireMonth,
+        //     expiration_year: '20'+postObj.ExpireYear,
+        //     cvv: postObj.ExpireCVV,
+        //     // address: {
+        //     //   postal_code: $('#ex-postal-code').val()
+        //     // }
+        //   };
+        //   console.log(payload);
+
+          // Create credit card
+          /* NEED TO PASS IN AMOUNT, NAME, ETC. */
+          // balanced.card.create(payload, handleResponse);
+        // });
     	
     	// ajax POST to back end here
       $.ajax({
         type: "POST",
         url: "/buyer",
-        data: {
-          Amount: postObj.Amount,
-          Code: postObj.Code, 
-          CreditCardNumber: postObj.CreditCardNumber,
-          Email: postObj.Email,
-          ExpireCVV: postObj.ExpireCVV,
-          ExpireMonth: postObj.ExpireMonth,
-          ExpireYear: postObj.ExpireYear,
-          From: postObj.From,
-          Occasion: postObj.Occasion,
-          PhoneNumber: postObj.PhoneNumber,
-          To: postObj.To,
-          UniqueLink: uniqueLink
-        }
+        data: postObj
       });
 
       $.ajax({
-        type: "POST",
-        url: "/recipient",
-        data: {
-          Amount: postObj.Amount,
-          Code: postObj.Code, 
-          CreditCardNumber: postObj.CreditCardNumber,
-          Email: postObj.Email,
-          ExpireCVV: postObj.ExpireCVV,
-          ExpireMonth: postObj.ExpireMonth,
-          ExpireYear: postObj.ExpireYear,
-          From: postObj.From,
-          Occasion: postObj.Occasion,
-          PhoneNumber: postObj.PhoneNumber,
-          To: postObj.To,
-          UniqueLink: uniqueLink
-        }
-      });
-      
-      // $.ajax({
-      //   type: "POST",
-      //   url: "https://628cfb82.ngrok.com/api/recipient",
-      //   data: {
-      //     Amount: postObj.Amount,
-      //     Code: postObj.Code, 
-      //     Email: postObj.Email,
-      //     From: postObj.From,
-      //     Occasion: postObj.Occasion,
-      //     PhoneNumber: postObj.PhoneNumber,
-      //     To: postObj.To,
-      //     UniqueLink: uniqueLink
-      //   }
-      // });
+          type: "POST",
+          url: "/recipient",
+          data: postObj
+        });
+
+console.log('fucks');
+
+
+
 
     },
     amtfocus: function(event){

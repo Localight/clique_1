@@ -2,30 +2,13 @@
 
 var Persona = require('../models/persona') // require personas model
 var twilio = require('../services/twillio-service'); // require twilio service
-var balancedPayments = require('../services/balanced-payments-service'); // require balanced payments service
+// var balancedPayments = require('../services/balanced-payments-service'); // require balanced payments service
+
 var mailgun = require('../services/mailgun-service'); // require mailgun service
 var uuid = require('node-uuid');
 
 
 function createBuyer(request, response) {
-
-
-  // create card for Buyer
-  balancedPayments.createCard(
-    request.body.ExpireMonth, // card expiration month
-    request.body.ExpireCVV, // card CVV    
-    request.body.CreditCardNumber, // card number    
-    request.body.ExpireYear, // card expiration year 
-    request.body.From // Buyer's name 
-  );
-
-  // charge Buyer's card
-  balancedPayments.debitCard(
-    request.body.Amount,
-    "clique purchase of "+request.body.Amount,
-    "Clique Gift Card",
-    request.body.From
-  );
 
   // TODO: validate from for twilio message
   // var message = "Your Clique Gift Card is on its way!";
@@ -118,6 +101,8 @@ function createBuyer(request, response) {
       //     response.json({message: "Twilio message sent"});
       // });
     });
+
+    console.log('buyer created');
     
     // send receipt/confirmation email to Buyer
     mailgun.sendEmail(
@@ -128,7 +113,13 @@ function createBuyer(request, response) {
         '\nContent-Type: text/html; charset=utf-8' +
         '\nSubject: Your Clique Card has been sent!' +
         '\n\nYou have just sent '+ request.body.To +' a $'+ request.body.Amount +' Clique Gift Card.',
-      function(err) { err && console.log(err) }
+      function(err) { 
+        if (err) {
+          console.log(err);
+          return response.end(500, err);
+        } 
+        response.end();
+      }
     );
 
   });
@@ -137,9 +128,9 @@ function createBuyer(request, response) {
 
 function createRecipient(request, response){
 
-  console.log('in createRecipient');
-  console.log(request.body);
-  console.log('to in createRecipient: '+request.body.PhoneNumber);
+  // console.log('in createRecipient');
+  // console.log(request.body);
+  // console.log('to in createRecipient: '+request.body.PhoneNumber);
 
   var to = request.body.PhoneNumber;
   var from = '15622836856';
@@ -173,8 +164,6 @@ function createRecipient(request, response){
 
     var message = 'Someone special just sent you a Clique Gift Card! Follow this link: ' + uniqueCreditLink+ ' and use your present at one of Long Beachs unique local shops.';
 
-    console.log(message);
-
     // text unique recipient landing page
     twilio.giftConfirmationText(to, from, message, 
       function(err, twilioResponse){
@@ -185,6 +174,7 @@ function createRecipient(request, response){
         }
         response.json({message: "Twilio message sent"});
     });
+
 
   // find inactiveCard by unique link and change status from 'new' to 'active'
   // Persona.findOne({

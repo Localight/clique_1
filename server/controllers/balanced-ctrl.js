@@ -1,7 +1,7 @@
 // require balanced payment module
 balanced = require('balanced-official');
 
-var Merchant = require('../models/merchant') // require personas model
+// var Merchant = require('../models/merchant') // require personas model
 
 function registerMerchant(request, response) {
   response.render('layouts/merchant-registration');
@@ -20,19 +20,60 @@ function registerMerchant(request, response) {
 
 function createMerchantBankAccount(request, response) {
   console.log('in createMerchantBankAccount');
-  var merchant = new Merchant({
-    bankPayoutInfo: {
-      legalCompanyName: request.body.name,
-      routingNumber: request.body.routing_number,
-      accountNumber: request.body.account_number
-    }
+
+  // function callback() {
+  //   balanced.get('/bank_accounts/BA1iEIPYJTUkoLwDVNqWzqsd')
+  //   .credit({
+  //     "amount": "1",
+  //     "appears_on_statement_as": "CliquePayment"
+  //   });
+  // } 
+
+  // console.log(request.body.uri);
+  balanced.get(request.body.uri)
+  .debit({
+    "appears_on_statement_as": "CliqueGiftCard", 
+    "amount": "1", 
+    // "amount": request.body.Amount, 
+    "description": "Clique Gift Card Purhcase of"
+  })
+  .then(function(){
+    balanced.get('/bank_accounts/BA1iEIPYJTUkoLwDVNqWzqsd').credit({
+        "amount": "1",
+        "description": "Payout for order #1111"
+    });
   });
 
-  merchant.save();
+
+
+
+
+
+  // console.log(get);
+  // var merchant = new Merchant({
+  //   bankPayoutInfo: {
+  //     legalCompanyName: request.body.name,
+  //     routingNumber: request.body.routing_number,
+  //     accountNumber: request.body.account_number
+  //   }
+  // });
+
+  // merchant.save();
+
+}
+
+function charge() {
+  console.log('in charge');
+  balanced.get('/bank_accounts/BA1iEIPYJTUkoLwDVNqWzqsd')
+  .credit({
+    "amount": "1",
+    "appears_on_statement_as": "CliquePayment"
+  });
 
 }
 
 module.exports = {
   registerMerchant: registerMerchant,
-  createMerchantBankAccount: createMerchantBankAccount
+  createMerchantBankAccount: createMerchantBankAccount,
+  charge: charge
 }
