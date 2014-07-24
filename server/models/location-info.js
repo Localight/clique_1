@@ -15,6 +15,9 @@ var LocationInfoSchema = new Schema({
   email: String,
   typeOfEstablishment: String,
   details: String,
+  managerPhone: String,
+  ambassador: String,
+  shortName: String
   // tricon: [{
   //   general: String,
   //   name: String,

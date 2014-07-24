@@ -46,17 +46,17 @@ module.exports = function(app) {
 
   ///////////////////////// API Routes ///////////////
 
-/***
+**
   ///////////////////////////iOS Routes/////////////////////////////
 
   app.post('/api/locationinfo', ambassador.createInfo);
 
   app.get('/api/locationinfo/:mobile_number', ambassador.getInfo);
 
-  app.post('api/tricon', ambassador.createTricon)
+  // app.post('api/tricon', ambassador.createTricon)
 
   ///////////////////////end iOS Routes/////////////////////////////
-// ***/
+// **
 
 
   ///////////////////////////BalancedPayments.js Routes/////////////

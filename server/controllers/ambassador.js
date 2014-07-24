@@ -21,7 +21,10 @@ function createInfo(request, response) {
       addressLineTwo: request.body.addressLineTwo,
       email: request.body.email,
       typeOfEstablishment: request.body.typeOfEstablishment,
-      details: request.body.details
+      details: request.body.details,
+      managerPhone: request.body.managerPhone,
+      ambassador: request.body.ambassador,
+      shortName: request.body.shortName
       // add lat and lng to model and here
 
   });
