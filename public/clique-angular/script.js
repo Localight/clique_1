@@ -26,6 +26,8 @@ var app = angular.module('CliqueApp', ['ngRoute']);
 
     $scope.change = function() {
       $location.path('/redemption');
+      alert('clicked on button');
+      console.log('fuck you');
     };
 
   });
