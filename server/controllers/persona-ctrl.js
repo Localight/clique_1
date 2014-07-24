@@ -89,17 +89,7 @@ function createBuyer(request, response) {
       if (err) {
         // handle error
       }
-      // console.log('this should be from: '+from);
-      // twilio.giftConfirmationText(to, from, message, 
-      //   function(err, twilioResponse){
-      //     if (err){
-      //       console.log('twilio error ', err);
-      //       response.json(500, {message: "Twilio message not sent"});
-      //       return;
-      //     }
-      //     // console.log(twilioResponse);
-      //     response.json({message: "Twilio message sent"});
-      // });
+
     });
 
     console.log('buyer created');
@@ -136,7 +126,8 @@ function createRecipient(request, response){
   var from = '15622836856';
 
   // create random id param
-  var uniqueLink= uuid.v4();
+  // var uniqueLink= uuid.v4();
+  var uniqueLink= request.body.UniqueLink;
 
   var person = new Persona({
     contact: {
@@ -146,10 +137,10 @@ function createRecipient(request, response){
       firstName: request.body.To
     },
     cardsReceived: [{
-      card: request.body.UniqueLink,
+      cardId: request.body.UniqueLink,
       amount: request.body.Amount,
       occassion: request.body.Occasion,
-      giftBuyer: request.body.From
+      giftBuyer: request.body.From,
     }]
   });
 
@@ -157,9 +148,10 @@ function createRecipient(request, response){
     if (err) {
       console.log('unable to create Recipient b/c err: ', err);
     }
-    // create unique link for recipient landing page
+    
     console.log('recipient saved');
 
+    // create unique link for recipient landing page
     var uniqueCreditLink = 'clique.cc/recipient-gift-card/' + uniqueLink;
 
     var message = 'Someone special just sent you a Clique Gift Card! Follow this link: ' + uniqueCreditLink+ ' and use your present at one of Long Beachs unique local shops.';

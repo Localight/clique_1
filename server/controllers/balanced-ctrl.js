@@ -37,12 +37,14 @@ function createMerchantBankAccount(request, response) {
     // "amount": request.body.Amount, 
     "description": "Clique Gift Card Purhcase of"
   })
-  .then(function(){
-    balanced.get('/bank_accounts/BA1iEIPYJTUkoLwDVNqWzqsd').credit({
-        "amount": "1",
-        "description": "Payout for order #1111"
-    });
-  });
+
+  // this part needs to go in a different function dealing with payouts
+  // .then(function(){
+  //   balanced.get('/bank_accounts/BA1iEIPYJTUkoLwDVNqWzqsd').credit({
+  //       "amount": "1",
+  //       "description": "Payout for order #1111"
+  //   });
+  // });
 
 
 

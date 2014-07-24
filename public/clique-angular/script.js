@@ -1,32 +1,36 @@
-var app = angular.module('CliqueApp', []);
+var app = angular.module('CliqueApp', ['ngRoute']);
 
-  app.controller('RecipientCtrl', function ($scope, api){
+  app.config(function ($routeProvider, $locationProvider) {
+    $routeProvider
+      .when('/recipient-gift-card/:id', {
+        controller: 'RecipientCtrl'
+      });
+    $locationProvider.html5Mode(true);
+  });
 
-    api.getCards().then(function(data){
+  app.controller('RecipientCtrl', function ($scope, api, $routeParams, $location){
+
+    var cardId = ($location.path().substr($location.path().lastIndexOf('/')).substr(1));
+    // var cardId = //angular param
+
+    api.getCards(cardId)
+    .then(function(data){
       $scope.message = data.occassion;
       console.log(data);
       $scope.from = "- " + data.giftBuyer;
     });
 
-  // $scope.message = "Congratulations on the birth of your child!"
-  // $scope.from = "- DW"
-    // $scope.from = "-Greg";
-    // console.log(api.getCards);
-    // api.getCards()
-    // .then(function(data){
-    //   console.log(data)
-    // });
-
   });
 
   app.service('api', function($http) {
 
-    var users = ['george', 'jorge', 'greg'];
-
     return {
-      getCards: function(){
+      getCards: function(id){
         // url to be queried
-        var url = '/api/cards';
+        var url = '/api/cards/';
+        if (id) {
+          url += id;
+        }
         // query url for data
         var promise = $http.get(url)
         .then(function(response){

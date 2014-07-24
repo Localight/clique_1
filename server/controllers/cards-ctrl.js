@@ -2,10 +2,11 @@
 // require model
 var Card = require('../models/persona');
 
-function getCardInfo(request, response, filter) {
+function getCardInfo(request, response) {
 
   // query URI for filter
-  var filter = request.query.filter;
+  var filter = request.params.id;
+  console.log(filter);
 
   // if there is a filter search DB based off this query
   // if (filter){
@@ -15,7 +16,7 @@ function getCardInfo(request, response, filter) {
 // find by unique link id
   Card.findOne([{
     cardsReceived: {
-      amount: "75"
+      cardId: filter
     }
   }])
   .exec(function(err, data){

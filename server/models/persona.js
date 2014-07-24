@@ -48,10 +48,10 @@ var PersonaSchema = new Schema({
     mobileNumber: String
   }],
   cardsReceived: [{
-    card: String, // is this proper way to instantiate an array?
     amount: String,
     occassion: String,
-    giftBuyer: String
+    giftBuyer: String,
+    cardId: String,
   }],
   account: {
     ledger: Number, // linked to Subledger API - credits/refunds

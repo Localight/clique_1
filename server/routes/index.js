@@ -41,7 +41,7 @@ module.exports = function(app) {
 
   ///////////////////////// API Routes ///////////////
 
-  app.get('/api/cards', cards.getCardInfo)
+  app.get('/api/cards/:id', cards.getCardInfo)
 
   ///////////////////////// API Routes ///////////////
 

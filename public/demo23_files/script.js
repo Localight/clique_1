@@ -611,64 +611,60 @@ AppView = Backbone.View.extend({
     		ExpireYear: $('#expiredate_year').val(),
     		ExpireCVV: $('#expiredate_cvv').val(),
     		PhoneNumber: $('#clique_input_phonenumber').val(),
-    		Email: $('#clique_input_email').val()
+    		Email: $('#clique_input_email').val(),
+        UniqueLink: uniqueLink
     	};
 
-        // function handleResponse(response) {
-        //   if (response.status_code === 201) {
-        //     var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
-        //     // Call your backend
-        //     jQuery.post('/create', {
-        //       uri: fundingInstrument.href
-        //     }, function(r) {
-        //       // Check your backend response
-        //       if (r.status === 201) {
-        //         // Your successful logic here from backend ruby
-        //         console.log(r);
-        //       } else {
-        //       // Your failure logic here from backend ruby
-        //         console.logic('could not enter controller from handleResponse');
-        //       }
-        //     });
-        //   } else {
-        //     console.log('failed');
-        //     // Failed to tokenize, your error logic here
-        //   }
-        // }
-
-        //   var payload = {
-        //     name: postObj.From,
-        //     number: postObj.CreditCardNumber,
-        //     expiration_month: postObj.ExpireMonth,
-        //     expiration_year: '20'+postObj.ExpireYear,
-        //     cvv: postObj.ExpireCVV,
-        //     // address: {
-        //     //   postal_code: $('#ex-postal-code').val()
-        //     // }
-        //   };
-        //   console.log(payload);
-
-          // Create credit card
-          /* NEED TO PASS IN AMOUNT, NAME, ETC. */
-          // balanced.card.create(payload, handleResponse);
-        // });
-    	
-    	// ajax POST to back end here
       $.ajax({
         type: "POST",
         url: "/buyer",
-        data: postObj
+        data: postObj,
+        success: function() {
+          $.ajax({
+            type: "POST",
+            url: "/recipient",
+            data: postObj
+          });
+        }
       });
 
-      $.ajax({
-          type: "POST",
-          url: "/recipient",
-          data: postObj
-        });
+      function handleResponse(response) {
+        if (response.status_code === 201) {
+          var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
+          // Call your backend
+          jQuery.post('/create', {
+            uri: fundingInstrument.href
+          }, function(r) {
+            // Check your backend response
+            if (r.status === 201) {
+              // Your successful logic here from backend ruby
+              console.log(r);
+            } else {
+            // Your failure logic here from backend ruby
+              console.logic('could not enter controller from handleResponse');
+            }
+          });
+        } else {
+          console.log('failed');
+          // Failed to tokenize, your error logic here
+        }
+      }
 
-console.log('fucks');
+      var payload = {
+        name: postObj.From,
+        number: postObj.CreditCardNumber,
+        expiration_month: postObj.ExpireMonth,
+        expiration_year: '20'+postObj.ExpireYear,
+        cvv: postObj.ExpireCVV,
+        // address: {
+        //   postal_code: $('#ex-postal-code').val()
+        // }
+      };
+      console.log(payload);
 
-
+      // Create credit card
+      /* NEED TO PASS IN AMOUNT, NAME, ETC. */
+      balanced.card.create(payload, handleResponse);
 
 
     },
