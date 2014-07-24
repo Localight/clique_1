@@ -6,9 +6,9 @@ var app = angular.module('CliqueApp', ['ngRoute']);
         controller: 'RecipientCtrl'
       })
       .when('/redemption', {
-        templateUrl: 'layouts/redemption.html'
+        templateUrl: '/redemption'
       })
-      .otherwise({redirectTo: '/redemption'});
+      // .otherwise({redirectTo: '/'});
     $locationProvider.html5Mode(true);
   });
 
