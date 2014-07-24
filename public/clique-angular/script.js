@@ -13,7 +13,7 @@ var app = angular.module('CliqueApp', ['ngRoute']);
   });
 
   app.run(function($rootScope) {
-      $('CliqueApp').on('click', 'a', function() {
+      $('[CliqueApp]').on('click', 'a', function() {
           window.location.href = $(this).attr('href');
       });
   });
