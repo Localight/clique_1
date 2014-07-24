@@ -24,7 +24,12 @@ var app = angular.module('CliqueApp', ['ngRoute']);
       $scope.from = "- " + data.giftBuyer;
     });
 
+    $scope.change = function() {
+      $location.path('/redemption');
+    };
+
   });
+
 
   app.service('api', function($http) {
 
