@@ -595,9 +595,9 @@ AppView = Backbone.View.extend({
     	}
     },
     click_schedulegift: function(event){
-        // $('body').addClass('overlay');
-        // $('#finalOverlay').fadeIn(2000);
-        // $('#finalOverlay').show();
+      // $('body').addClass('overlay');
+      // $('#finalOverlay').fadeIn(2000);
+      // $('#finalOverlay').show();
 
     	var postObj = {
     		To: $('#clique_input_to').val(),
@@ -614,7 +614,7 @@ AppView = Backbone.View.extend({
     		Email: $('#clique_input_email').val(),
         UniqueLink: uniqueLink
     	};
-
+      console.log('thisis'+uniqueLink);
       $.ajax({
         type: "POST",
         url: "/buyer",

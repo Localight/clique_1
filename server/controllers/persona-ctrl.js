@@ -16,6 +16,7 @@ function createBuyer(request, response) {
   // for some (scope) reason request.body.UniqueLink/To gets lost in the exec callback so I declared it here so it can be used globally
   var link = request.body.UniqueLink;
   var to = request.body.PhoneNumber;
+  console.log(request.body);
 
   Persona.findOne({
     'inactiveCards.$.uniqueLink': request.body.uniqueLink
@@ -128,6 +129,7 @@ function createRecipient(request, response){
   // create random id param
   // var uniqueLink= uuid.v4();
   var uniqueLink= request.body.UniqueLink;
+  console.log(request.body);
 
   var person = new Persona({
     contact: {
@@ -152,6 +154,7 @@ function createRecipient(request, response){
     console.log('recipient saved');
 
     // create unique link for recipient landing page
+    console.log(uniqueLink);
     var uniqueCreditLink = 'clique.cc/recipient-gift-card/' + uniqueLink;
 
     var message = 'Someone special just sent you a Clique Gift Card! Follow this link: ' + uniqueCreditLink+ ' and use your present at one of Long Beachs unique local shops.';

@@ -33,7 +33,7 @@ function createMerchantBankAccount(request, response) {
   balanced.get(request.body.uri)
   .debit({
     "appears_on_statement_as": "CliqueGiftCard", 
-    "amount": "1", 
+    "amount": 200, 
     // "amount": request.body.Amount, 
     "description": "Clique Gift Card Purhcase of"
   })
@@ -68,7 +68,7 @@ function charge(request, response) {
   console.log('in charge');
   balanced.get('/bank_accounts/BA1iEIPYJTUkoLwDVNqWzqsd')
   .credit({
-    "amount": "1",
+    "amount": 200,
     "appears_on_statement_as": "CliquePayment"
   });
   response.end();
