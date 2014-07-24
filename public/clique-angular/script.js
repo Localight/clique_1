@@ -6,16 +6,10 @@ var app = angular.module('CliqueApp', ['ngRoute']);
         controller: 'RecipientCtrl'
       })
       .when('/redemption', {
-        templateUrl: '/redemption'
+        template: 'layout/redemption.html'
       })
       // .otherwise({redirectTo: '/'});
     $locationProvider.html5Mode(true);
-  });
-
-  app.run(function($rootScope) {
-      $('[CliqueApp]').on('click', 'a', function() {
-          window.location.href = $(this).attr('href');
-      });
   });
 
   app.controller('RecipientCtrl', function ($scope, api, $routeParams, $location){
