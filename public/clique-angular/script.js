@@ -7,7 +7,8 @@ var app = angular.module('CliqueApp', ['ngRoute']);
       })
       .when('/redemption', {
         templateUrl: 'layouts/redemption.html'
-      });
+      })
+      .otherwise({redirectTo: '/redemption'});
     $locationProvider.html5Mode(true);
   });
 
