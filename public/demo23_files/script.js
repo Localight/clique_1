@@ -186,7 +186,7 @@ AppView = Backbone.View.extend({
     },
     inputkeypress_code: function(event){
     	var elem = $(event.currentTarget);
-    	if(elem.val().length >= 8) {
+    	if(elem.val().length >= 5) {
     		$('.checkmark').show();
     	} else {
     		$('.checkmark').hide();
