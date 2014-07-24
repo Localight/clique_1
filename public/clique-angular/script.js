@@ -12,6 +12,12 @@ var app = angular.module('CliqueApp', ['ngRoute']);
     $locationProvider.html5Mode(true);
   });
 
+  app.run(function($rootScope) {
+      $('[ng-app]').on('click', 'a', function() {
+          window.location.href = $(this).attr('href');
+      });
+  });
+
   app.controller('RecipientCtrl', function ($scope, api, $routeParams, $location){
 
     var cardId = ($location.path().substr($location.path().lastIndexOf('/')).substr(1));
