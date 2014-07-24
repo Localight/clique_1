@@ -46,7 +46,7 @@ module.exports = function(app) {
 
   ///////////////////////// API Routes ///////////////
 
-**
+// **
   ///////////////////////////iOS Routes/////////////////////////////
 
   app.post('/api/locationinfo', ambassador.createInfo);
