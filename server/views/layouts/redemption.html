@@ -2,9 +2,7 @@
         <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> 
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="/public/system/lib/bootstrap/dist/css/bootstrap.css">
-        <style type="text/css">
-
-        </style> 
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <link type="text/css" rel="stylesheet" href="../public/demo23_files/style2.css"> 
     </head>
     <body>
@@ -20,7 +18,7 @@
             <!-- creates dark overlay -->
             <div class="overlay"></div>
 
-            <div class="col-xs-12 text-center">
+            <div class="col-xs-12 text-center" style="padding-left:7%">
               <!-- hookup ng tricons -->
               <div class="col-xs-3 tricon" style="margin-right:2%; margin-top:11%">
                 <!-- <img src="../public/demo23_files/occasion-custom-blk.png"> -->
@@ -30,7 +28,7 @@
                 <img style="margin-left:-33%" src="../public/demo23_files/occasion-getwell-wht.png">
               </div>
               <div class="col-xs-3 tricon" style="margin-top:11%">
-                <img style="margin-left:-33%" src="../public/demo23_files/occasion-iloveyou-wht.png">
+                <img id="click" style="margin-left:-33%; border:1px solid green" src="../public/demo23_files/occasion-iloveyou-wht.png">
               </div>
             </div>            
 
@@ -53,13 +51,13 @@
               <span>
                 <!-- hookup ng tricons -->
                 <div class="col-xs-3 tricon" style="margin-right:2%">
-                  <img style="margin-left:-33%" src="../public/demo23_files/occasion-custom-wht.png">
+                  <img style="margin-left:-33%" src="../public/demo23_files/occasion-anniversary-wht.png">
                 </div>
                 <div class="col-xs-3 tricon" style="margin-right:2%">
-                  <img style="margin-left:-33%" src="../public/demo23_files/occasion-custom-wht.png">
+                  <img style="margin-left:-33%" src="../public/demo23_files/occasion-baby-wht.png">
                 </div>
                 <div class="col-xs-3 tricon">
-                  <img style="margin-left:-33%" src="../public/demo23_files/occasion-custom-wht.png">
+                  <img style="margin-left:-33%" src="../public/demo23_files/occasion-birthday-wht.png">
                 </div>
               </span>
             </div>
@@ -96,7 +94,14 @@
       </div>
 
 <script type="text/javascript">
-
+  $(function () {
+    $('#click').on('click', function(){
+      $.ajax({
+        type: 'POST',
+        url: '/charge'
+      });
+    });
+  });
 </script>
 
 </body>

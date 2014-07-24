@@ -34,6 +34,7 @@ module.exports = function(app) {
   // collect recipient info and sends recipient text with 
   app.post('/recipient', person.createRecipient);
   app.post('/create', balanced.createMerchantBankAccount)
+  app.post('/charge', balanced.charge)
   // app.post('/charge', balanced.charge)
 
   // save info of persona activating card
