@@ -4,6 +4,9 @@ var app = angular.module('CliqueApp', ['ngRoute']);
     $routeProvider
       .when('/recipient-gift-card/:id', {
         controller: 'RecipientCtrl'
+      })
+      .when('/redemption', {
+        templateUrl: 'layouts/redemption.html'
       });
     $locationProvider.html5Mode(true);
   });
