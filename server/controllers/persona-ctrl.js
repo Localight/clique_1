@@ -161,9 +161,11 @@ function createRecipient(request, response){
     // var message = 'Someone special just sent you a Clique Gift Card! Follow this link: ' + uniqueCreditLink+ ' and use your present at one of Long Beachs unique local shops.';
 
     // get icon type for icon in sms message
+    
+function message() {
     var iconType = request.body.Icon;
 
-    if (iconType == 'birthday') {
+     if (iconType == 'birthday') {
       var icon = '🍰'
     }
     else if (iconType == 'wedding'){
@@ -192,12 +194,22 @@ function createRecipient(request, response){
     }    
     else if (iconType == 'custom'){
       var icon = '🎁'
-    }
-
+    } 
+    
     var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;
 
+    return message;
+
+}
+
+
+    console.log('here');
+    console.log(message);
+    console.log('here');
+    // var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;
+
     // text unique recipient landing page
-    twilio.giftConfirmationText(to, from, message, 
+    twilio.giftConfirmationText(to, from, message(), 
       function(err, twilioResponse){
         if (err){
           console.log('twilio error ', err);
