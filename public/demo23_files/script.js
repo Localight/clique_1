@@ -200,33 +200,43 @@ AppView = Backbone.View.extend({
     	if(elemName == 'birthday') {
     		$('#clique_occasion span.inputlabel').html('<img src="../public/demo23_files/occasion_bday_selected.png" />');
             $('#clique_input_occasion').val('Variety is the spice of life. So I’m giving you the gift of choice!');
+            $('#occasion_icon').val('birthday');
     	} else if(elemName == 'wedding') {
     		$('#clique_occasion span.inputlabel').html('<img src="../public/demo23_files/occasion_wedding_selected.png" />');
             $('#clique_input_occasion').val('Falling in love is EASY. But staying in love is EXTRAORDINARY. Congratulations on your marriage!');
+            $('#occasion_icon').val('wedding');
     	} else if(elemName == 'anniversary') {
     		$('#clique_occasion span.inputlabel').html('<img src="../public/demo23_files/occasion_anniversary_selected.png" />');
             $('#clique_input_occasion').val('You remind me of time itself for you are my Past, Present, Future, and Forever. I love you. Happy Anniversary.');
+            $('#occasion_icon').val('anniversary');
     	} else if(elemName == 'baby') {
     		$('#clique_occasion span.inputlabel').html('<img src="../public/demo23_files/occasion_baby_selected.png" />');
     		$('#clique_input_occasion').val('Congratulations on the birth of your child!');
+        $('#occasion_icon').val('baby');
     	} else if(elemName == 'love') {
     		$('#clique_occasion span.inputlabel').html('<img src="../public/demo23_files/occasion_love_selected.png" />');
             $('#clique_input_occasion').val('I love you! "Whatever our souls are made of, yours & mine are the same." ~ Emily Bronte');
+            $('#occasion_icon').val('love');
     	} else if(elemName == 'sympathy') {
     		$('#clique_occasion span.inputlabel').html('<img src="../public/demo23_files/occasion_sympathy_selected.png" />');
             $('#clique_input_occasion').val('Our collective hearts are heavy with sympathy.');
+            $('#occasion_icon').val('sympathy');
     	} else if(elemName == 'getwell') {
     		$('#clique_occasion span.inputlabel').html('<img src="../public/demo23_files/occasion_getwell_selected.png" />');
             $('#clique_input_occasion').val('Your family and friends miss you and look forward to your speedy recovery. Get well soon!');
+            $('#occasion_icon').val('getwell');
     	} else if(elemName == 'thankyou') {
     		$('#clique_occasion span.inputlabel').html('<img src="../public/demo23_files/occasion_thankyou_selected.png" />');
             $('#clique_input_occasion').val('You’re the best! You deserve some retail therapy.');
+            $('#occasion_icon').val('thankyou');
     	} else if(elemName == 'congrats') {
     		$('#clique_occasion span.inputlabel').html('<img src="../public/demo23_files/occasion_congrats_selected.png" />');
             $('#clique_input_occasion').val('Spread joy. Chase your wildest dreams. Congratulations!');
+            $('#occasion_icon').val('congrats');
     	} else if(elemName == 'custom') {
     		$('#clique_occasion span.inputlabel').html('<img src="../public/demo23_files/occasion_custom_selected.png" />');
             $('#clique_input_occasion').val('If you want to be loved for who you are, just be yourself.');
+            $('#occasion_icon').val('custom');
     	}
     		
     	$('#clique_occasion').show();
@@ -612,9 +622,10 @@ AppView = Backbone.View.extend({
     		ExpireCVV: $('#expiredate_cvv').val(),
     		PhoneNumber: $('#clique_input_phonenumber').val(),
     		Email: $('#clique_input_email').val(),
+        Icon: $('#occasion_icon').val(),
         UniqueLink: uniqueLink
     	};
-      console.log('thisis'+uniqueLink);
+
       $.ajax({
         type: "POST",
         url: "/buyer",
@@ -660,7 +671,6 @@ AppView = Backbone.View.extend({
         //   postal_code: $('#ex-postal-code').val()
         // }
       };
-      console.log(payload);
 
       // Create credit card
       /* NEED TO PASS IN AMOUNT, NAME, ETC. */
