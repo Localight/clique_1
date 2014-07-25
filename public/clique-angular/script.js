@@ -6,7 +6,7 @@ var app = angular.module('CliqueApp', ['ngRoute']);
         controller: 'RecipientCtrl'
       })
       .when('/redemption', {
-        template: 'layout/redemption.html'
+        templateUrl: '/redemption'
       })
       // .otherwise({redirectTo: '/'});
     $locationProvider.html5Mode(true);
@@ -25,9 +25,9 @@ var app = angular.module('CliqueApp', ['ngRoute']);
     });
 
     $scope.change = function() {
+      console.log('in change');
+      console.log($location.path());
       $location.path('/redemption');
-      alert('clicked on button');
-      console.log('fuck you');
     };
 
   });
