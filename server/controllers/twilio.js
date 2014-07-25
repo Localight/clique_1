@@ -34,7 +34,7 @@ function initialResponseSavePersona(request, response) {
         console.log('fix this ', err);
       }
       var twiml = new twilio.TwimlResponse();
-      twiml.message('💌📲 Send a gift to anyone in Greater Long Beach by clicking here ▸ ' + uniqueCreditLink);
+      twiml.message('💌📲 Send a gift to anyone in Greater Long Beach ▸ ' + uniqueCreditLink);
       response.type('text/xml');  
       response.send(twiml.toString());
     });
