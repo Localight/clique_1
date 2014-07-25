@@ -104,18 +104,18 @@ function createBuyer(request, response) {
         '\nContent-Type: text/html; charset=utf-8' +
         '\nSubject: Your Clique Card has been sent!' +
         // '\n\nYou have just sent '+ request.body.To +' a $'+ request.body.Amount +' Clique Gift Card.',
-        '\n\nYour gift of '+ request.body.Amount +' is on it\'s way!  
-With the CLIQUE Local Gift Card '+ request.body.To +' can apply your gift toward purchases at numerous locally-owned merchants in the Long Beach area, including Doly\'s Delectables at 245 E Broadway, Long Beach, CA.  
+        '\n\nYour gift of '+ request.body.Amount +' is on it&#39;s way!  
+With the CLIQUE Local Gift Card '+ request.body.To +' can apply your gift toward purchases at numerous locally-owned merchants in the Long Beach area, including Doly&#39;s Delectables at 245 E Broadway, Long Beach, CA.  
 
 CLIQUE stands for...
 Cooperative of Local Independent Quality Urban Establishments
-Yes, that\'s a mouthful :-)
+Yes, that&#39;s a mouthful :-)
 
 CLIQUE is a Localism Project.  
-Did you know three times more money stays in our local economy when we buy from local businesses instead of big chains?  That translates to more local jobs, and more of the unique shops, eateries and other businesses that give our city it\'s character. Make a difference with your dollars and support independent merchants. 
+Did you know three times more money stays in our local economy when we buy from local businesses instead of big chains?  That translates to more local jobs, and more of the unique shops, eateries and other businesses that give our city it&#39;s character. Make a difference with your dollars and support independent merchants. 
 
 ~ The Localism Team
-Visit Localism.co to see what we\'re all about!
+Visit Localism.co to see what we&#39;re all about!
 
 ________________________________
 
