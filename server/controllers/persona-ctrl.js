@@ -211,7 +211,7 @@ function createRecipient(request, response){
     console.log(message);
     console.log('here');
     // var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;
-
+if (message){
     // text unique recipient landing page
     twilio.giftConfirmationText(to, from, message, 
       function(err, twilioResponse){
@@ -222,6 +222,9 @@ function createRecipient(request, response){
         }
         response.json({message: "Twilio message sent"});
     });
+  
+}
+
 
 
   // find inactiveCard by unique link and change status from 'new' to 'active'
