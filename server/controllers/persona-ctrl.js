@@ -166,19 +166,19 @@ function createRecipient(request, response){
 
     if (iconType == 'birthday') {
       var icon = '🍰';
-      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;  
+      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift for your birthday! View it here ▸ ' + uniqueCreditLink;  
     }
     else if (iconType == 'wedding'){
       var icon = '💍';
-      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;  
+      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' wedding gift! View it here ▸ ' + uniqueCreditLink;  
     }    
     else if (iconType == 'anniversary'){
       var icon = '💞';
-      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;  
+      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift for your anniversary! View it here ▸ ' + uniqueCreditLink;  
     }    
     else if (iconType == 'baby'){
       var icon = '🚼';
-      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;        
+      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift for your baby! View it here ▸ ' + uniqueCreditLink;        
     }    
     else if (iconType == 'love'){
       var icon = '💝';
@@ -186,19 +186,19 @@ function createRecipient(request, response){
     }    
     else if (iconType == 'sympathy'){
       var icon = '💐';
-      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;        
+      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift and a thoughtful note. View it here ▸ ' + uniqueCreditLink;        
     }    
     else if (iconType == 'getwell'){
       var icon = '🎈';
-      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;        
+      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift to cheer you up. View it here ▸ ' + uniqueCreditLink;        
     }    
     else if (iconType == 'thankyou'){
       var icon = '😊';
-      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;        
+      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift to say thank you! View it here ▸ ' + uniqueCreditLink;        
     }    
     else if (iconType == 'congrats'){
       var icon = '🏆';
-      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;        
+      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift to congratulate you! View it here ▸ ' + uniqueCreditLink;        
     }    
     else if (iconType == 'custom'){
       var icon = '🎁';
@@ -222,7 +222,7 @@ if (message){
         }
         response.json({message: "Twilio message sent"});
     });
-  
+
 }
 
 
