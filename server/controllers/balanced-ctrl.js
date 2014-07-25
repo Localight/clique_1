@@ -66,7 +66,7 @@ function createMerchantBankAccount(request, response) {
 
 function charge(request, response) {
   console.log('in charge');
-  balanced.get('/bank_accounts/BA1iEIPYJTUkoLwDVNqWzqsd')
+  balanced.get('/bank_accounts/MP49D7DEEhJAukYqr8dLNdKM')
   .credit({
     "amount": 200,
     "appears_on_statement_as": "CliquePayment"
