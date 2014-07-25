@@ -162,45 +162,49 @@ function createRecipient(request, response){
 
     // get icon type for icon in sms message
     
-function message() {
     var iconType = request.body.Icon;
 
-     if (iconType == 'birthday') {
-      var icon = '🍰'
+    if (iconType == 'birthday') {
+      var icon = '🍰';
+      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;  
     }
     else if (iconType == 'wedding'){
-      var icon = '💍'
+      var icon = '💍';
+      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;  
     }    
     else if (iconType == 'anniversary'){
-      var icon = '💞'
+      var icon = '💞';
+      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;  
     }    
     else if (iconType == 'baby'){
-      var icon = '🚼'
+      var icon = '🚼';
+      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;        
     }    
     else if (iconType == 'love'){
-      var icon = '💝'
+      var icon = '💝';
+      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;        
     }    
     else if (iconType == 'sympathy'){
-      var icon = '💐'
+      var icon = '💐';
+      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;        
     }    
     else if (iconType == 'getwell'){
-      var icon = '🎈'
+      var icon = '🎈';
+      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;        
     }    
     else if (iconType == 'thankyou'){
-      var icon = '😊'
+      var icon = '😊';
+      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;        
     }    
     else if (iconType == 'congrats'){
-      var icon = '🏆'
+      var icon = '🏆';
+      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;        
     }    
     else if (iconType == 'custom'){
-      var icon = '🎁'
+      var icon = '🎁';
+      var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;        
     } 
-    
-    var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;
 
-    return message;
-
-}
 
 
     console.log('here');
@@ -209,7 +213,7 @@ function message() {
     // var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;
 
     // text unique recipient landing page
-    twilio.giftConfirmationText(to, from, message(), 
+    twilio.giftConfirmationText(to, from, message, 
       function(err, twilioResponse){
         if (err){
           console.log('twilio error ', err);
