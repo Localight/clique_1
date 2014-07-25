@@ -123,7 +123,6 @@ function createRecipient(request, response){
   // console.log('in createRecipient');
   // console.log(request.body);
   // console.log('to in createRecipient: '+request.body.PhoneNumber);
-  console.log(request.body.Icon);
 
   var to = request.body.PhoneNumber;
   var from = '15622836856';
@@ -160,7 +159,41 @@ function createRecipient(request, response){
     var uniqueCreditLink = 'clique.cc/recipient-gift-card/' + uniqueLink;
 
     // var message = 'Someone special just sent you a Clique Gift Card! Follow this link: ' + uniqueCreditLink+ ' and use your present at one of Long Beachs unique local shops.';
-    var icon = '🎁'
+
+    // get icon type for icon in sms message
+    var iconType = request.body.Icon;
+
+    if (iconType == 'birthday') {
+      var icon = '🍰'
+    }
+    else if (iconType == 'wedding'){
+      var icon = '💍'
+    }    
+    else if (iconType == 'anniversary'){
+      var icon = '💞'
+    }    
+    else if (iconType == 'baby'){
+      var icon = '🚼'
+    }    
+    else if (iconType == 'love'){
+      var icon = '💝'
+    }    
+    else if (iconType == 'sympathy'){
+      var icon = '💐'
+    }    
+    else if (iconType == 'getwell'){
+      var icon = '🎈'
+    }    
+    else if (iconType == 'thankyou'){
+      var icon = '😊'
+    }    
+    else if (iconType == 'congrats'){
+      var icon = '🏆'
+    }    
+    else if (iconType == 'custom'){
+      var icon = '🎁'
+    }
+
     var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;
 
     // text unique recipient landing page
