@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    db: 'mongodb://localhost/havenly',
+    db: 'mongodb://localism2:localism@ord-c8-0.objectrocket.com:39020/havenly',
     app: {
         name: 'MEAN - FullStack JS - Development'
     },
@@ -40,5 +40,5 @@ module.exports = {
             , domain: 'https://api.mailgun.net/v2/rs56424.mailgun.org/messages'
             , from: 'auction@TeachArt.org'
     },
-    balancedPayments: 'ak-test-1XRsGC5ekgHQMepPbyO6zc9GuMXmVG4JM'
+    balancedPayments: 'AK3cUoshtR03JQhdOkwJv0kX'
 };
