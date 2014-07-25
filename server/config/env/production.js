@@ -40,5 +40,5 @@ module.exports = {
             , domain: 'https://api.mailgun.net/v2/rs56424.mailgun.org/messages'
             , from: 'auction@TeachArt.org'
     },
-    balancedPayments: 'AK3cUoshtR03JQhdOkwJv0kX'
+    balancedPayments: 'ak-prod-11sZoE7fajIZpOYqSL5TtYLgcAXaiPU91'
 };
