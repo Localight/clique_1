@@ -25,8 +25,7 @@ var app = angular.module('CliqueApp', ['ngRoute']);
     });
 
     $scope.change = function() {
-      console.log('in change');
-      console.log($location.path());
+      console.log('in change (ng-click)');
       $location.path('/redemption');
     };
 

@@ -34,7 +34,7 @@ function initialResponseSavePersona(request, response) {
         console.log('fix this ', err);
       }
       var twiml = new twilio.TwimlResponse();
-      twiml.message('Ooo exciting! A Clique Gift Card: ' + uniqueCreditLink + '. Someone is about to be very happy.');
+      twiml.message('💌📲 Send a gift to anyone in Greater Long Beach by clicking here ▸ ' + uniqueCreditLink);
       response.type('text/xml');  
       response.send(twiml.toString());
     });
