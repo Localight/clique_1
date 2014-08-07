@@ -76,7 +76,7 @@ function createTricon(request, response) {
 
   var newTricon = getRandTricon();
 
-  var triconObject = {"tricon" : newTricon}
+  // var triconObject = {"tricon" : newTricon}
 
   // request.body.tricon.tricon=newTricon;
 
@@ -89,7 +89,7 @@ function createTricon(request, response) {
     }
   );
   console.log(triconObject);
-  response.json(triconObject);
+  response.json("{tricon:"+newTricon+"}");
 
 }
 
