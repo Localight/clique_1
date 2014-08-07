@@ -59,33 +59,6 @@ function createBuyer(request, response) {
       cliqueCardCode: request.body.Code
     });
 
-    // var person = new Persona({
-    //   contact: {
-    //     mobileNumber: request.body.PhoneNumber,
-    //     email: request.body.Email
-    //   },
-    //   // persona.account.amountGiven
-    //   account: {
-    //     amount: request.body.Amount,
-    //     transactions: [{
-    //       timestamp: new Date()
-    //     }]
-    //   },
-    //   basicProfile: {
-    //     firstName: request.body.From
-    //   },
-    //   cardsGiven: [{
-    //     cardPurchaseInfo: {
-    //       creditCardNumber: request.body.CreditCardNumber, 
-    //       expireMonth: request.body.ExpireMonth,
-    //       expireYear: request.body.ExpireYear,
-    //     },
-    //     giftRecipient: request.body.To,
-    //     occassion: request.body.Occasion,
-    //     cliqueCardCode: request.body.Code
-    //   }]
-    // });
-
     persona.save(function(err, persona){
       if (err) {
         // handle error
@@ -129,7 +102,7 @@ function createRecipient(request, response){
 
   // create random id param
   // var uniqueLink= uuid.v4();
-  var uniqueLink= request.body.UniqueLink;
+  var uniqueLink = request.body.UniqueLink;
   console.log(request.body);
 
   var person = new Persona({
@@ -151,17 +124,12 @@ function createRecipient(request, response){
     if (err) {
       console.log('unable to create Recipient b/c err: ', err);
     }
-    
     console.log('recipient saved');
 
     // create unique link for recipient landing page
-    console.log(uniqueLink);
     var uniqueCreditLink = 'clique.cc/recipient-gift-card/' + uniqueLink;
 
-    // var message = 'Someone special just sent you a Clique Gift Card! Follow this link: ' + uniqueCreditLink+ ' and use your present at one of Long Beachs unique local shops.';
-
     // get icon type for icon in sms message
-    
     var iconType = request.body.Icon;
 
     if (iconType == 'birthday') {
@@ -205,13 +173,7 @@ function createRecipient(request, response){
       var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;        
     } 
 
-
-
-    console.log('here');
-    console.log(message);
-    console.log('here');
-    // var message = icon + request.body.To + ', ' + request.body.From + ' sent you a $' + request.body.Amount + ' gift! View it here ▸ ' + uniqueCreditLink;
-if (message){
+  if (message){
     // text unique recipient landing page
     twilio.giftConfirmationText(to, from, message, 
       function(err, twilioResponse){
@@ -222,10 +184,7 @@ if (message){
         }
         response.json({message: "Twilio message sent"});
     });
-
-}
-
-
+  }
 
   // find inactiveCard by unique link and change status from 'new' to 'active'
   // Persona.findOne({

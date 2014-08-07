@@ -1,14 +1,17 @@
 balanced = require('balanced-official');
+subledger = require('./subledger-service');
 
 function init(apiKey) {
 
   balanced.configure(apiKey);
+  //  subledger.organization(org_id).book(book_id)
 
 }
 
 // this is the callback to PCI-Compliant balanced.js function
 function createCard(month, cvv, number, year, name) {
   console.log('create card');
+
   // create card
   balanced.marketplace.cards.create({
       "expiration_month": month, 
@@ -17,6 +20,13 @@ function createCard(month, cvv, number, year, name) {
       "expiration_year": "20"+year, // balanced payments format must be full year
       "name": name
   });
+
+  // SUBLEDGER create account
+  // subledger.organization(org_id).book(book_id).account().create({...},function (error,apiRes){
+  //   ...
+  // });
+  // var acct_id = apiRes.acct_id :store this in DB
+  // create GLOBAL ACCOUNT (LOCALISM)
 
 }
 
@@ -30,6 +40,11 @@ function debitCard(amount, description, statement, name) {
       "description": description,
       "name": name
   });
+
+  // retrieve subledger acct_id 
+  // SUBLEDGER post journal entry (journal entries should always sum to zero)
+    // debit the card
+
 
 }
 

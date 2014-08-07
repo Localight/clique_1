@@ -33,20 +33,18 @@ module.exports = function(app) {
 
   // collect recipient info and sends recipient text with 
   app.post('/recipient', person.createRecipient);
-  app.post('/create', balanced.createMerchantBankAccount)
-  app.post('/charge', balanced.charge)
-  // app.post('/charge', balanced.charge)
 
   // save info of persona activating card
   // app.post('/api/credit-buyer', buyer.addInfo);
 
   ///////////////////////// API Routes ///////////////
 
-  app.get('/api/cards/:id', cards.getCardInfo)
+  app.get('/api/cards/:id', cards.getCardInfo);
 
   ///////////////////////// API Routes ///////////////
 
-// **
+
+
   ///////////////////////////iOS Routes/////////////////////////////
 
   app.post('/api/locationinfo', ambassador.createInfo);
@@ -56,12 +54,16 @@ module.exports = function(app) {
   // app.post('api/tricon', ambassador.createTricon)
 
   ///////////////////////end iOS Routes/////////////////////////////
-// **
+
 
 
   ///////////////////////////BalancedPayments.js Routes/////////////
 
-  app.get('/new-merchant', balanced.registerMerchant)
+  app.get('/new-merchant', balanced.registerMerchant);
+
+  app.post('/create', balanced.createMerchantBankAccount);
+
+  app.post('/charge', balanced.charge);
 
   // app.post('/create', balanced.createMerchantBankAccount)
 

@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    db: 'mongodb://localism2:localism@ord-c8-0.objectrocket.com:39020/havenly',
+    db: 'mongodb://localhost/havenly',
     app: {
         name: 'MEAN - FullStack JS - Development'
     },
@@ -40,5 +40,15 @@ module.exports = {
             , domain: 'https://api.mailgun.net/v2/rs56424.mailgun.org/messages'
             , from: 'auction@TeachArt.org'
     },
-    balancedPayments: 'ak-prod-11sZoE7fajIZpOYqSL5TtYLgcAXaiPU91'
+    balancedPayments: 'ak-test-1XRsGC5ekgHQMepPbyO6zc9GuMXmVG4JM',
+    subledger: {
+        key: '88OpPqUhvGMhXnkGY6w47K',
+        secret: 'zXKdLPenIZ4B2r1cOjl46a',
+        org_id: 'O0K0eS2wjuLOSRXpPVGvuV',
+        book_id: 'T9UhswcXjeH4Q2nlLu9sYP',
+        depositor_category_id: '1z4e9kQSwcJ7tUNnnsMjnH',
+        uncleared_category_id: 'eml3U9NiHaauqimfRwCQLz',
+        balance_sheet_id: 'w0du5EvqLHUCDusk6imDEl',
+        processing_id: 'niybAvJdacBXxQktA3F12m'
+    }
 };
