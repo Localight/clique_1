@@ -7,7 +7,7 @@ var getRandTricon = function () {
 
   return "dog"
 
-}
+};
 
 
 function createInfo(request, response) {
@@ -40,7 +40,14 @@ function createInfo(request, response) {
   console.log(location);
 
   // send back to Ambassador app the id that mongo creates
-  location.save(function(err, save){response.end('after the save')});
+  location.save(function(err, save){
+    if (err) {
+      console.log(err)
+    }
+    else {
+      response.end('after the save')
+    }
+  });
 
 }
 
