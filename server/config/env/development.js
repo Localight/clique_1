@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    db: 'mongodb://localhost/havenly',
+    db: 'mongodb://localhost/clique',
     app: {
         name: 'MEAN - FullStack JS - Development'
     },

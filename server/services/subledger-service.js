@@ -174,10 +174,10 @@ function buyerGiftsRecipient (buyerName, recipientName, giftAmount) {
   journalCreateAndPost("charge buyer: " + buyerName, buyerId, buyerId, giftAmount);
   
   // lines 32 & 33
-  journalCreateAndPost(buyerName + "'s uncleared money", uncleared_category_id, cardId, giftAmount);  
+  journalCreateAndPost(buyerName + "'s uncleared money", uncleared.active_account.id, cardId, giftAmount);  
 
   // lines 35 & 36
-  journalCreateAndPost("Processing for card: " + cardId, uncleared_category_id, cardId, (giftAmount*.029)+.30);
+  journalCreateAndPost("Processing for card: " + cardId, uncleared.active_account.id, cardId, (giftAmount*.029)+.30);
 
 
 }

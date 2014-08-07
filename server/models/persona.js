@@ -119,6 +119,7 @@ var findOrCreate = function(options, callback) {
  
   var Persona = this.model('persona');
 
+  // check if persona already exists based of their mobile number
   this.model('persona').findOne({
     contact: {
       mobileNumber: options.mobileNumber
@@ -128,7 +129,6 @@ var findOrCreate = function(options, callback) {
       console.log('crapped out ', err);
     }
     if (persona) {
-      // console.log(persona);
       console.log('persona already exists');
       return callback(null, persona);
     }

@@ -21,13 +21,6 @@ function createCard(month, cvv, number, year, name) {
       "name": name
   });
 
-  // SUBLEDGER create account
-  // subledger.organization(org_id).book(book_id).account().create({...},function (error,apiRes){
-  //   ...
-  // });
-  // var acct_id = apiRes.acct_id :store this in DB
-  // create GLOBAL ACCOUNT (LOCALISM)
-
 }
 
 // charge card
@@ -53,7 +46,7 @@ function debitCard(amount, description, statement, name) {
 function creditAccount() {
 
   balanced.get('/bank_accounts/BA1iEIPYJTUkoLwDVNqWzqsd').credit({
-      "amount": 100000,
+      "amount": 100000, // param accepts amount in cents
       "description": "Payout for order #1111"
   });
 

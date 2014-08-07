@@ -2,6 +2,14 @@
 
 var LocationInfo = require('../models/location-info');
 
+// function to generate random tricons
+var getRandTricon = function () {
+
+  return "dog"
+
+}
+
+
 function createInfo(request, response) {
 
   console.log('in the ambassador controller');
@@ -31,6 +39,7 @@ function createInfo(request, response) {
 
   console.log(location);
 
+  // send back to Ambassador app the id that mongo creates
   location.save(function(err, save){response.end('after the save')});
 
 }
@@ -57,6 +66,23 @@ function createTricon(request, response) {
   4. if tricon doesn't exist save to locationInfoDB and save to district#DB
   5. 
   */
+
+  var newTricon = getRandTricon();
+
+  var triconObject = {"tricon" : newTricon}
+
+  // request.body.tricon.tricon=newTricon;
+
+  LocationInfo.findByIdAndUpdate(
+    request.body.myID,
+    {$push: {tricons: request.body.tricon}},
+    {safe: true, upsert: true},
+    function(err, model){
+      console.log(err);
+    }
+  );
+  console.log(triconObject);
+  response.json(triconObject);
 
 }
 

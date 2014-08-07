@@ -10,14 +10,14 @@ var uuid = require('node-uuid');
 
 function createBuyer(request, response) {
 
-  // TODO: validate from for twilio message
-  // var message = "Your Clique Gift Card is on its way!";
+
 
   // for some (scope) reason request.body.UniqueLink/To gets lost in the exec callback so I declared it here so it can be used globally
   var link = request.body.UniqueLink;
   var to = request.body.PhoneNumber;
-  console.log(request.body);
+  var date = new Date() // date to be used in mailgun
 
+  
   Persona.findOne({
     'inactiveCards.$.uniqueLink': request.body.uniqueLink
   })
@@ -67,7 +67,7 @@ function createBuyer(request, response) {
     });
 
     console.log('buyer created');
-    var date = new Date()
+
     // send receipt/confirmation email to Buyer
     mailgun.sendEmail(
       'gift-confirm@clique.cc',
