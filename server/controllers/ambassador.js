@@ -18,36 +18,36 @@ function createInfo(request, response) {
   // response.end('end createInfo');
   // return;
 
-  var location = new LocationInfo({
+  // var location = new LocationInfo({
 
-      mainPhone: request.body.mainPhone,
-      district: request.body.district,
-      establishmentName: request.body.establishmentName,
-      locationNumber: request.body.locationNumber,
-      managerName: request.body.managerName,
-      addressLineOne: request.body.addressLineOne,
-      addressLineTwo: request.body.addressLineTwo,
-      email: request.body.email,
-      typeOfEstablishment: request.body.typeOfEstablishment,
-      details: request.body.details,
-      managerPhone: request.body.managerPhone,
-      ambassador: request.body.ambassador,
-      shortName: request.body.shortName
-      // add lat and lng to model and here
+  //     mainPhone: request.body.mainPhone,
+  //     district: request.body.district,
+  //     establishmentName: request.body.establishmentName,
+  //     locationNumber: request.body.locationNumber,
+  //     managerName: request.body.managerName,
+  //     addressLineOne: request.body.addressLineOne,
+  //     addressLineTwo: request.body.addressLineTwo,
+  //     email: request.body.email,
+  //     typeOfEstablishment: request.body.typeOfEstablishment,
+  //     details: request.body.details,
+  //     managerPhone: request.body.managerPhone,
+  //     ambassador: request.body.ambassador,
+  //     shortName: request.body.shortName
+  //     // add lat and lng to model and here
 
-  });
+  // });
 
-  console.log(location);
+  // console.log(location);
 
-  // send back to Ambassador app the id that mongo creates
-  location.save(function(err, save){
-    if (err) {
-      console.log(err)
-    }
-    else {
-      response.end('after the save')
-    }
-  });
+  // // send back to Ambassador app the id that mongo creates
+  // location.save(function(err, save){
+  //   if (err) {
+  //     console.log(err)
+  //   }
+  //   else {
+  //     response.end('after the save')
+  //   }
+  // });
 
 }
 
