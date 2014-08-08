@@ -47,11 +47,11 @@ module.exports = function(app) {
 
   ///////////////////////////iOS Routes/////////////////////////////
 
-  app.post('/api/locationinfo', ambassador.createTricon);
+  app.post('/api/locationinfo', ambassador.createInfo);
 
   app.get('/api/locationinfo/:mobile_number', ambassador.getInfo);
 
-  app.post('api/tricon', ambassador.createTricon);
+  app.post('/api/tricon', ambassador.createTricon);
 
   ///////////////////////end iOS Routes/////////////////////////////
 
