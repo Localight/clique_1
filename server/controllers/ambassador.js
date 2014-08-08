@@ -64,34 +64,33 @@ function getInfo(request, response) {
 
 function createTricon(request, response) {
   console.log('in createTricon');
-  // response.end('after the save');
-  // /*
-  // 1. generate 3 character tricon
-  // 2. find location by district#
-  // 3. if tricon exists in district# generate new tricon
-  //   -if tricon exists repeat step 3
-  //   -else save to locationInfo db and save to district#DB
-  // 4. if tricon doesn't exist save to locationInfoDB and save to district#DB
-  // 5. 
-  // */
+  /*
+  1. generate 3 character tricon
+  2. find location by district#
+  3. if tricon exists in district# generate new tricon
+    -if tricon exists repeat step 3
+    -else save to locationInfo db and save to district#DB
+  4. if tricon doesn't exist save to locationInfoDB and save to district#DB
+  5. 
+  */
 
-  // var newTricon = getRandTricon();
+  var newTricon = getRandTricon();
 
-  // // var triconObject = {"tricon" : newTricon}
+  // var triconObject = {"tricon" : newTricon}
 
-  // // request.body.tricon.tricon=newTricon;
+  // request.body.tricon.tricon=newTricon;
 
-  // LocationInfo.findByIdAndUpdate(
-  //   request.body.myID,
-  //   {$push: {tricons: request.body.tricon}},
-  //   {safe: true, upsert: true},
-  //   function(err, model){
-  //     console.log(err);
-  //   }
-  // );
+  LocationInfo.findByIdAndUpdate(
+    request.body.myID,
+    {$push: {tricons: request.body.tricon}},
+    {safe: true, upsert: true},
+    function(err, model){
+      console.log(err);
+    }
+  );
 
-  // // response.json("{tricon:"+newTricon+"}");
-  // response.send({tricon: newTricon});
+  // response.json("{tricon:"+newTricon+"}");
+  response.send({"tricon": "newTricon"});
 
 }
 
