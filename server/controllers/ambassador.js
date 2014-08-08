@@ -64,6 +64,7 @@ function getInfo(request, response) {
 
 function createTricon(request, response) {
   console.log('in createTricon');
+  response.end('after the save');
   // /*
   // 1. generate 3 character tricon
   // 2. find location by district#
