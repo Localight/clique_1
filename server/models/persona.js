@@ -69,31 +69,9 @@ var PersonaSchema = new Schema({
 
 });
 
-
-
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
-/** 
-* Add statics here 
-**/
-// PersonaSchema.statics.findAllPersonsWithInactiveGifts = function(stuff) {
-// // this would find all inactive peopl
-// };
-
-
-/**
-* Add instance methods
-**/
-/**
-* somebody sent us a options obj with districtNumber, and a keyword.
-* 1. check if that's already there
-* 2. generate unique link
-* 3. call back :)
-*/
-
 PersonaSchema.methods.generateUniqueLink = function(options, urlpath, callback) {
   
-  // create random id param
+  // create random id for new Buyer
   var uniqueLink= uuid.v4();
 
   // create new credit object
@@ -104,12 +82,15 @@ PersonaSchema.methods.generateUniqueLink = function(options, urlpath, callback) 
     status: 'new'
   };
 
+  // add card to Buyer's collection of inactiveCards
   this.inactiveCards.push(newCredit);
+
+  // save new inactive card
   this.save(function(err, persona) {
   if(err) {
-    console.log('newCredit error: ', err);
-    // return callback(err);
+    console.log('Unable to save new inactiveCard in generateUniqueLink: ', err);
   }
+    // pass back URI w/uniqueLink/id for Buyer to follow
     callback(err, 'clique.cc/' + urlpath + uniqueLink);
   });
 
@@ -126,12 +107,14 @@ var findOrCreate = function(options, callback) {
     }
   }, function(err, persona){
     if (err) {
-      console.log('crapped out ', err);
+      console.log('findOrCreate not working: ', err);
     }
+    // if persona is found return persona data to be used in generateUniqueLink
     if (persona) {
       console.log('persona already exists');
       return callback(null, persona);
     }
+    // if person doesn't exist pull in data from options to create new Buyer data object
     console.log('create new persona');
     persona = new Persona({
       contact: {
@@ -140,6 +123,7 @@ var findOrCreate = function(options, callback) {
       districtNumber: options.districtNumber,
       keyword: options.keyword // possibly take this out because recipient can't use this immediately
     });
+    // on save, generate Unique Link for new Buyer
     persona.save(callback);
   });
 

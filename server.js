@@ -34,20 +34,14 @@ balancedService.init(config.balancedPayments); // Balanced Payments
 
 subledgerService.init(config.subledger.key, config.subledger.secret, config.subledger.org_id, config.subledger.book_id, config.subledger.depositor_category_id, config.subledger.uncleared_category_id, config.subledger.balance_sheet_id); // Subledger
 
-// **********Test Shit*************
+// ********************************
 
 
 
 // ********************************
-// ********^Test Shit^*************
+// ********Test Shit*************
 
-// balancedService.createCard();
 
-// balancedService.debitCard();
-
-// balancedService.creditAccount();
-
-// mailerService.test();
 
 // ********************************
 // ********************************
