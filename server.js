@@ -40,8 +40,9 @@ subledgerService.init(config.subledger.key, config.subledger.secret, config.subl
 
 // ********************************
 // ********Test Shit*************
+// var person = require('./server/controllers/persona-ctrl');
 
-
+// person.saveBuyerCardId({uniquelink: "f0616aab-a356-42fa-b375-1ca7d07966cd", bpCardId: "horse"});
 
 // ********************************
 // ********************************

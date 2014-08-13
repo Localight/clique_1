@@ -24,10 +24,10 @@ function createCard(month, cvv, number, year, name) {
 }
 
 // charge card
-function debitCard(amount, description, statement, name) {
+function debitCard(amount, description, statement, name, cardID) {
 
   // card_href is the stored href for the card
-  balanced.get('/cards').debit({
+  balanced.get('/cards/' + cardID).debit({
       "appears_on_statement_as": statement, 
       "amount": amount, 
       "description": description,

@@ -7,24 +7,22 @@ var twilio = require('../services/twillio-service'); // require twilio service
 var mailgun = require('../services/mailgun-service'); // require mailgun service
 var uuid = require('node-uuid');
 
-
 function createBuyer(request, response) {
-
-
 
   // for some (scope) reason request.body.UniqueLink/To gets lost in the exec callback so I declared it here so it can be used globally
   var link = request.body.UniqueLink;
   var to = request.body.PhoneNumber;
   var date = new Date() // date to be used in mailgun
 
-  
+  // find Buyer based off created persona uniqueLink from twilio webhook
   Persona.findOne({
     'inactiveCards.$.uniqueLink': request.body.uniqueLink
   })
   .exec(function(err, persona){
     if (err){
-      console.log("bad link ", err);
+      console.log("createBuyer error: ", err);
     }
+    // loop through Buyer's inactiveCards to find correspoding uniqueLink
     for (var i in persona.inactiveCards){
       if (persona.inactiveCards[i].uniqueLink === link){
         var from = persona.inactiveCards[i].districtNumber;
@@ -91,20 +89,39 @@ function createBuyer(request, response) {
 
 }
 
+
+function saveBuyerCardId(request, response) {
+
+  // find Buyer with unqiueLink
+  Persona.findOne(
+    {'inactiveCards.uniqueLink': request.body.uniquelink}
+  )
+  .exec(function(err, persona) {
+    if (err) {
+      console.log('saveBuyerCardId error: ', err);
+    }
+    // save card ID created by BP for user
+    persona.bpCardId = request.body.bpCardId;
+    persona.save(function(err, cardId) {
+      if (err) {
+        console.log('saveBuyerCardId error: ', err);
+      }
+      console.log('Buyer BP Card ID saved');
+    });
+  });  
+
+}
+
+
 function createRecipient(request, response){
 
-  // console.log('in createRecipient');
-  // console.log(request.body);
-  // console.log('to in createRecipient: '+request.body.PhoneNumber);
+  var to = request.body.PhoneNumber; // Recipient number
+  var from = '15622836856'; // twilio account number
 
-  var to = request.body.PhoneNumber;
-  var from = '15622836856';
-
-  // create random id param
-  // var uniqueLink= uuid.v4();
+  // pass along unique id
   var uniqueLink = request.body.UniqueLink;
-  console.log(request.body);
 
+  // create Recipient persona
   var person = new Persona({
     contact: {
       mobileNumber: request.body.PhoneNumber
@@ -120,13 +137,14 @@ function createRecipient(request, response){
     }]
   });
 
+  //  save created Recipient persona
   person.save(function(err, person){
     if (err) {
       console.log('unable to create Recipient b/c err: ', err);
     }
     console.log('recipient saved');
 
-    // create unique link for recipient landing page
+    // create unique URI path for recipient landing page
     var uniqueCreditLink = 'clique.cc/recipient-gift-card/' + uniqueLink;
 
     // get icon type for icon in sms message
@@ -207,5 +225,6 @@ function createRecipient(request, response){
 
 module.exports = {
   createBuyer: createBuyer,
+  saveBuyerCardId: saveBuyerCardId,
   createRecipient: createRecipient
 };

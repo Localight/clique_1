@@ -622,8 +622,8 @@ AppView = Backbone.View.extend({
     		ExpireCVV: $('#expiredate_cvv').val(),
     		PhoneNumber: $('#clique_input_phonenumber').val(),
     		Email: $('#clique_input_email').val(),
-        Icon: $('#occasion_icon').val(),
-        UniqueLink: uniqueLink
+            Icon: $('#occasion_icon').val(),
+            UniqueLink: uniqueLink
     	};
 
       $.ajax({
@@ -643,15 +643,17 @@ AppView = Backbone.View.extend({
         if (response.status_code === 201) {
           var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
           // Call your backend
-          jQuery.post('/create', {
-            uri: fundingInstrument.href
+          jQuery.post('/bp-create', {
+            // bpCardId is BP created ID used for debiting Buyer
+            bpCardId: fundingInstrument.href,
+            uniqueLink: uniqueLink
           }, function(r) {
             // Check your backend response
             if (r.status === 201) {
-              // Your successful logic here from backend ruby
+              // successful logic
               console.log(r);
             } else {
-            // Your failure logic here from backend ruby
+            // failure logic
               console.logic('could not enter controller from handleResponse');
             }
           });

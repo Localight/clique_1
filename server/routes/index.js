@@ -22,20 +22,23 @@ module.exports = function(app) {
   // link credit buyer follows
   app.get('/new-gift-card/:id', gifts.renderBuyer);
 
+  // collect buyer info
+  app.post('/buyer', person.createBuyer);
+
+  // save buyer BP card ID
+  app.post('/bp-create', person.saveBuyerCardId);
+
+  // collect recipient info and sends recipient text with 
+  app.post('/recipient', person.createRecipient);
+
   // recipient view
   app.get('/recipient-gift-card/:id', gifts.renderRecipient);
 
   // redemption view
   app.get('/redemption', gifts.renderRedemption);
 
-  // collect buyer info
-  app.post('/buyer', person.createBuyer);
 
-  // collect recipient info and sends recipient text with 
-  app.post('/recipient', person.createRecipient);
 
-  // save info of persona activating card
-  // app.post('/api/credit-buyer', buyer.addInfo);
 
   ///////////////////////// API Routes ///////////////
 
@@ -60,8 +63,6 @@ module.exports = function(app) {
   ///////////////////////////BalancedPayments.js Routes/////////////
 
   app.get('/new-merchant', balanced.registerMerchant);
-
-  app.post('/create', balanced.createMerchantBankAccount);
 
   app.post('/charge', balanced.charge);
 

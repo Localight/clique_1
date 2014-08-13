@@ -30,7 +30,7 @@ function createMerchantBankAccount(request, response) {
   // } 
 
   // console.log(request.body.uri);
-  balanced.get(request.body.uri)
+  balanced.get('/cards/'+request.body.uri)
   .debit({
     "appears_on_statement_as": "CliqueGiftCard", 
     "amount": 200, 

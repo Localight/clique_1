@@ -14,6 +14,7 @@ var mongoose = require('mongoose'),
 var PersonaSchema = new Schema({
 
   districtNumber: String,
+  bpId: String
   contact: {
     mobileNumber: String,
     email: {
@@ -22,7 +23,8 @@ var PersonaSchema = new Schema({
     }
   },
   basicProfile: {
-    firstName: String
+    firstName: String,
+    // bpId: String
   },
   creditCards: [{
     creditCardNumber: Number, // is card a number or string? is this proper way to instantiate an array?

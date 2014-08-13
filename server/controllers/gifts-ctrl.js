@@ -22,6 +22,7 @@ function renderBuyer(request, response) {
 // render view for Recipient landing page
 function renderRecipient(request, response) {
 
+  // uniqueLink is pulled from URI param
   var uniqueLink = request.params.id;
 
   // find person by param then render index page
