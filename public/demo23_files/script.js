@@ -605,9 +605,9 @@ AppView = Backbone.View.extend({
     	}
     },
     click_schedulegift: function(event){
-      $('body').addClass('overlay');
-      $('#finalOverlay').fadeIn(2000);
-      $('#finalOverlay').show();
+      // $('body').addClass('overlay');
+      // $('#finalOverlay').fadeIn(2000);
+      // $('#finalOverlay').show();
 
     	var postObj = {
     		To: $('#clique_input_to').val(),
@@ -622,42 +622,53 @@ AppView = Backbone.View.extend({
     		ExpireCVV: $('#expiredate_cvv').val(),
     		PhoneNumber: $('#clique_input_phonenumber').val(),
     		Email: $('#clique_input_email').val(),
-            Icon: $('#occasion_icon').val(),
-            UniqueLink: uniqueLink
+        Icon: $('#occasion_icon').val(),
+        UniqueLink: uniqueLink
     	};
 
-      $.ajax({
-        type: "POST",
-        url: "/buyer",
-        data: postObj,
-        success: function() {
-          $.ajax({
-            type: "POST",
-            url: "/recipient",
-            data: postObj
-          });
-        }
-      });
+      // $.ajax({
+      //   type: "POST",
+      //   url: "/buyer",
+      //   data: postObj,
+      //   success: function() {
+      //     $.ajax({
+      //       type: "POST",
+      //       url: "/recipient",
+      //       data: postObj
+      //     });
+      //   }
+      // });
 
       function handleResponse(response) {
         if (response.status_code === 201) {
           var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
-          // Call your backend
-          jQuery.post('/bp-create', {
-            // bpCardId is BP created ID used for debiting Buyer
-            bpCardId: fundingInstrument.href,
-            uniqueLink: uniqueLink
-          }, function(r) {
-            // Check your backend response
-            if (r.status === 201) {
-              // successful logic
-              console.log(r);
-            } else {
-            // failure logic
-              console.logic('could not enter controller from handleResponse');
-            }
-          });
-        } else {
+          postObj.fundingInstrument = fundingInstrument;
+          
+          $.ajax({
+            type: "POST",
+            url: "/bp-create",
+            data: postObj,
+          });          
+
+
+        //   // Call your backend
+        //   jQuery.post('/bp-create', {
+        //     // bpCardId is BP created ID used for debiting Buyer
+        //     bpCardId: fundingInstrument.href
+        //     // uniqueLink: uniqueLink,
+        //   }, function(r) {
+        //     // Check your backend response
+        //     if (r.status === 201) {
+        //       // successful logic
+        //       console.log(r);
+        //     } else {
+        //     // failure logic
+        //       console.logic('could not enter controller from handleResponse');
+        //     }
+        //   });
+        } 
+
+        else {
           console.log('failed');
           // Failed to tokenize, your error logic here
         }

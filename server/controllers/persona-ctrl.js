@@ -16,40 +16,45 @@ function createBuyer(request, response) {
 
   // find Buyer based off created persona uniqueLink from twilio webhook
   Persona.findOne({
-    'inactiveCards.$.uniqueLink': request.body.uniqueLink
+    'publicCards.$.uniqueLink': request.body.uniqueLink
   })
   .exec(function(err, persona){
     if (err){
       console.log("createBuyer error: ", err);
     }
-    // loop through Buyer's inactiveCards to find correspoding uniqueLink
-    for (var i in persona.inactiveCards){
-      if (persona.inactiveCards[i].uniqueLink === link){
-        var from = persona.inactiveCards[i].districtNumber;
+    // loop through Buyer's publicCards to find correspoding uniqueLink
+    for (var i in persona.publicCards){
+      if (persona.publicCards[i].uniqueLink === link){
+        var from = persona.publicCards[i].districtNumber;
         break;
       }
     }
 
-    persona.contact.mobileNumber = request.body.PhoneNumber;
-    persona.contact.email =  request.body.Email ;
-    persona.account.amountGiven = request.body.Amount;
-    persona.account.amountGiven = new Date();
+    // create profile for Buyer
     persona.basicProfile.firstName = request.body.From;
+    persona.basicProfile.contact.mobileNumber = request.body.PhoneNumber;
+    persona.basicProfile.contact.email =  request.body.Email ;
+
+    // create gift card for Buyer
+    persona.cardsGiven.amount = request.body.Amount;
     persona.cardsGiven.giftRecipient = request.body.To;
     persona.cardsGiven.occassion = request.body.Occasion;
     persona.cardsGiven.cliqueCardCode = request.body.Code;
-    persona.inactiveCards.uniqueLink = request.body.uniqueLink;
+    persona.cardsGiven.status = "loaded"; // "loaded" designates credits not working yet
+    persona.cardsGiven.cliqueId = link; // not working yet
+
+    persona.publicCards.uniqueLink = request.body.uniqueLink;
     // finish all this crap
-    if ( /* last four match */ true){
-      persona.creditCards.push(
-        // cardPurchaseInfo should go under persona.creditCards (create this in the model)
-        {
-        creditCardNumber: request.body.CreditCardNumber, 
-        expireMonth: request.body.ExpireMonth,
-        expireYear: request.body.ExpireYear,
-        }
-      )
-    }
+    // if ( /* last four match */ true){
+    //   persona.creditCards.push(
+    //     // cardPurchaseInfo should go under persona.creditCards (create this in the model)
+    //     {
+    //     creditCardNumber: request.body.CreditCardNumber, 
+    //     expireMonth: request.body.ExpireMonth,
+    //     expireYear: request.body.ExpireYear,
+    //     }
+    //   )
+    // }
 
     persona.cardsGiven.push({
       giftRecipient: request.body.To,
@@ -59,7 +64,7 @@ function createBuyer(request, response) {
 
     persona.save(function(err, persona){
       if (err) {
-        // handle error
+        console.log('createBuyer')
       }
 
     });
@@ -94,20 +99,46 @@ function saveBuyerCardId(request, response) {
 
   // find Buyer with unqiueLink
   Persona.findOne(
-    {'inactiveCards.uniqueLink': request.body.uniquelink}
+    {'publicCards.uniqueLink': request.body.UniqueLink}
   )
   .exec(function(err, persona) {
     if (err) {
       console.log('saveBuyerCardId error: ', err);
     }
-    // save card ID created by BP for user
-    persona.bpCardId = request.body.bpCardId;
+    console.log(persona);
+    for (var i=0; i<persona.publicCards.length; i++){
+      if (persona.publicCards[i].uniqueLink == request.body.UniqueLink) {
+        console.log("almost there");
+
+        // save card ID created by BP for user
+        persona.basicProfile.bpCardId = request.body.bpCardId;
+
+        // change status of card to active
+        persona.publicCards.status = "activated"; // not working yet
+
+        // create profile for Buyer
+        persona.basicProfile.firstName = request.body.From;
+        persona.basicProfile.contact.mobileNumber = request.body.PhoneNumber;
+        persona.basicProfile.contact.email =  request.body.Email ;
+
+        // create gift card for Buyer
+        persona.publicCards[i].amount = request.body.Amount;
+        persona.publicCards[i].giftRecipient = request.body.To;
+        persona.publicCards[i].occassion = request.body.Occasion;
+        persona.publicCards[i].cliqueCardCode = request.body.Code;
+        persona.publicCards[i].status = "loaded"; // "loaded" designates credits
+        // persona.publicCards.cliqueId = link; // not working yet
+      }
+    }
+
+    // save newly created Persona basicProfile and 
     persona.save(function(err, cardId) {
       if (err) {
         console.log('saveBuyerCardId error: ', err);
       }
       console.log('Buyer BP Card ID saved');
     });
+
   });  
 
 }
@@ -123,11 +154,11 @@ function createRecipient(request, response){
 
   // create Recipient persona
   var person = new Persona({
-    contact: {
-      mobileNumber: request.body.PhoneNumber
-    },
     basicProfile: {
-      firstName: request.body.To
+      firstName: request.body.To,
+      contact: {
+        mobileNumber: request.body.PhoneNumber
+      }
     },
     cardsReceived: [{
       cardId: request.body.UniqueLink,

@@ -13,61 +13,51 @@ var mongoose = require('mongoose'),
 
 var PersonaSchema = new Schema({
 
-  districtNumber: String,
-  bpId: String
-  contact: {
-    mobileNumber: String,
-    email: {
-      type: String,
-      match: [/.+\@.+\..+/, 'Please enter a valid email']
-    }
-  },
   basicProfile: {
     firstName: String,
-    // bpId: String
+    bpCardId: String,
+    contact: {
+      mobileNumber: String,
+      email: {
+        type: String,
+        match: [/.+\@.+\..+/, 'Please enter a valid email']
+      }
+    }
   },
-  creditCards: [{
-    creditCardNumber: Number, // is card a number or string? is this proper way to instantiate an array?
-    expireMonth: Number,
-    expireYear: Number
-  }],
   status: String, // Recipient/Patron/Clerk/Dormant(old user, no response)/Zombie(never clicked anything)
-  inactiveCards: [{    // holds all cards user has texted for, but not yet activated.
+  publicCards: [{    // holds all cards user has texted for, but not yet activated.
     districtNumber: String,
     keyword: String,
-    uniqueLink: String,  // something unique
-    status: String
-   }],
-  cardsGiven: [{
-    cardPurchaseInfo: {
-      creditCardNumber: Number, // is card a number or string? is this proper way to instantiate an array?
-      expireMonth: Number,
-      expireYear: Number
-    },
+    uniqueLink: String, 
+    status: String, 
+    // test to combine cardsGiven with publicCards
+    date: String,
+    // date: String,
+    bpCardId: String,
+    amount: String,
     giftRecipient: String,
     occassion: String,
     cliqueCardCode: Number,
-    mobileNumber: String
+    mobileNumber: String,
+   }],
+  cardsGiven: [{
+    date: { type: Date, default: Date.now },
+    // date: String,
+    bpCardId: String,
+    amount: String,
+    giftRecipient: String,
+    occassion: String,
+    cliqueCardCode: Number,
+    mobileNumber: String,
+    status: String,
+    cliqueId: String
   }],
   cardsReceived: [{
+    bpCardId: String,
     amount: String,
     occassion: String,
-    giftBuyer: String,
-    cardId: String,
-  }],
-  account: {
-    ledger: Number, // linked to Subledger API - credits/refunds
-    amount: Number, // need money math module
-    transactions: [{
-      giftsPurchased: Number,
-      giftsReceived: Number,
-      amountSpent: Number,
-      timestamp: {
-        type: Date,
-        default: Date.now
-      },
-    }]
-  }
+    giftBuyer: String
+  }]
 
 });
 
@@ -84,8 +74,8 @@ PersonaSchema.methods.generateUniqueLink = function(options, urlpath, callback) 
     status: 'new'
   };
 
-  // add card to Buyer's collection of inactiveCards
-  this.inactiveCards.push(newCredit);
+  // add card to Buyer's collection of publicCards
+  this.publicCards.push(newCredit);
 
   // save new inactive card
   this.save(function(err, persona) {
@@ -93,7 +83,7 @@ PersonaSchema.methods.generateUniqueLink = function(options, urlpath, callback) 
     console.log('Unable to save new inactiveCard in generateUniqueLink: ', err);
   }
     // pass back URI w/uniqueLink/id for Buyer to follow
-    callback(err, 'clique.cc/' + urlpath + uniqueLink);
+    callback(err, 'http://68d71378.ngrok.com/' + urlpath + uniqueLink);
   });
 
 };
@@ -122,7 +112,6 @@ var findOrCreate = function(options, callback) {
       contact: {
         mobileNumber: options.mobileNumber
       },
-      districtNumber: options.districtNumber,
       keyword: options.keyword // possibly take this out because recipient can't use this immediately
     });
     // on save, generate Unique Link for new Buyer
