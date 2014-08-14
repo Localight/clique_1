@@ -648,6 +648,13 @@ AppView = Backbone.View.extend({
             type: "POST",
             url: "/bp-create",
             data: postObj,
+            success: function() {
+              $.ajax({
+                type: "POST",
+                url: "/recipient",
+                data: postObj
+              });
+            }
           });          
 
 
