@@ -18,7 +18,7 @@ function registerMerchant(request, response) {
 
 // }
 
-function createMerchantBankAccount(request, response) {
+function debitBuyerCard(request, response) {
   console.log('in createMerchantBankAccount');
 
   // function callback() {
@@ -29,8 +29,7 @@ function createMerchantBankAccount(request, response) {
   //   });
   // } 
 
-  // console.log(request.body.uri);
-  balanced.get('/cards/'+request.body.uri)
+  balanced.get(request.bpCardId)
   .debit({
     "appears_on_statement_as": "CliqueGiftCard", 
     "amount": 200, 
@@ -76,6 +75,6 @@ function charge(request, response) {
 
 module.exports = {
   registerMerchant: registerMerchant,
-  createMerchantBankAccount: createMerchantBankAccount,
+  debitBuyerCard: debitBuyerCard,
   charge: charge
 }

@@ -16,6 +16,7 @@ var PersonaSchema = new Schema({
   basicProfile: {
     firstName: String,
     bpCardId: String,
+    typeOfUser: String, //buyer, recipient or both
     contact: {
       mobileNumber: String,
       email: {
@@ -26,38 +27,40 @@ var PersonaSchema = new Schema({
   },
   status: String, // Recipient/Patron/Clerk/Dormant(old user, no response)/Zombie(never clicked anything)
   publicCards: [{    // holds all cards user has texted for, but not yet activated.
+    typeOfCard: String, // purchased or received
+    issueDate: { type: Date, default: Date.now },
+    activationDate: String,
     districtNumber: String,
     keyword: String,
     uniqueLink: String, 
     status: String, 
     // test to combine cardsGiven with publicCards
-    date: String,
-    // date: String,
-    bpCardId: String,
     amount: String,
     giftRecipient: String,
+    giftBuyer: String,
     occassion: String,
     cliqueCardCode: Number,
     mobileNumber: String,
-   }],
-  cardsGiven: [{
-    date: { type: Date, default: Date.now },
-    // date: String,
-    bpCardId: String,
-    amount: String,
-    giftRecipient: String,
-    occassion: String,
-    cliqueCardCode: Number,
-    mobileNumber: String,
-    status: String,
     cliqueId: String
-  }],
-  cardsReceived: [{
-    bpCardId: String,
-    amount: String,
-    occassion: String,
-    giftBuyer: String
-  }]
+   }],
+  // cardsGiven: [{
+  //   date: { type: Date, default: Date.now },
+  //   // date: String,
+  //   bpCardId: String,
+  //   amount: String,
+  //   giftRecipient: String,
+  //   occassion: String,
+  //   cliqueCardCode: Number,
+  //   mobileNumber: String,
+  //   status: String,
+  //   cliqueId: String
+  // }],
+  // cardsReceived: [{
+  //   bpCardId: String,
+  //   amount: String,
+  //   occassion: String,
+  //   giftBuyer: String
+  // }]
 
 });
 
@@ -94,8 +97,10 @@ var findOrCreate = function(options, callback) {
 
   // check if persona already exists based of their mobile number
   this.model('persona').findOne({
-    contact: {
-      mobileNumber: options.mobileNumber
+    basicProfile: {
+      contact: {
+        mobileNumber: options.mobileNumber
+      }
     }
   }, function(err, persona){
     if (err) {
@@ -109,8 +114,10 @@ var findOrCreate = function(options, callback) {
     // if person doesn't exist pull in data from options to create new Buyer data object
     console.log('create new persona');
     persona = new Persona({
-      contact: {
-        mobileNumber: options.mobileNumber
+      basicProfile: {
+        contact: {
+          mobileNumber: options.mobileNumber
+        }
       },
       keyword: options.keyword // possibly take this out because recipient can't use this immediately
     });

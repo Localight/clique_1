@@ -606,7 +606,7 @@ AppView = Backbone.View.extend({
     },
     click_schedulegift: function(event){
       // $('body').addClass('overlay');
-      // $('#finalOverlay').fadeIn(2000);
+      // $('#finalOverlay').fadeIn(1000);
       // $('#finalOverlay').show();
 
     	var postObj = {
@@ -626,27 +626,20 @@ AppView = Backbone.View.extend({
         UniqueLink: uniqueLink
     	};
 
-      // $.ajax({
-      //   type: "POST",
-      //   url: "/buyer",
-      //   data: postObj,
-      //   success: function() {
-      //     $.ajax({
-      //       type: "POST",
-      //       url: "/recipient",
-      //       data: postObj
-      //     });
-      //   }
-      // });
-
+      // balanced.js callback to create card
       function handleResponse(response) {
+
+        // if card is validated
         if (response.status_code === 201) {
+          
+          // get BP credit card href for buyer and store postObj
           var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
           postObj.fundingInstrument = fundingInstrument;
           
+          // create Buyer and Recipient Personas and Cards
           $.ajax({
             type: "POST",
-            url: "/bp-create",
+            url: "/buyer",
             data: postObj,
             success: function() {
               $.ajax({
@@ -655,32 +648,17 @@ AppView = Backbone.View.extend({
                 data: postObj
               });
             }
-          });          
+          });    
 
-
-        //   // Call your backend
-        //   jQuery.post('/bp-create', {
-        //     // bpCardId is BP created ID used for debiting Buyer
-        //     bpCardId: fundingInstrument.href
-        //     // uniqueLink: uniqueLink,
-        //   }, function(r) {
-        //     // Check your backend response
-        //     if (r.status === 201) {
-        //       // successful logic
-        //       console.log(r);
-        //     } else {
-        //     // failure logic
-        //       console.logic('could not enter controller from handleResponse');
-        //     }
-        //   });
         } 
-
         else {
-          console.log('failed');
-          // Failed to tokenize, your error logic here
+          console.log(' handleResponse failed');
+          // change UI based off failed verification
+          // this logic may be placed in the ajax call of /bp-create
         }
       }
 
+      // data object BP needs to validate/create card
       var payload = {
         name: postObj.From,
         number: postObj.CreditCardNumber,
@@ -693,7 +671,6 @@ AppView = Backbone.View.extend({
       };
 
       // Create credit card
-      /* NEED TO PASS IN AMOUNT, NAME, ETC. */
       balanced.card.create(payload, handleResponse);
 
 

@@ -4,7 +4,6 @@ subledger = require('./subledger-service');
 function init(apiKey) {
 
   balanced.configure(apiKey);
-  //  subledger.organization(org_id).book(book_id)
 
 }
 

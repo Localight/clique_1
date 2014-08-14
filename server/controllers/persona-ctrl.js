@@ -2,12 +2,13 @@
 
 var Persona = require('../models/persona') // require personas model
 var twilio = require('../services/twillio-service'); // require twilio service
+var balanced = require('./balanced-ctrl');
 // var balancedPayments = require('../services/balanced-payments-service'); // require balanced payments service
 
 var mailgun = require('../services/mailgun-service'); // require mailgun service
 var uuid = require('node-uuid');
 
-function createBuyer(request, response) {
+function saveBuyerCardId(request, response) {
 
   // for some (scope) reason request.body.UniqueLink/To gets lost in the exec callback so I declared it here so it can be used globally
   var link = request.body.UniqueLink;
@@ -95,7 +96,7 @@ function createBuyer(request, response) {
 }
 
 
-function saveBuyerCardId(request, response) {
+function createBuyer(request, response) {
 
   // find Buyer with unqiueLink
   Persona.findOne(
@@ -106,27 +107,36 @@ function saveBuyerCardId(request, response) {
       console.log('saveBuyerCardId error: ', err);
     }
 
+    // discern type of Clique Card User
+    if (persona.basicProfile.typeOfUser == "recipient") {
+      persona.basicProfile.typeOfUser = "both"
+    }
+    else {
+     persona.basicProfile.typeOfUser = "buyer" 
+    }
+
+    // loop through Buyer's publicCards to find correct card to manipulate data
     for (var i=0; i<persona.publicCards.length; i++){
       if (persona.publicCards[i].uniqueLink == request.body.UniqueLink) {
-        console.log("almost there");
 
         // save card href created by BP for user
         persona.basicProfile.bpCardId = request.body.fundingInstrument.href;
 
-        // change status of card to active
-        // persona.publicCards.status = "activated"; // not working yet
+        // change status of card to activated
+        persona.publicCards[i].status = "activated"; // "loaded" designates credits
 
         // create profile for Buyer
         persona.basicProfile.firstName = request.body.From;
         persona.basicProfile.contact.mobileNumber = request.body.PhoneNumber;
         persona.basicProfile.contact.email =  request.body.Email ;
-
+        console.log(persona.basicProfile);
+        
         // create gift card for Buyer
         persona.publicCards[i].amount = request.body.Amount;
         persona.publicCards[i].giftRecipient = request.body.To;
         persona.publicCards[i].occassion = request.body.Occasion;
         persona.publicCards[i].cliqueCardCode = request.body.Code;
-        persona.publicCards[i].status = "loaded"; // "loaded" designates credits
+        persona.publicCards[i].typeOfCard = "purchased"; 
         // persona.publicCards.cliqueId = link; // not working yet
       }
     }
@@ -136,7 +146,10 @@ function saveBuyerCardId(request, response) {
       if (err) {
         console.log('saveBuyerCardId error: ', err);
       }
-      console.log('Buyer BP Card ID saved');
+      console.log('Buyer Persona and Card created');
+      console.log(persona);
+      // debit Buyer's newly created credit card
+      balanced.debitBuyerCard({bpCardId: persona.basicProfile.bpCardId});
 
       var date = new Date();
 
@@ -173,28 +186,50 @@ function createRecipient(request, response){
   // pass along unique id
   var uniqueLink = request.body.UniqueLink;
 
-  // create Recipient persona
-  var person = new Persona({
+  var persona = new Persona({
     basicProfile: {
       firstName: request.body.To,
       contact: {
         mobileNumber: request.body.PhoneNumber
       }
-    },
-    cardsReceived: [{
-      cardId: request.body.UniqueLink,
-      amount: request.body.Amount,
-      occassion: request.body.Occasion,
-      giftBuyer: request.body.From,
-    }]
+    }
   });
 
+  // discern type of Clique Card User
+  if (persona.basicProfile.typeOfUser == "buyer") {
+    persona.basicProfile.typeOfUser = "both"
+  }
+  else {
+   persona.basicProfile.typeOfUser = "recipient" 
+  }
+
+  // persona.publicCards[i].amount = request.body.Amount;
+  // persona.publicCards[i].giftBuyer = request.body.From;
+  // persona.publicCards[i].occassion = request.body.Occasion;
+  // persona.publicCards[i].cliqueCardCode = request.body.Code;
+  // persona.publicCards[i].typeOfCard = "received"; 
+  // persona.publicCards[i].status = "activated"; // "loaded" designates credits
+  
+  // create gift card for Recipient
+  var card = {
+
+    amount: request.body.Amount,
+    giftBuyer: request.body.From,
+    occassion: request.body.Occasion,
+    cliqueCardCode: request.body.Code,
+    typeOfCard: "received", 
+    status: "activated" // "loaded" designates credits
+
+  };
+
+  persona.publicCards.push(card);
+
   //  save created Recipient persona
-  person.save(function(err, person){
+  persona.save(function(err, person){
     if (err) {
       console.log('unable to create Recipient b/c err: ', err);
     }
-    console.log('recipient saved');
+    console.log('Recipient Persona and Card created');
 
     // create unique URI path for recipient landing page
     var uniqueCreditLink = 'clique.cc/recipient-gift-card/' + uniqueLink;
@@ -255,20 +290,6 @@ function createRecipient(request, response){
         response.json({message: "Twilio message sent"});
     });
   }
-
-  // find inactiveCard by unique link and change status from 'new' to 'active'
-  // Persona.findOne({
-  //   contact: {
-  //     mobileNumber: request.body.PhoneNumber
-  //   }
-  // })
-  // .exec(function(err, persona){
-  //   if (err) {
-  //     console.log(err);
-  //   }
-  //   console.log('you made it');
-  //   console.log(persona);
-  // });
 
   });
 
