@@ -74,11 +74,10 @@ body
   filter: blur(7px);
 }
 
-#container > div {
-  /*margin: 0 auto;*/
+/*#container > div {
   margin-top: 2%;
   text-align: center;
-}
+}*/
 
 #container > span {
   /*margin: 0 auto;*/
@@ -210,5 +209,23 @@ span > .tricon {
   color: black;  
   text-align: left;
 }
+
+
+/* Unlock view*/
+#lock {
+  background: url(../demo23_files/lock-sprite.png) 0 0 no-repeat;
+  width: 142px;
+  height: 142px;      
+}
+
+@-webkit-keyframes animate-tail {  
+  /* background position is width * frames BOO-YA!!! */
+    0% {background-position: -2142px 0; } 
+    100% {background-position: 0 0;}
+}
+
+/*#lock {
+  -webkit-animation: animate-tail 1s steps(15) infinite;
+}*/
 
 

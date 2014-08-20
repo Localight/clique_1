@@ -21,56 +21,27 @@ function registerMerchant(request, response) {
 function debitBuyerCard(request, response) {
   console.log('in createMerchantBankAccount');
 
-  // function callback() {
-  //   balanced.get('/bank_accounts/BA1iEIPYJTUkoLwDVNqWzqsd')
-  //   .credit({
-  //     "amount": "1",
-  //     "appears_on_statement_as": "CliquePayment"
-  //   });
-  // } 
-
   balanced.get(request.bpCardId)
   .debit({
     "appears_on_statement_as": "CliqueGiftCard", 
     "amount": 200, 
     // "amount": request.body.Amount, 
     "description": "Clique Gift Card Purhcase of"
-  })
+  });
 
-  // this part needs to go in a different function dealing with payouts
-  // .then(function(){
-  //   balanced.get('/bank_accounts/BA1iEIPYJTUkoLwDVNqWzqsd').credit({
-  //       "amount": "1",
-  //       "description": "Payout for order #1111"
-  //   });
-  // });
-
-
-
-
-
-
-  // console.log(get);
-  // var merchant = new Merchant({
-  //   bankPayoutInfo: {
-  //     legalCompanyName: request.body.name,
-  //     routingNumber: request.body.routing_number,
-  //     accountNumber: request.body.account_number
-  //   }
-  // });
-
-  // merchant.save();
 
 }
 
 function charge(request, response) {
   console.log('in charge');
+
   balanced.get('/bank_accounts/MP49D7DEEhJAukYqr8dLNdKM')
   .credit({
     "amount": 200,
     "appears_on_statement_as": "CliquePayment"
   });
   response.end();
+
 }
 
 module.exports = {

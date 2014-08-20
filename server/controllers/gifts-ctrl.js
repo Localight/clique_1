@@ -34,10 +34,16 @@ function renderRecipient(request, response) {
   // response.render('layouts/recipient');
 }
 
+// unlock to Redemption page
+function unlock(request, response) {
+  response.render('layouts/unlock');
+}
+
 // render view for Redemption landing page
 function renderRedemption(request, response) {
-  response.render('layouts/redemption');
+  response.render('layouts/redemption2');
 }
+
 
 function postGift(req, res) {
 
@@ -46,6 +52,7 @@ function postGift(req, res) {
 module.exports = {
     renderBuyer: renderBuyer,
     renderRecipient: renderRecipient,
+    unlock: unlock,
     renderRedemption: renderRedemption,
     postGift: postGift
 };

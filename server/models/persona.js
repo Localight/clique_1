@@ -7,10 +7,6 @@ var mongoose = require('mongoose'),
   uuid = require('node-uuid'),
   Schema = mongoose.Schema;
 
-/**
- * Persona Schema
- */
-
 var PersonaSchema = new Schema({
 
   basicProfile: {
@@ -25,8 +21,7 @@ var PersonaSchema = new Schema({
       }
     }
   },
-  status: String, // Recipient/Patron/Clerk/Dormant(old user, no response)/Zombie(never clicked anything)
-  publicCards: [{    // holds all cards user has texted for, but not yet activated.
+  cliqueCards: [{    // holds all cards user has texted for, but not yet activated.
     typeOfCard: String, // purchased or received
     issueDate: { type: Date, default: Date.now },
     activationDate: String,
@@ -34,7 +29,7 @@ var PersonaSchema = new Schema({
     keyword: String,
     uniqueLink: String, 
     status: String, 
-    // test to combine cardsGiven with publicCards
+    // test to combine cardsGiven with cliqueCards
     amount: String,
     giftRecipient: String,
     giftBuyer: String,
@@ -42,26 +37,7 @@ var PersonaSchema = new Schema({
     cliqueCardCode: Number,
     mobileNumber: String,
     cliqueId: String
-   }],
-  // cardsGiven: [{
-  //   date: { type: Date, default: Date.now },
-  //   // date: String,
-  //   bpCardId: String,
-  //   amount: String,
-  //   giftRecipient: String,
-  //   occassion: String,
-  //   cliqueCardCode: Number,
-  //   mobileNumber: String,
-  //   status: String,
-  //   cliqueId: String
-  // }],
-  // cardsReceived: [{
-  //   bpCardId: String,
-  //   amount: String,
-  //   occassion: String,
-  //   giftBuyer: String
-  // }]
-
+   }]
 });
 
 PersonaSchema.methods.generateUniqueLink = function(options, urlpath, callback) {
@@ -77,8 +53,8 @@ PersonaSchema.methods.generateUniqueLink = function(options, urlpath, callback) 
     status: 'new'
   };
 
-  // add card to Buyer's collection of publicCards
-  this.publicCards.push(newCredit);
+  // add card to Buyer's collection of cliqueCards
+  this.cliqueCards.push(newCredit);
 
   // save new inactive card
   this.save(function(err, persona) {
@@ -86,7 +62,7 @@ PersonaSchema.methods.generateUniqueLink = function(options, urlpath, callback) 
     console.log('Unable to save new inactiveCard in generateUniqueLink: ', err);
   }
     // pass back URI w/uniqueLink/id for Buyer to follow
-    callback(err, 'http://68d71378.ngrok.com/' + urlpath + uniqueLink);
+    callback(err, 'http://1161e019.ngrok.com/' + urlpath + uniqueLink);
   });
 
 };

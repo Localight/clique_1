@@ -25,17 +25,18 @@ module.exports = function(app) {
   // collect buyer info
   app.post('/buyer', person.createBuyer);
 
-  // save buyer BP card ID
-  app.post('/bp-create', person.saveBuyerCardId);
-
   // collect recipient info and sends recipient text with 
   app.post('/recipient', person.createRecipient);
 
   // recipient view
   app.get('/recipient-gift-card/:id', gifts.renderRecipient);
 
+  // unlock to redemption view
+  app.get('/unlock', gifts.unlock);
+
   // redemption view
   app.get('/redemption', gifts.renderRedemption);
+
 
 
 

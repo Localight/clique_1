@@ -135,7 +135,8 @@ AppView = Backbone.View.extend({
     		elem.prop('value','');
     		
         if($('#clique_input_code').val() == 'Code') {
-        	$('#clique_code').show();
+        	// $('#clique_code').show();
+          $('#clique_occasion_selection').show();
         }
     },
     inputblur_from: function(event){
@@ -302,8 +303,16 @@ AppView = Backbone.View.extend({
 		$('#clique_input_date').attr('value', 'Send on ' + today).show();
 		$('#clique_senddate').removeClass('nextinput').addClass('filledin');
 		
-		// display payment type field
-		this.click_paybycard();
+
+    // var height = $('#clique_paymenttypeselectedcard')[0].scrollHeight;  
+    // display payment type field
+    this.click_paybycard();
+
+    var div = $('#clique_paymenttypeselectedcard');
+    var height = div[0].scrollHeight;
+    console.log(height);
+    $('body').scrollTop(height);
+
     },
     click_choosedate: function(event){
     	var elem = event.currentTarget;
@@ -561,6 +570,7 @@ AppView = Backbone.View.extend({
     },
     click_revieworder: function(event){
     	//******
+
     	var elemsToHide = 
     		'#clique_logo, .bowtie, #clique_to, #amtwrapper, #clique_from, .flip-container, #clique_code, #clique_occasion, #clique_occasion_selection, ' + 
     		'#clique_senddate, #clique_paymenttype, #clique_paymenttypeselectedcheck, #clique_paymenttypeselectedcard, #clique_revieworder';
@@ -605,10 +615,11 @@ AppView = Backbone.View.extend({
     	}
     },
     click_schedulegift: function(event){
-      // $('body').addClass('overlay');
-      // $('#finalOverlay').fadeIn(1000);
-      // $('#finalOverlay').show();
+      $('body').addClass('overlay');
+      $('#finalOverlay').fadeIn(1000);
+      $('#finalOverlay').show();
 
+      // data object
     	var postObj = {
     		To: $('#clique_input_to').val(),
     		Amount: $('#clique_amt span.heart').html(),
@@ -665,14 +676,13 @@ AppView = Backbone.View.extend({
         expiration_month: postObj.ExpireMonth,
         expiration_year: '20'+postObj.ExpireYear,
         cvv: postObj.ExpireCVV,
-        // address: {
-        //   postal_code: $('#ex-postal-code').val()
-        // }
+        address: {
+          postal_code: $('#expiredate_zip').val()
+        }
       };
 
       // Create credit card
       balanced.card.create(payload, handleResponse);
-
 
     },
     amtfocus: function(event){
@@ -720,11 +730,15 @@ function checkCCInfo() {
 		c = $('#expiredate_cvv').val(),
 		d = $('#expiredate_zip').val(),
 		e = $('#clique_input_creditcardnumber').val().toLowerCase();
-    		
+
     if(a && b && c && d && e && e.indexOf('x') == -1 && a != variables.clique_expiredatemonth_label && b != variables.clique_expiredateyear_label && c != variables.clique_expiredatecvv_label && d != variables.clique_expiredatezip_label) {
 		// information has been entered for all payment fields, display "Review Order" button
         $('#clique_revieworder').show();
-        $('#clique_revieworder').slideDown(1000);
+        var div = $('#clique_revieworder');
+        var div2 = $('#clique_paymenttypeselectedcard');
+        var height = div[0].scrollHeight + div2[0].scrollHeight;
+        $('body').scrollTop(height);
+        // $('#clique_revieworder').slideDown(1000);
 	}
 }
 
