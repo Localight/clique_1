@@ -175,11 +175,22 @@ body
 /* THIS IS USED FOR ONLY THE REDEMPTION VIEW */
 
 div.overlay {
-    opacity: .6;
+    opacity: .5;
     background-color: black;
     position: fixed;
     left: 0; top: 0; height: 105%; width: 100%;
     top: -5%;
+/*    background-image: url(../demo23_files/blur-pad-low.png);
+    background-size: cover; */
+}
+
+.pad {
+  height: 71%;
+  width: 100%;
+  position: fixed;
+  background-image: url(../demo23_files/blur-pad.png);
+  background-size: cover; 
+  margin-top: 19%
 }
 
 .tricon {
@@ -212,10 +223,12 @@ span > .tricon {
 
 
 /* Unlock view*/
-#lock {
+.lock {
   background: url(../demo23_files/lock-sprite.png) 0 0 no-repeat;
+  /*background-size: 142px 142px;*/
   width: 142px;
   height: 142px;      
+  margin-left: -6%;
 }
 
 @-webkit-keyframes animate-tail {  
@@ -224,8 +237,8 @@ span > .tricon {
     100% {background-position: 0 0;}
 }
 
-/*#lock {
+.lock.unlock {
   -webkit-animation: animate-tail 1s steps(15) infinite;
-}*/
+}
 
 

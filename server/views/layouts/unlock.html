@@ -19,14 +19,30 @@
     <div class="content">
 
 
-      <!-- creates dark overlay -->
       <div class="overlay"></div>
 
-      <!-- lock -->
-      <!-- <div id="lock"></div> -->
+      <div class="pad"></div>
 
+      <div class="container">
+        <div class="col-xs-2"></div>
+        <div class="col-xs-8 text-center txtUpsideDown" style="font:1.2em; color:white; margin-top: 35%">
+          Unlock to accept $10 from Sheila.
+        </div>
+        <div class="col-xs-2"></div>
+      </div>
 
-      <div class="patron-view" style="margin-top: 99%;">
+      <div class="container">
+        <div class="col-xs-4"></div>
+
+        <!-- lock sprite -->
+        <!-- <div class="col-xs-4 text-center"> -->
+          <div class="col-xs-4 text-center lock"></div>
+        <!-- </div> -->
+
+        <div class="col-xs-4"></div>
+      </div>
+
+      <div class="container patron-view" style="margin-top: 69%;">
 
         <div class="col-xs-4"></div>
 
@@ -38,8 +54,8 @@
 
         <div class="text-center">
 
-          <div class="col-xs-12">
-            <span style="color:white; font:1em">Tilt your screen to DoLy's Delectables staff.</span>
+          <div class="col-xs-12" style="padding:0">
+            <div style="color:white; font:1em">Tilt your screen to DoLy's Delectables staff.</div>
           </div>
 
           <div class="col-xs-12">
@@ -55,14 +71,21 @@
           <img src="../public/demo23_files/local-street-low2.png">
       </div>
 
-
     </div>
   </div>
 
   <!-- unlocking jQuery -->
-  <script src="http://code.jquery.com/jquery-1.11.0.min.js">
-    $("#lock").sprite({ fps: 30, no_of_frames: 15, rewind: true });
+  <script type="text/javascript">
+
+    // when lock div is clicked it triggers unlock animation
+    document.getElementsByClassName('lock')[0].onclick = function() {
+      document.getElementsByClassName('lock')[0].classList.add('unlock');
+    };
+
   </script>
+  // <script src="http://code.jquery.com/jquery-1.11.0.min.js">
+  //   $("#lock").sprite({ fps: 30, no_of_frames: 15, rewind: true });
+  // </script>
 
 </body>
 </html>
