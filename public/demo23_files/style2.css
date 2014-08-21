@@ -185,12 +185,13 @@ div.overlay {
 }
 
 .pad {
-  height: 71%;
+  height: 80%;
   width: 100%;
   position: fixed;
   background-image: url(../demo23_files/blur-pad.png);
-  background-size: cover; 
-  margin-top: 19%
+  background-size: cover;
+  margin-top: 19%;
+  background-position: center;
 }
 
 .tricon {
@@ -224,21 +225,23 @@ span > .tricon {
 
 /* Unlock view*/
 .lock {
-  background: url(../demo23_files/lock-sprite.png) 0 0 no-repeat;
-  /*background-size: 142px 142px;*/
-  width: 142px;
-  height: 142px;      
-  margin-left: -6%;
+  background: url(../demo23_files/lock-sprite5.png) 0 0 no-repeat;
+  width: 60px;
+  height: 60px;      
+  margin-left: 7%;
+  margin-top: 20%;
+  border: 2px solid #00CFD0;
+  border-radius: 30px;
 }
 
 @-webkit-keyframes animate-tail {  
   /* background position is width * frames BOO-YA!!! */
-    0% {background-position: -2142px 0; } 
-    100% {background-position: 0 0;}
+    0% {background-position: 0 0;}
+    100% {background-position: -900px 0; } 
 }
 
 .lock.unlock {
-  -webkit-animation: animate-tail 1s steps(15) infinite;
+  -webkit-animation: animate-tail 1s steps(15);
 }
 
 
