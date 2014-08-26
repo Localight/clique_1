@@ -1,4 +1,4 @@
-var app = angular.module('CliqueApp', ['ngRoute']);
+var app = angular.module('CliqueApp', ['ngRoute', 'ngAnimate']);
 
   app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
@@ -7,6 +7,9 @@ var app = angular.module('CliqueApp', ['ngRoute']);
       })
       .when('/redemption', {
         templateUrl: '/redemption'
+      })
+      .when('/unlock', {
+        controller: 'UnlockCtrl'
       })
       // .otherwise({redirectTo: '/'});
     $locationProvider.html5Mode(true);
@@ -25,12 +28,21 @@ var app = angular.module('CliqueApp', ['ngRoute']);
     });
 
     $scope.change = function() {
-      console.log('in change (ng-click)');
       $location.path('/redemption');
     };
 
   });
 
+  app.controller('UnlockCtrl', function ($scope, $location){
+    $scope.lock = 'true';
+
+    $scope.unlock = function (){
+      $scope.lock = 'false';
+      console.log('hope');
+      // $location.path('/redemption');
+    }
+
+  });
 
   app.service('api', function($http) {
 
@@ -51,37 +63,4 @@ var app = angular.module('CliqueApp', ['ngRoute']);
     };
 
   });
-  // .service('api')
-  // .service('api', function($http){
-    // var api = {
-    //   getCards: function(){
-    //     // url to be queried
-    //     var url = '/api/cards';
-    //     // query url for data
-    //     var promise = $http.get(url)
-    //     .then(function(response){
-    //       return response.data;
-    //     });
-    //     return promise;
-    //   }
 
-  //   }
-
-  // });
-
-  // function RecipientCtrl($scope) {
-  //   $scope.message = "Hey there";
-  //   $scope.from = "Greg"
-
-  //   api.getCards()
-  //   .then(function(data){
-  //     console.log(data)
-  //   });
-
-  // }
-
-  // function RecipientService($http) {
-    
-
-
-  // }

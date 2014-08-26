@@ -5,19 +5,18 @@
   <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> 
   <meta name="apple-mobile-web-app-capable" content="yes">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   <link type="text/css" rel="stylesheet" href="../public/demo23_files/style2.css">
-
-  <!-- slider jQuery -->
-  <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
-
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="http://code.angularjs.org/1.2.22/angular.js"></script>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-animate.js"></script>
+  <script src="../../public/clique-angular/script.js"></script>
 </head>
-<body>
+<body ng-app="CliqueApp">
 
-  <div class="wrapper">
+  <div class="wrapper" ng-controller="UnlockCtrl">
+  <!-- <div class="wrapper" ng-init="checked=true"> -->
     <div class="content">
-
 
       <div class="overlay"></div>
 
@@ -25,9 +24,18 @@
 
       <div class="container">
         <div class="col-xs-2"></div>
-        <div class="col-xs-8 text-center txtUpsideDown" style="font:1.2em; color:white; margin-top: 35%">
+        <!-- col-xs-8 text-center txtUpsideDown  -->
+        
+        show:
+        <div ng-show="lock" class="txtUpsideDown unlockText">
           Unlock to accept $10 from Sheila.
         </div>
+        
+        hide:
+        <div ng-hide="lock" class="txtUpsideDown unlockText">
+          Test test test
+        </div>
+        
         <div class="col-xs-2"></div>
       </div>
 
@@ -35,31 +43,30 @@
         <div class="col-xs-4"></div>
 
         <!-- lock sprite -->
-        <!-- <div class="col-xs-4 text-center"> -->
-          <div class="col-xs-4 text-center lock txtUpsideDown"></div>
-        <!-- </div> -->
+        <div ng-click="unlock()" class="col-xs-4 text-center lock txtUpsideDown"></div>
+
 
         <div class="col-xs-4"></div>
       </div>
 
-      <div class="container patron-view" style="margin-top: 30%;">
+      <div class="container patron-view">
 
         <div class="col-xs-4"></div>
 
         <div class="col-xs-4 text-center">
-          <img src="../public/demo23_files/tilt-5times.gif" style="height:12%; margin-bottom:8%">
+          <img src="../public/demo23_files/tilt-5times.gif" class="iphoneTilt">
         </div>
 
         <div class="col-xs-4"></div>
 
         <div class="text-center">
 
-          <div class="col-xs-12" style="padding:0">
-            <div style="color:white; font:1em">Tilt your screen to DoLy's Delectables staff.</div>
+          <div class="col-xs-12 tiltTextWrapper">
+            <div class="tiltText">Tilt your screen to DoLy's Delectables staff.</div>
           </div>
 
           <div class="col-xs-12">
-            <img src="../public/demo23_files/clique-logo.png" style="height:5%;margin-top:5%">
+            <img src="../public/demo23_files/clique-logo.png" class="cliqueLogo">
           </div>
 
         </div>
@@ -71,18 +78,29 @@
           <img src="../public/demo23_files/local-street-low2.png">
       </div>
 
+
+
     </div>
   </div>
 
   <!-- unlocking jQuery -->
-  <script type="text/javascript">
+
+  <script>
 
     // when lock div is clicked it triggers unlock animation
     document.getElementsByClassName('lock')[0].onclick = function() {
       document.getElementsByClassName('lock')[0].classList.add('unlock');
     };
 
+    // $("body").hide(0).delay(500).fadeIn(3000)
+    // $(".lock").click(function(){
+    //   $('body').fadeOut(1000);
+    // });
+
+
   </script>
+
+
 
 </body>
 </html>
