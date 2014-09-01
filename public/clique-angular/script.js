@@ -1,4 +1,12 @@
-var app = angular.module('CliqueApp', ['ngRoute', 'ngAnimate']);
+var app = angular.module('CliqueApp', ['ngRoute', 'ngAnimate', 'ui.router']);
+
+  // app.config(function ($stateProvider, $urlRouterProvider) {
+
+  //   $stateProvider
+
+  //     .state('')
+
+  // })
 
   app.config(function ($routeProvider, $locationProvider) {
     $routeProvider

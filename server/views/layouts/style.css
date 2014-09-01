@@ -1,0 +1,370 @@
+/* for test styling */
+
+body {
+  background-color: #58e6df;
+}
+
+.wrapper {
+  padding-left:17%;
+}
+
+/* upside down text */
+.txtUpsideDown 
+{
+  filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=2);  /* IE6,IE7 */
+  ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)"; /* IE8 */
+  -moz-transform: rotate(-180deg);  /* FF3.5+ */
+  -o-transform: rotate(-180deg);  /* Opera 10.5 */
+  -webkit-transform: rotate(-180deg);  /* Safari 3.1+, Chrome */
+  position: relative; 
+}
+
+/* street background */
+.wrapper #localstreet
+{
+  position: fixed;
+  z-index: -10;
+  top: -860px;
+  left: 50%;
+  margin-left: -170px;
+}
+
+.wrapper #localstreet
+{  
+  -webkit-filter: blur(7px);
+  -moz-filter: blur(7px);
+  -o-filter: blur(7px);
+  -ms-filter: blur(7px);
+  filter: blur(7px);
+}
+
+/* dark background overlay */
+div.overlay {
+    opacity: .5;
+    background-color: black;
+    position: fixed;
+    left: 0; top: 0; height: 105%; width: 100%;
+    top: -5%;
+    z-index: -1;
+}
+
+
+/* lock fades out*/
+.lock {
+  height: 15%;
+  width: 60px;
+  left: 41%;
+  background-color: black;
+  position: fixed;
+  -webkit-transition: all linear 2s;
+}
+
+.locked {
+  opacity: 1;
+  top: 5%;
+  background: url('./images/lock-animation-sprite-60.png') 0 0 no-repeat;
+}
+
+.unlock {
+  opacity: 0;
+  top: 45%;
+  background: url('./images/lock-animation-sprite-60.png') 630px 0 no-repeat;
+  -webkit-animation: unlock 2s steps(15);
+}
+
+/* unlock animation */
+@-webkit-keyframes unlock {  
+    0% {background-position: 0 0;}
+    100% {background-position: -900px 0; } 
+}
+
+
+/* amount slides down */
+.amount {
+  height: 18%;
+  position: fixed;
+  -webkit-transition: all linear 2s;
+}
+
+.amountStart {
+  top: 20%;
+  color: rgb(65, 186, 181);
+}
+
+.amountEnd {
+  top: 62%;
+  color: white;
+}
+
+.amountFinish {
+  top: 5%;
+  color: rgb(255, 255, 255);
+}
+
+/* merchant font */
+#merchant {
+  /*color: rgb(65, 186, 181);*/
+  font-family: 'Lato', sans-serif;
+  font-size: 1.6em;
+  bottom: -10%;
+}
+
+/* arrow */
+.arrow {
+  width: 24.1666666666%;
+  height: 1.444em;
+  margin: 0 auto;
+  background-position: center center;
+  -webkit-transition: all linear 2s;
+}
+
+/* arrow changes from teal to white */
+.arrowStart {
+  background: url('./images/up-arrow-aqua.png') 0 0 no-repeat;
+  background-size: contain;
+}
+
+.arrowWht {
+  background: url('./images/up-arrow-wht.png') 0 0 no-repeat;
+  background-size: contain;
+}
+
+/* patron dollar spend amount */
+.spend {
+  font-family: 'Lato', sans-serif;
+  margin-top: -4%;
+}
+
+/* dollar sign and cents surrounding patron spend amount*/
+.dollarSignCents {
+  position: relative;
+  top: -1em;
+  font-size: 1.6em;
+}
+
+
+/* tilt slides down off view*/
+.tilt {
+  height: 15%;
+  position: fixed;
+  -webkit-transition: all linear 2s;
+}
+
+.tiltStart {
+  top: 67%
+}
+
+.tiltEnd {
+  top: 100%;
+}
+
+/* tilt icon */
+.tiltIcon {
+  height: 80%;
+  background: url('./images/tilt-anim-5times@2x.gif') 50% no-repeat;
+  background-size: contain;
+  margin-bottom: 7%;
+}
+
+/* tilt message */
+.msg {
+  padding: 0;
+}
+
+.tiltMsg {
+  font-family: 'Lato', sans-serif;
+  color: rgb(255, 255, 255);
+  font-size: 1.22em;
+}
+
+
+
+/* pad fades into view */
+.pad {
+  margin-top: 8%;
+  height: 50%;
+  position: fixed;
+  left: 0;
+  padding: 0;
+  -webkit-transition: all 6s;
+}
+
+.padStart {
+  opacity: 0;
+}
+
+.padEnd {
+  opacity: 1;
+}
+
+/* clique logo and info/cancel buttons */
+.merchantOptions {
+  height: 16%;
+}
+
+.info {
+  background: url('./images/info-btn-aqua.png') no-repeat;
+  background-size: 62%;
+  background-position: center; 
+  left: 9%;
+  padding: 0; 
+}
+
+.info.infoSelected {
+  background: url('./images/info-btn-fill-aqua.png') no-repeat;
+  background-size: 62%;
+  background-position: center;
+}
+
+/* merchant info animation */
+.merchInfo {
+  font-family: 'Lato', sans-serif;
+  color: rgb(255, 255, 255);
+  position: fixed;
+  left: -.1%;
+  top: 2%;
+  -webkit-transition: all linear .3s;
+}
+
+.merchInfo.noShow {
+  opacity: 0
+}
+
+.merchInfo.show {
+  opacity: 1
+}
+
+.cliqueLogo {
+  background: url('./images/clique-logo.png') no-repeat;
+  background-size: 50%;
+  background-position: center;
+}
+
+.cancel {
+  background: url('./images/cancel-btn-orange.png') no-repeat;
+  background-size: 62%;
+  background-position: center;
+  left: -9%; 
+}
+
+.cancel.cancelSelected {
+  background: url('./images/cancel-btn-fill-orange.png') no-repeat;
+  background-size: 62%;
+  background-position: center;
+}
+
+/* icons */
+.icon {
+  height: 33%;
+  background-size: 73%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon.icon0 {
+  /*./images/tricon-pie-slice-wht.png*/
+  right: -5%;
+}
+
+.icon.icon1 {
+  /*./images/tricon-sundae-wht.png*/
+}
+
+.icon.icon2 {
+  /*./images/tricon-coffee-wht.png*/
+  left: -5%;
+}
+
+.icon.icon3 {
+  /*./images/tricon-wine-wht.png*/
+  right: -5%;
+}
+
+.icon.icon4 {
+  /*./images/tricon-soup-wht.png*/
+}
+
+.icon.icon5 {
+  /*./images/tricon-dinner-wht.png*/
+  left: -5%;
+}
+
+.icon.icon6 {
+  /*./images/tricon-shrimp-wht.png*/
+  right: -5%;
+}
+
+.icon.icon7 {
+  /*./images/tricon-sandwich-wht.png*/
+}
+
+.icon.icon8 {
+  /*./images/tricon-cupcake-wht.png*/
+  left: -5%;
+}
+
+.thankYou {
+  height: 48%; 
+  left: 0;
+  position: fixed;
+  -webkit-transition: all linear 2s;
+}
+
+.thankYou.thankYouStart {
+  top: 100%;
+}
+
+.thankYou.thankYouEnd {
+  top: 45%;
+}
+
+.tyHeader {
+  color: rgb(255, 255, 255);
+  font-size: 2.3em;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+.tyText {
+  color: rgb(255, 255, 255);
+  /*font-size: 2em;*/
+  font-family: 'Lato', sans-serif;
+}
+
+.tyMessageToBuyer {
+  border: 1px;
+  border-radius: 7px;
+  padding: 0 0 34%;
+}
+
+.send {
+    top: 6%;
+}
+
+.sendButton {
+  height: 15%;
+  padding: 0;
+  left: 81%;
+  color: rgb(65, 186, 181);
+  font-size: 1.5em;
+  font-family: 'Lato', sans-serif;
+}
+
+
+.rtArrow {
+  height: 6.5%;
+  left: 83%;
+  background: url('./images/rt-blu-arrow.png') no-repeat;
+  background-size: contain;
+  margin-top: 3%;
+}
+
+
+
+
+
+
+
+
+
+

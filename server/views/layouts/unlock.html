@@ -9,6 +9,7 @@
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="http://code.angularjs.org/1.2.22/angular.js"></script>
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-animate.js"></script>
   <script src="../../public/clique-angular/script.js"></script>
 </head>
@@ -20,20 +21,15 @@
 
       <div class="overlay"></div>
 
-      <div class="pad"></div>
+      <!-- <div class="pad"></div> -->
 
       <div class="container">
         <div class="col-xs-2"></div>
         <!-- col-xs-8 text-center txtUpsideDown  -->
         
-        show:
+
         <div ng-show="lock" class="txtUpsideDown unlockText">
           Unlock to accept $10 from Sheila.
-        </div>
-        
-        hide:
-        <div ng-hide="lock" class="txtUpsideDown unlockText">
-          Test test test
         </div>
         
         <div class="col-xs-2"></div>

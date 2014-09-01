@@ -41,7 +41,7 @@ function unlock(request, response) {
 
 // render view for Redemption landing page
 function renderRedemption(request, response) {
-  response.render('layouts/redemption2');
+  response.render('layouts/authentication');
 }
 
 

@@ -184,7 +184,7 @@ div.overlay {
     background-size: cover; */
 }
 
-.pad {
+/*.pad {
   height: 80%;
   width: 100%;
   position: fixed;
@@ -192,7 +192,7 @@ div.overlay {
   background-size: cover;
   margin-top: 19%;
   background-position: center;
-}
+}*/
 
 .tricon {
   height: 17%;
@@ -225,7 +225,7 @@ span > .tricon {
 
 /* Unlock view*/
 .lock {
-  background: url(../demo23_files/lock-sprite5.png) 0 0 no-repeat;
+  background: url(../demo23_files/lock-animation-sprite-60.png) 0 0 no-repeat;
   width: 60px;
   height: 60px;      
   margin-left: 7%;
@@ -330,6 +330,8 @@ body.fadeOut{
 .ng-hide {
   opacity: 0 !important;
 }*/
+
+
 
 
 

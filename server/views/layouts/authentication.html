@@ -1,0 +1,138 @@
+<html>
+<head>
+  <!-- mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> 
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <!-- google font -->
+  <link href="http://fonts.googleapis.com/css?family=Lato:300,inherit" rel="stylesheet" type="text/css">
+
+  <!-- angular dependencies -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+  <!-- stylesheet -->
+  <link type="text/css" rel="stylesheet" href="../public/demo23_files/authStyle.css"></link>
+
+  <!-- javscript -->
+  <script type="text/javascript" src="../public/demo23_files/auth.js"></script>
+
+
+</head>
+<body ng-app="myApp">
+
+    <div class="container-fluid wrapper" ng-controller="myCtrl">
+
+      <!-- merchant info -->
+      <p class="col-xs-12 text-center txtUpsideDown merchInfo {{show}}" ng-class="show">Staff: Enter Tricon code to accept funds.</p>
+
+      <!-- pad -->
+      <div class="col-xs-12 pad {{padPhase}}" ng-class="padPhase">
+
+        <!-- infoButton -->
+        <div class="col-xs-2 merchantOptions info {{infoSelected}}" ng-class="infoSelected" ng-click="infoClick()"></div>
+
+        <!-- clique logo -->
+        <div class="col-xs-8 merchantOptions cliqueLogo txtUpsideDown"></div>
+
+        <!-- cancel button -->
+        <div class="col-xs-2 merchantOptions cancel {{cancelSelected}}" ng-class="cancelSelected" ng-click="cancelClick()"></div>
+
+        <!-- icons -->
+        <div ng-repeat="icon in icons" ng-click="clickedCSS($index)" class="icon col-xs-4 icon{{$index}} {{clickClass}}" ng-class="icon$index clickClass" ng-style="{'background-image':'url({{icon}})'}"></div>
+
+      </div>
+
+      <!-- lock -->
+      <div class="col-xs-4 lock" ng-class="lockPhase" ng-click="change()"></div>
+
+      <!-- amount -->
+      <div class="col-xs-8 amount {{amountPhase}}" ng-class="amountPhase">
+
+        <p class="txtUpsideDown" id="merchant" ng-bind="merchantName"></p>
+
+        <div class="arrow {{arrowPhase}}" ng-class="arrowPhase"></div>
+
+        <div class="txtUpsideDown spend text-center">
+          <span class="dollarSignCents">$</span>
+          <span ng-bind="spend" style="font-size: 4.308em;">520</span>
+          <span class="dollarSignCents">.00</span>
+        </div>
+
+      </div>
+
+      <!-- tilt section -->
+      <!-- tilt icon -->
+      <div class="col-xs-8 tilt {{tiltPhase}}" ng-class="tiltPhase">
+        <div class="col-xs-12">
+
+          <div class="tiltIcon"></div>
+
+        </div>
+
+        <!-- tilt message -->
+        <div class="col-xs-12 msg">
+
+          <span class="tiltMsg txtUpsideDown text-center">
+            <p > Tilt your screen to face
+            <span ng-bind="merchantName"></span>
+            staff.</p>
+          </span>
+
+        </div>
+      </div>
+
+      <!-- thank you section for Recipient -->
+      <div class="col-xs-12 thankYou {{thankYouPhase}}" ng-class="thankYouPhase">
+
+        <p class="col-xs-12 text-center tyHeader">Thank you!</p>
+
+        <p class="col-xs-12 text-center tyText">The transaction was successful :)<br/>Send a thank you note to <span ng-bind="buyerName"></span>:</p>
+
+        <!-- thank you form for Recipient -->
+        <input type="text" class="col-xs-12 tyMessageToBuyer">
+
+        <!-- send button -->
+        <div class="col-xs-12 send">
+          <p class="col-xs-2 text-right sendButton">Send</p>
+          <div class="col-xs-1 rtArrow"></div>
+        </div>
+
+      </div>
+
+
+      <!-- street background -->
+      <div id="localstreet" style="top: 350px;">
+        <img src="../public/demo23_files/local-street-low2.png">
+      </div>
+
+      <!-- dark overlay -->
+      <div class="overlay"></div>
+
+    </div>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
