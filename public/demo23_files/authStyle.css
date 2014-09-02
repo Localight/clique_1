@@ -268,53 +268,86 @@ div.overlay {
 
 /* icons */
 .icon0 {
-  /*../demo23_files/tricon-pie-slice-wht.png*/
   background: url('../demo23_files/images/tricon-pie-slice.png') no-repeat;
+  right: -5%;
+}
+
+.iconWht0 {
+  background: url('../demo23_files/images/tricon-pie-slice-wht.png') no-repeat;
   right: -5%;
 }
 
 .icon1 {
   background: url('../demo23_files/images/tricon-sundae.png') no-repeat;
-  /*../demo23_files/tricon-sundae-wht.png*/
+}
+
+.iconWht1 {
+  background: url('../demo23_files/images/tricon-sundae-wht.png') no-repeat;
 }
 
 .icon2 {
-  background: url('../demo23_files/images/tricon-sundae.png') no-repeat;
-  /*../demo23_files/tricon-sundae-wht.png*/
+  background: url('../demo23_files/images/tricon-coffee.png') no-repeat;
+  left: -5%;
+}
+
+.iconWht2 {
+  background: url('../demo23_files/images/tricon-coffee-wht.png') no-repeat;
   left: -5%;
 }
 
 .icon3 {
   background: url('../demo23_files/images/tricon-wine.png') no-repeat;
-  /*../demo23_files/tricon-wine-wht.png*/
+  right: -5%;
+}
+
+.iconWht3 {
+  background: url('../demo23_files/images/tricon-wine-wht.png') no-repeat;
   right: -5%;
 }
 
 .icon4 {
   background: url('../demo23_files/images/tricon-soup.png') no-repeat;
-  /*../demo23_files/tricon-soup-wht.png*/
+}
+
+.iconWht4 {
+  background: url('../demo23_files/images/tricon-soup-wht.png') no-repeat;
 }
 
 .icon5 {
   background: url('../demo23_files/images/tricon-dinner.png') no-repeat;
-  /*../demo23_files/tricon-dinner-wht.png*/
+  left: -5%;
+}
+
+.iconWht5 {
+  background: url('../demo23_files/images/tricon-dinner-wht.png') no-repeat;
   left: -5%;
 }
 
 .icon6 {
   background: url('../demo23_files/images/tricon-shrimp.png') no-repeat;
-  /*../demo23_files/tricon-shrimp-wht.png*/
+  right: -5%;
+}
+
+.iconWht6 {
+  background: url('../demo23_files/images/tricon-shrimp-wht.png') no-repeat;
   right: -5%;
 }
 
 .icon7 {
   background: url('../demo23_files/images/tricon-sandwich.png') no-repeat;
-  /*../demo23_files/tricon-sandwich-wht.png*/
+}
+
+.iconWht7 {
+  background: url('../demo23_files/images/tricon-sandwich-wht.png') no-repeat;
 }
 
 .icon8 {
   background: url('../demo23_files/images/tricon-cupcake.png') no-repeat;
-  /*../demo23_files/tricon-cupcake-wht.png*/
+  left: -5%;
+}
+
+.iconWht8 {
+  background: url('../demo23_files/images/tricon-cupcake-wht.png') no-repeat;
   left: -5%;
 }
 

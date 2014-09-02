@@ -42,22 +42,33 @@ angular.module('myApp', [])
     'icon8',
   ];
 
+  // for clickedCSS
+  var counter = 0
+
   // change css if icon clicked
   $scope.clickedCSS = function (icon) {
 
+    counter++;
+
     // if icon is white make aqua
-    if ($scope.icons[icon].substr(-8) === '-wht.png') {
-      $scope.icons[icon] = $scope.icons[icon].replace('-wht', '');
+    if ($scope.icons[icon] === 'icon' + icon) {
+      $scope.icons[icon] = 'iconWht' + icon;
     }
     // if icon is aqua make white
     else {
-    var image = $scope.icons[icon];
-    $scope.icons[icon] = image.substr(0, image.length-4) + '-wht' + image.substr(-4);
+    $scope.icons[icon] = 'icon' + icon;
     }
 
+    // if wrong tricon code entered trigger shake animation and default css colors
+    if ( (counter === 3) && ($scope.thankYouPhase != 'thankYouEnd') ) {
+      for (var i=0; i<$scope.icons.length; i++) {
+        $scope.icons[i] = $scope.icons[i].replace('Wht', '');
+      }
+    }  
+
     // if pie, wine and cupcake are clicked do the following
-    if ( ($scope.icons[0].substr(-8) === '-wht.png') && ($scope.icons[3].substr(-8) === '-wht.png') && ($scope.icons[8].substr(-8) === '-wht.png') ) {
-      
+    if ( ($scope.icons[0].slice(4,7) === 'Wht') && ($scope.icons[3].slice(4,7) === 'Wht') && ($scope.icons[8].slice(4,7) === 'Wht') ) {
+
       // make sure merchant info is out of view
       $scope.show = 'noShow';
 
