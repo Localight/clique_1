@@ -19,7 +19,7 @@ module.exports = function(app) {
   // web hook for initial text to activate card
   app.post('/app/sms', twilio.initialResponseSavePersona);
 
-  // link credit buyer follows
+  // link from sms message that buyer follows
   app.get('/new-gift-card/:id', gifts.renderBuyer);
 
   // collect buyer info

@@ -31,15 +31,15 @@ angular.module('myApp', [])
 
   // icons
   $scope.icons = [
-    './images/tricon-pie-slice.png',
-    './images/tricon-sundae.png',
-    './images/tricon-coffee.png',
-    './images/tricon-wine.png',
-    './images/tricon-soup.png',
-    './images/tricon-dinner.png',
-    './images/tricon-shrimp.png',
-    './images/tricon-sandwich.png',
-    './images/tricon-cupcake.png'
+    'icon0',
+    'icon1',
+    'icon2',
+    'icon3',
+    'icon4',
+    'icon5',
+    'icon6',
+    'icon7',
+    'icon8',
   ];
 
   // change css if icon clicked
@@ -88,7 +88,6 @@ angular.module('myApp', [])
   $scope.cancelClick = function () {
     $scope.cancelSelected = 'cancelSelected';
   };
-
 
 });
 

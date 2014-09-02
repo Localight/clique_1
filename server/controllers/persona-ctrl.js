@@ -56,7 +56,7 @@ function createBuyer(request, response) {
         console.log('saveBuyerCardId error: ', err);
       }
       console.log('Buyer Persona and Card created');
-
+      console.log(persona);
       // debit Buyer's newly created credit card
       balanced.debitBuyerCard({bpCardId: persona.basicProfile.bpCardId});
 

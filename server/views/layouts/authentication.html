@@ -42,7 +42,8 @@
         <div class="col-xs-2 merchantOptions cancel {{cancelSelected}}" ng-class="cancelSelected" ng-click="cancelClick()"></div>
 
         <!-- icons -->
-        <div ng-repeat="icon in icons" ng-click="clickedCSS($index)" class="icon col-xs-4 icon{{$index}} {{clickClass}}" ng-class="icon$index clickClass" ng-style="{'background-image':'url({{icon}})'}"></div>
+        <div ng-repeat="icon in icons" ng-click="clickedCSS($index)" class="icon col-xs-4 {{clickClass}}" ng-class="icon{{$index}}"
+        ></div>
 
       </div>
 
@@ -117,22 +118,4 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
