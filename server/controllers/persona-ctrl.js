@@ -56,12 +56,15 @@ function createBuyer(request, response) {
         console.log('saveBuyerCardId error: ', err);
       }
       console.log('Buyer Persona and Card created');
-      console.log(persona);
+
       // debit Buyer's newly created credit card
       balanced.debitBuyerCard({bpCardId: persona.basicProfile.bpCardId});
+      console.log('Buyer card debited');
 
+      // date for email receipt
       var date = new Date();
 
+      // create/send email receipt
       mailgun.sendEmail(
         'gift-confirm@clique.cc',
         request.body.Email,
@@ -112,7 +115,7 @@ function createRecipient(request, response){
   else {
    persona.basicProfile.typeOfUser = "recipient" 
   }
-
+  console.log(request.body);
   // create Recipient card
   var card = {
 

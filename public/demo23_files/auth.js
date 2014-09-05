@@ -10,6 +10,7 @@ angular.module('myApp', [])
   $scope.arrowPhase = 'arrowStart';
   $scope.show = 'noShow';
   $scope.thankYouPhase = 'thankYouStart';
+  $scope.shake = true;
 
   // classes once lock icon is tapped
   $scope.change = function () {
@@ -59,12 +60,6 @@ angular.module('myApp', [])
     $scope.icons[icon] = 'icon' + icon;
     }
 
-    // if wrong tricon code entered trigger shake animation and default css colors
-    if ( (counter === 3) && ($scope.thankYouPhase != 'thankYouEnd') ) {
-      for (var i=0; i<$scope.icons.length; i++) {
-        $scope.icons[i] = $scope.icons[i].replace('Wht', '');
-      }
-    }  
 
     // if pie, wine and cupcake are clicked do the following
     if ( ($scope.icons[0].slice(4,7) === 'Wht') && ($scope.icons[3].slice(4,7) === 'Wht') && ($scope.icons[8].slice(4,7) === 'Wht') ) {
@@ -75,10 +70,19 @@ angular.module('myApp', [])
       // move amount up and pad up/off view
       $scope.amountPhase = 'amountFinish';
       $scope.padPhase = 'padStart';
+      $scope.arrowPhase = 'arrowCorrectCode';
 
       // move thank you for recipient up into view
       $scope.thankYouPhase = 'thankYouEnd';
     }
+    // if wrong tricon code entered trigger shake animation and default css colors
+    if ( (counter === 3) && ($scope.thankYouPhase != 'thankYouEnd') ) {
+      for (var i=0; i<$scope.icons.length; i++) {
+        $scope.icons[i] = $scope.icons[i].replace('Wht', '');
+      }
+      $scope.shake = true;
+      counter = 0;
+    }  
   };
 
   // show merchant instruction when info icon clicked
