@@ -61,23 +61,36 @@ body
 .header {
   height: 10%;
   padding: 0;
-  border: 1px solid black;
+  font-family: 'Lato', sans-serif;
 }
 
-.give {
+.headerSide {
   height: 100%;
-  border: 1px solid green;
+  margin-top: -.5%;
+  padding: 0;
 }
 
-.balance {
+#bowTie {
   height: 100%;
-  border: 1px solid green;
+  padding: 0;
+  background: url('../demo23_files/gift-bow-wht.png') no-repeat;
+  background-size: 70%;
+  background-position: center;
+}
+
+#giveText {
+  height: 100%;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.22em;
+  color: rgb(255, 255, 255);
+  padding-top: 19%;
 }
 
 .cliqueLogo {
   height: 100%;
-  background: url('../demo23_files/images/clique-logo.png') no-repeat;
-  background-size: 60%;
+  background: url('../demo23_files/wht-clique-logo.png') no-repeat;
+  background-size: 68%;
   background-position: center;
 }
 
@@ -87,28 +100,34 @@ body
   padding: 0;
   position: relative;
   top: 10%;
-  border: 1px solid black;
-  border-radius: 9px;
-  background-color: black;
+  border-radius: 6px;
+  background-color: rgb(43,83,82);
 }
 
 /* personal message section */
 .personalMessage {
+  position: absolute;
   height: 33%;
   padding: 2% 2% 0 2%;
-  position: absolute;
-  border: 1px solid green;
+  margin-top: 2%;
 }
 
 #occasionIcon {
   height: 65%;
-  padding: 0;
-  border: 1px solid red;
+  width: 21%;
+  margin-top: 1.8%;
+  left: 2%;
+  background: url('../demo23_files/wht-custom-occasion-icon.png') no-repeat;
+  background-size: 80%;
 }
 
 #buyerMessage {
   height: 65%;
+  width: 78%;
   padding: 0;
+  font-family: 'Lato', sans-serif;
+  color: white;
+  overflow: hidden;
   border: 1px solid blue; 
 }
 
@@ -124,18 +143,16 @@ body
   top: 33%;
   height: 67%;
   padding: 2%;
-  position: absolute;
-  border: 1px solid pink;  
+  position: absolute; 
 }
 
 #giftCardImage {
   height: 100%;
-  padding: 3%;
+  padding: 1.2% 3%;
   border: 1px solid purple;
-  border-radius: 9px;
+  border-radius: 7px;
   background: url('../demo23_files/dolys-delectables-crop.jpg') no-repeat;
   background-size: contain;
-  /*display:table-cell;*/
 }
 
 #giftCardAmount {
@@ -144,24 +161,39 @@ body
   left: -5%;
   background: url('../demo23_files/gift-value-2.png') no-repeat;
   background-size: 100;
+  vertical-align: top;
+}
+
+#giftCardMessage {
+  height: 12%;
+  padding: 0;
+  margin-top: 29%;
+  font-family: 'Lato', sans-serif;
+  color: rgb(255, 255, 255);
+  font-size: .98em;
+  font-weight: bold;
 }
 
 /* amount to spend at merchant info section*/
 .merchantInfo {
   margin-top: 4%;
   padding: 0;
+  font-family: 'Lato', sans-serif;
 }
 
 #useAmount {
   margin: 0;
+  font-weight: bold;
 }
 
 #merchantName {
   margin: 0;
   margin-top: -2%;
-  font-size: 1.75em;
+  font-size: 1.65em;
+  font-weight: bold;
 }
 
+/* use it now or later section */
 .useItSection {
   height: 10%;
   padding: 0;
@@ -171,11 +203,13 @@ body
 .useNowLater {
   height: 100%;
   padding: 0;
-  width: 47%;
+  width: 49%;
   border-radius: 8px;
-  background-color: white;
-  padding-top: 5%;
+  background-color: rgb(255, 255, 255);
+  padding-top: 4.5%;
+  font-family: 'Lato', sans-serif;
   font-size: 1.33em;
+  font-weight: bold;
 }
 
 #useNow {
@@ -186,8 +220,29 @@ body
   color: #B22222;
 }
 
+/* nearby merchant section */
+.nearbyMerchant {
+  height: 10%;
+  padding: 0;
+  margin-top: 10%;
+  border: 1px solid red;
+  font-family: 'Lato', sans-serif;
+  font-size: .9em;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
 
-
-
+/* ALPHA STYLING */
+.useNowLaterALPHA {
+  height: 100%;
+  padding: 0;
+  /*width: 49%;*/
+  border-radius: 8px;
+  background-color: rgb(255, 255, 255);
+  padding-top: 4.5%;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.33em;
+  font-weight: bold;
+}
 
 
