@@ -11,7 +11,7 @@ function getCardInfo(request, response) {
     'cliqueCards.uniqueLink': filter
   })
   .exec(function(err, data){
-      response.json(data.cliqueCards[0]);
+      response.json(data);
   });
 
 }

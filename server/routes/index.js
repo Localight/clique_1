@@ -37,7 +37,9 @@ module.exports = function(app) {
   // redemption view
   app.get('/redemption', gifts.renderRedemption);
 
-
+  app.get('/recipient-gift-card', function(req, res) {
+    res.render('layouts/recipient_test');
+  });
 
 
 

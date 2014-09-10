@@ -19,7 +19,7 @@ function registerMerchant(request, response) {
 // }
 
 function debitBuyerCard(request, response) {
-  console.log('in createMerchantBankAccount');
+  console.log('in debitBuyerCard');
 
   balanced.get(request.bpCardId)
   .debit({
