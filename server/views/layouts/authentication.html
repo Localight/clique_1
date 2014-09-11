@@ -14,8 +14,8 @@
         <div class="col-xs-2 merchantOptions cancel {{cancelSelected}}" ng-class="cancelSelected" ng-click="cancelClick()"></div>
 
         <!-- icons -->
-        <div ng-repeat="icon in icons" ng-click="clickedCSS($index)" class="icon col-xs-4 {{clickClass}} shake" ng-class="{icon: 'icon', shake: 'shake'}"></div>
-        <!-- <div ng-repeat="icon in icons" ng-click="clickedCSS($index)" class="icon col-xs-4 {{clickClass}}" ng-class="icon"></div> -->
+        <!-- <div ng-repeat="icon in icons" ng-click="clickedCSS($index)" class="icon col-xs-4 {{clickClass}} shake" ng-class="{icon: 'icon', shake: 'shake'}"></div> -->
+        <div ng-repeat="icon in icons" ng-click="clickedCSS($index)" class="icon col-xs-4 {{clickClass}}" ng-class="icon"></div>
 
       </div>
 
