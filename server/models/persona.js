@@ -62,7 +62,7 @@ PersonaSchema.methods.generateUniqueLink = function(options, urlpath, callback) 
     console.log('Unable to save new inactiveCard in generateUniqueLink: ', err);
   }
     // pass back URI w/uniqueLink/id for Buyer to follow
-    callback(err, 'http://754a3288.ngrok.com/' + urlpath + uniqueLink);
+    callback(err, 'clique.cc' + urlpath + uniqueLink);
   });
 
 };
