@@ -29,7 +29,7 @@ function renderRecipient(request, response) {
   Personas.find({uniqueLink: request.params.id})
   .exec(function(err, persona){
     // console.log(uniqueLink);
-    response.render('layouts/dolys', {persona: persona, uniqueLink: uniqueLink});
+    response.render('layouts/recipient_redemption_index', {persona: persona, uniqueLink: uniqueLink});
   })  
   // response.render('layouts/recipient');
 }
@@ -41,7 +41,6 @@ function unlock(request, response) {
 
 // render view for Redemption landing page
 function renderRedemption(request, response) {
-  console.log('renderRedemption in server');
   response.render('layouts/authentication');
 }
 

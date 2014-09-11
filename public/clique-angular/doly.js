@@ -1,3 +1,8 @@
+function playSound() {
+  var audio = document.getElementById('sound');
+  audio.play();
+};     
+
 var app = angular.module('CliqueApp', ['ngRoute'])
 
   .config(function ($routeProvider, $locationProvider) {
@@ -20,7 +25,7 @@ var app = angular.module('CliqueApp', ['ngRoute'])
   })
 
   .controller('RecipientCtrl', function ($scope, api, $routeParams, $location, $route, $rootScope){
-console.log('test');
+
     // var cardId = ($location);
     var cardId = ($location.path().substr($location.path().lastIndexOf('/')).substr(1));
     // console.log(cardId);
@@ -43,7 +48,7 @@ console.log('test');
   })
 
   .controller('AuthenticationCtrl', function ($scope) {
-console.log('in authentication views controller');
+
     // default classes
     $scope.lockPhase = 'locked';
     $scope.amountPhase = 'amountStart';
@@ -52,7 +57,7 @@ console.log('in authentication views controller');
     $scope.arrowPhase = 'arrowStart';
     $scope.show = 'noShow';
     $scope.thankYouPhase = 'thankYouStart';
-    $scope.shake = true;
+    $scope.shake = '';
 
     // classes once lock icon is ted
     $scope.change = function () {
@@ -93,11 +98,14 @@ console.log('in authentication views controller');
 
       counter++;
 
-      // if icon is white make aqua
+      // if icon is aqua make white
       if ($scope.icons[icon] === 'icon' + icon) {
         $scope.icons[icon] = 'iconWht' + icon;
+        // console.log('click sound');
+        // this.play();
+        // console.log('still here');
       }
-      // if icon is aqua make white
+      // if icon is white make aqua
       else {
       $scope.icons[icon] = 'icon' + icon;
       }
@@ -122,7 +130,7 @@ console.log('in authentication views controller');
         for (var i=0; i<$scope.icons.length; i++) {
           $scope.icons[i] = $scope.icons[i].replace('Wht', '');
         }
-        $scope.shake = true;
+        $scope.shake = 'shake';
         counter = 0;
       }  
     };

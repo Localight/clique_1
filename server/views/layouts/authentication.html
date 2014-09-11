@@ -14,8 +14,15 @@
         <div class="col-xs-2 merchantOptions cancel {{cancelSelected}}" ng-class="cancelSelected" ng-click="cancelClick()"></div>
 
         <!-- icons -->
-        <!-- <div ng-repeat="icon in icons" ng-click="clickedCSS($index)" class="icon col-xs-4 {{clickClass}} shake" ng-class="{icon: 'icon', shake: 'shake'}"></div> -->
-        <div ng-repeat="icon in icons" ng-click="clickedCSS($index)" class="icon col-xs-4 {{clickClass}}" ng-class="icon"></div>
+        <!-- <div ng-repeat="icon in icons" ng-click="clickedCSS($index)" class="icon col-xs-4 {{clickClass}} " ng-class="{icon: 'icon', shake: 'shake'}"></div> -->
+        <!-- <span class="icon" ng-class="shake"> -->
+<!--         <audio id="dog">
+          <source src="../public/demo23_files/audio/beep.mp3" type="audio/mpeg">
+        </audio> -->
+          <audio src="../public/demo23_files/audio/click.wav" id="sound"></audio>  
+          <div ng-repeat="icon in icons" ng-click="clickedCSS($index)" class="icon col-xs-4 {{clickClass}}" ng-class="icon" onclick="playSound(this)">
+          </div>
+        <!-- </span> -->
 
       </div>
 
@@ -102,4 +109,9 @@
 
     </div>
 
-
+    <script>
+    function playSound() {
+      var audio = document.getElementsByClass("icon");
+      audio.play();
+    };      
+    </script>

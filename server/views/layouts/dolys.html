@@ -1,39 +1,66 @@
-<html>
-<head>
-  <!-- mobile -->
-  <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> 
-  <meta name="apple-mobile-web-app-capable" content="yes">
+  <div class="container-fluid wrapper">
+    
+    <!-- header section with give option, clique logo and available balance -->
+    <span class="header col-xs-12">
+      <div class="col-xs-3 headerSide">
+        <!-- for beta -->
+        <!-- <div class="col-xs-5" id="bowTie"></div>
+        <div class="col-xs-7" id="giveText">Give</div> -->
+      </div>
+      <div class="col-xs-6 cliqueLogo"></div>
+      <!-- for beta -->
+      <div class="col-xs-3 headerSide"></div>
+    </span>
 
-  <!-- google font -->
-  <link href="http://fonts.googleapis.com/css?family=Lato:300,inherit" rel="stylesheet" type="text/css">
+    <!-- gift section -->
+    <div class="col-xs-12 giftSection">
+      
+      <!-- personal message -->
+      <div class="col-xs-12 personalMessage">
+        <div class="col-xs-3" id="occasionIcon"></div>
+        <div class="col-xs-9 pull-right" id="buyerMessage" ng-bind="message"></div>
+        <div class="col-xs-9 pull-right text-right" id="buyerName" ng-bind="from"></div>
+      </div>
+      
+      <!-- gift card image -->
+      <div class="col-xs-12 giftCardSection">
+        <div class="col-xs-12" id="giftCardImage">
+          <div class="col-xs-4" id="giftCardAmount"></div>
+          <div class="col-xs-12 text-center" id="giftCardMessage">
+            Coffee, Macarons & Sandwiches? Yum.
+          </div>
+        </div>
+      </div>
 
-  <!-- angular dependencies -->
-  <script src="http://code.angularjs.org/1.2.22/angular.min.js"></script>
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.js'></script>
+    </div>
+    
+    <!-- amount to use at which merchant section -->
+    <div class="col-xs-12 text-center merchantInfo">
+      <p class="col-xs-12" id="useAmount">Use this $2 gift at</p>
+      <p class="col-xs-12" id="merchantName">DoLy's Delectables</p>
+    </div>
 
-  <!-- bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <!-- use it now/later section -->
+    <div class="col-xs-12 useItSection">
+      <div class="col-xs-3"></div>
+      <a class="col-xs-6 text-center useNowLaterALPHA" id="useNow" ng-click="change()">Use it now</a>
+      <!-- <a class="col-xs-6 text-center useNowLaterALPHA" id="useNow" href="http://754a3288.ngrok.com/redemption">Use it now</a> -->
+      <div class="col-xs-3"></div>
+      <!-- for beta -->
+      <!-- <div class="col-xs-5 text-center useNowLater" id="useNow">Use it now</div>
+      <div class="col-xs-5 text-center pull-right useNowLater" id="useLater">Use it later</div> -->
+    </div>
 
-  <!-- stylesheet -->
-  <link type="text/css" rel="stylesheet" href="../public/demo23_files/dolyStyling.css"> 
-
-  <!-- javascript -->
-  <script src="../../public/clique-angular/doly.js"></script>
-
-</head>
-<body ng-app="CliqueApp">
-
-  <div ng-view></div>
-
-</body>
-</html>
-
-
-
-
-
+    <!-- for beta -->
+    <!-- <div class="col-xs-12 text-center nearbyMerchant">
+      <p>Or use it at one of many local merchants</p>
+    </div> -->
 
 
 
+    <!-- image of town -->
+    <div id="localstreet" style="top: 350px;">
+        <img src="../public/demo23_files/local-street-low2.png">
+    </div>
 
-
+  </div>
