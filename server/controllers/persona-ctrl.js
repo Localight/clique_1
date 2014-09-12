@@ -16,7 +16,7 @@ function createBuyer(request, response) {
     if (err) {
       console.log('saveBuyerCardId error: ', err);
     }
-
+    console.log(persona);
     // discern type of Clique Card User
     if (persona.basicProfile.typeOfUser == "recipient") {
       persona.basicProfile.typeOfUser = "both"

@@ -19,7 +19,9 @@
 <!--         <audio id="dog">
           <source src="../public/demo23_files/audio/beep.mp3" type="audio/mpeg">
         </audio> -->
-          <audio src="../public/demo23_files/audio/click.wav" type="audio/wav" id="sound"></audio>  
+          <audio src="../public/demo23_files/audio/click.wav" type="audio/wav" id="sound">
+            <source src="../public/demo23_files/audio/click.wav" type="audio/wav">
+          </audio>  
           <div ng-repeat="icon in icons" ng-click="clickedCSS($index)" class="icon col-xs-4 {{clickClass}}" ng-class="icon" onclick="playSound(this)">
           </div>
         <!-- </span> -->

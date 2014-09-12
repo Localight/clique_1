@@ -1,6 +1,8 @@
 function playSound() {
   var audio = document.getElementById('sound');
+  console.log('before sound');
   audio.play();
+  console.log('after sound');
 };     
 
 var app = angular.module('CliqueApp', ['ngRoute'])
@@ -41,7 +43,6 @@ var app = angular.module('CliqueApp', ['ngRoute'])
     });
 
     $scope.change = function() {
-      console.log('in click handler');
       $location.path('/redemption');
     };
 
