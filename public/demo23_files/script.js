@@ -615,9 +615,9 @@ AppView = Backbone.View.extend({
     	}
     },
     click_schedulegift: function(event){
-      // $('body').addClass('overlay');
-      // $('#finalOverlay').fadeIn(1000);
-      // $('#finalOverlay').show();
+      $('body').addClass('overlay');
+      $('#finalOverlay').fadeIn(1000);
+      $('#finalOverlay').show();
 
       // data object
     	var postObj = {
