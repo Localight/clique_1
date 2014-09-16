@@ -14,7 +14,7 @@ var app = angular.module('CliqueApp', ['ngRoute'])
         controller: 'RecipientCtrl',
         templateUrl: '/recipient-gift-card'
       })
-      .when('/redemption', {
+      .when('/redemption/:id', {
         controller: 'AuthenticationCtrl',
         templateUrl: '/redemption',
       })
@@ -34,7 +34,7 @@ var app = angular.module('CliqueApp', ['ngRoute'])
     // get card info
     api.getCards(cardId)
     .then(function(data){
-      $scope.message = data.cliqueCards[0].occassion;
+      $scope.message = data.cliqueCards[1].occassion;
       $scope.from = "- " + data.basicProfile.firstName;
     });
 
@@ -43,12 +43,14 @@ var app = angular.module('CliqueApp', ['ngRoute'])
     });
 
     $scope.change = function() {
-      $location.path('/redemption');
+      $location.path('/redemption/' + cardId);
     };
 
   })
 
-  .controller('AuthenticationCtrl', function ($scope) {
+  .controller('AuthenticationCtrl', function ($scope, $location) {
+
+    var cardId = ($location.path().substr($location.path().lastIndexOf('/')).substr(1));
 
     // default classes
     $scope.lockPhase = 'locked';
@@ -153,6 +155,7 @@ var app = angular.module('CliqueApp', ['ngRoute'])
     // route user back to Recipient view
     $scope.cancelClick = function () {
       $scope.cancelSelected = 'cancelSelected';
+      $location.path('/recipient-gift-card/' + cardId);
     };
 
   })

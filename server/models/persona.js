@@ -29,7 +29,6 @@ var PersonaSchema = new Schema({
     keyword: String,
     uniqueLink: String, 
     status: String, 
-    // test to combine cardsGiven with cliqueCards
     amount: String,
     giftRecipient: String,
     giftBuyer: String,

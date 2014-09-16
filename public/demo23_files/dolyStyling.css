@@ -17,6 +17,10 @@
 
 }
 
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
 body
 {
   background-color: #58e6df;
@@ -122,6 +126,7 @@ body
   width: 78%;
   padding: 0;
   font-family: 'Lato', sans-serif;
+  font-weight: 300;
   color: white;
   overflow: scroll;
 }
@@ -147,7 +152,7 @@ body
   margin-top: 2.5%;
   padding: 1.2% 3%;
   border-radius: 7px;
-  background: -webkit-linear-gradient(rgba(255,255,255,0), rgba(0,0,0,.3)), url('../demo23_files/dolys-delectables-crop.jpg') no-repeat;
+  background: -webkit-linear-gradient(rgba(255,255,255,0), rgba(0,0,0,.6)), url('../demo23_files/dolys-delectables-crop.jpg') no-repeat;
   background-size: 100%;
 }
 
@@ -166,7 +171,7 @@ body
   margin-top: 29%;
   font-family: 'Lato', sans-serif;
   color: rgb(255, 255, 255);
-  font-size: .98em;
+  font-size: .96em;
   font-weight: bold;
 }
 
@@ -179,14 +184,12 @@ body
 
 #useAmount {
   margin: 0;
-  font-weight: bold;
 }
 
 #merchantName {
   margin: 0;
   margin-top: -2%;
   font-size: 1.65em;
-  font-weight: bold;
 }
 
 /* use it now or later section */
@@ -205,11 +208,12 @@ body
   padding-top: 4.5%;
   font-family: 'Lato', sans-serif;
   font-size: 1.33em;
-  font-weight: bold;
+  font-weight: 300;
 }
 
 #useNow {
-  color: #58e6df;
+  /*color: #58e6df;*/
+  color: #008B8B;
 }
 
 #useLater {
@@ -224,7 +228,6 @@ body
   border: 1px solid red;
   font-family: 'Lato', sans-serif;
   font-size: .9em;
-  font-weight: bold;
   color: rgb(0, 0, 0);
 }
 
@@ -238,7 +241,7 @@ body
   padding-top: 4.5%;
   font-family: 'Lato', sans-serif;
   font-size: 1.33em;
-  font-weight: bold;
+  font-weight: 300;
 }
 
 
@@ -369,6 +372,7 @@ div.overlay {
 #merchant {
   /*color: rgb(65, 186, 181);*/
   font-family: 'Lato', sans-serif;
+  font-weight: 300;
   font-size: 1.6em;
   bottom: -10%;
 }
@@ -397,6 +401,7 @@ div.overlay {
 /* patron dollar spend amount */
 .spend {
   font-family: 'Lato', sans-serif;
+  font-weight: 300;
   margin-top: -4%;
 }
 
@@ -438,6 +443,7 @@ div.overlay {
 
 .tiltMsg {
   font-family: 'Lato', sans-serif;
+  font-weight: 300;
   color: rgb(255, 255, 255);
   font-size: 1.22em;
 }
@@ -698,7 +704,8 @@ div.overlay {
   left: 59%;
   color: rgb(65, 186, 181);
   font-size: 1.5em;
-  font-family: 'Lato', sans-serif;  
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
 }
 
 .alphaRtArrow {
