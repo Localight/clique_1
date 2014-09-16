@@ -34,7 +34,7 @@ var app = angular.module('CliqueApp', ['ngRoute'])
     // get card info
     api.getCards(cardId)
     .then(function(data){
-      $scope.message = data.cliqueCards[1].occassion;
+      $scope.message = data.cliqueCards[0].occassion;
       $scope.from = "- " + data.basicProfile.firstName;
     });
 
