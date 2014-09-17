@@ -1,8 +1,6 @@
 function playSound() {
   var audio = document.getElementById('sound');
-  console.log('before sound');
   audio.play();
-  console.log('after sound');
 };     
 
 var app = angular.module('CliqueApp', ['ngRoute'])
@@ -103,6 +101,7 @@ var app = angular.module('CliqueApp', ['ngRoute'])
 
       // if icon is aqua make white
       if ($scope.icons[icon] === 'icon' + icon) {
+        $scope.shake = '';
         $scope.icons[icon] = 'iconWht' + icon;
       }
       // if icon is white make aqua
@@ -131,6 +130,7 @@ var app = angular.module('CliqueApp', ['ngRoute'])
           $scope.icons[i] = $scope.icons[i].replace('Wht', '');
         }
         $scope.shake = 'shake';
+        console.log('shake test');
         counter = 0;
       }  
     };
