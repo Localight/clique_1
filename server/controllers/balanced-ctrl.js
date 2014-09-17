@@ -25,10 +25,14 @@ function debitBuyerCard(request, response) {
   .debit({
     "appears_on_statement_as": "CliqueGiftCard", 
     "amount": 200, 
-    // "amount": request.body.Amount, 
     "description": "Clique Gift Card Purhcase of"
+  })
+  .then(function successCallback(success){
+    console.log('debitBuyerCard method success');
+  },
+  function failureCallback(failure){
+    console.log('debitBuyerCard method failure', failure);
   });
-
 
 }
 
