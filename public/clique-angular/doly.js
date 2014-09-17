@@ -104,9 +104,6 @@ var app = angular.module('CliqueApp', ['ngRoute'])
       // if icon is aqua make white
       if ($scope.icons[icon] === 'icon' + icon) {
         $scope.icons[icon] = 'iconWht' + icon;
-        // console.log('click sound');
-        // this.play();
-        // console.log('still here');
       }
       // if icon is white make aqua
       else {
