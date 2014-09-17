@@ -77,7 +77,9 @@ function createBuyer(request, response) {
         function(err) { 
           if (err) {
             console.log(err);
-            return response.end(500, err);
+            console.log(err[0]);
+            response.status(500);
+            return response.end(err);
           } 
           response.end();
         }
