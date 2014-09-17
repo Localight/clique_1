@@ -28,18 +28,18 @@ var app = angular.module('CliqueApp', ['ngRoute'])
 
   .controller('RecipientCtrl', function ($scope, api, $routeParams, $location, $route, $rootScope){
 
-    // var cardId = ($location);
+    // pull cardId(uniqueLink) from URI
     var cardId = ($location.path().substr($location.path().lastIndexOf('/')).substr(1));
-    // console.log(cardId);
+
     // get card info
     api.getCards(cardId)
     .then(function(data){
-      $scope.message = data.cliqueCards[0].occassion;
       $scope.from = "- " + data.basicProfile.firstName;
-    });
 
-    $rootScope.$on('$routeChangeError', function(e) {
-      console.log(e);
+      // loop through cliqueCards to find occassion message
+      for(var i=0; i<data.cliqueCards.length;i++) {
+        if(data.cliqueCards[i]) $scope.message = data.cliqueCards[i].occassion;
+      }
     });
 
     $scope.change = function() {

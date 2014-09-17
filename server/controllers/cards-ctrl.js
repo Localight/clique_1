@@ -2,18 +2,17 @@
 var Card = require('../models/persona');
 
 function getCardInfo(request, response) {
-  console.log('in getCardInfo');
 
   // query URI for filter
   var filter = request.params.id;
-  console.log(filter);
+
   // find by unique link id
-  Card.findOne({
-    'cliqueCards.uniqueLink': filter
-  })
+  // limit results to occassion and firstName
+  Card.find(
+    {'cliqueCards.uniqueLink' : filter} , {'cliqueCards.occassion' : 1, 'basicProfile.firstName' : 1, _id : 0}
+  )
   .exec(function(err, data){
-    console.log(data);
-      response.json(data);
+      response.json(data[0]);
   });
 
 }
