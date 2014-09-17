@@ -3,9 +3,9 @@
 var LocationInfo = require('../models/location-info');
 
 // function to generate random tricons
-var getRandTricon = function () {
+var getRandTricon = function (data) {
 
-  return "dog"
+  return data.mainType;
 
 };
 
@@ -74,9 +74,11 @@ function createTricon(request, response) {
   5. 
   */
 
-  console.log(request.body);
+  console.log(request.body.mainType);
 
-  var newTricon = getRandTricon();
+
+
+  var newTricon = getRandTricon(request.body);
 
   // var triconObject = {"tricon" : newTricon}
 
@@ -92,7 +94,7 @@ function createTricon(request, response) {
   );
 
   // response.json("{tricon:"+newTricon+"}");
-  response.send({"tricon": "newTricon"});
+  response.send({"tricon": newTricon});
 
 }
 
