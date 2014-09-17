@@ -27,12 +27,12 @@ function debitBuyerCard(request, response) {
     "amount": 200, 
     "description": "Clique Gift Card Purhcase of"
   })
-  .then(function successCallback(success){
-    console.log('debitBuyerCard method success');
-  },
-  function failureCallback(failure){
-    console.log('debitBuyerCard method failure', failure);
-  });
+  // .then(function successCallback(success){
+  //   console.log('debitBuyerCard method success');
+  // },
+  // function failureCallback(failure){
+  //   console.log('debitBuyerCard method failure', failure);
+  // });
 
 }
 

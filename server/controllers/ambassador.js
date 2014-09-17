@@ -74,7 +74,7 @@ function createTricon(request, response) {
   5. 
   */
 
-  // console.log(request.body.type);
+  console.log(request.body);
 
   var newTricon = getRandTricon();
 
