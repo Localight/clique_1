@@ -325,7 +325,7 @@ div.overlay {
   background: url('../demo23_files/images/lock-animation-sprite-60.png') 630px 0 no-repeat;
   -webkit-animation: unlock 1s steps(15);
   -webkit-transition: all 1s ease-in-out;
-  z-index: -5;
+  z-index: -2;
 }
 
 /* unlock animation */
