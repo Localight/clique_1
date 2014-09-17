@@ -63,7 +63,7 @@ function createBuyer(request, response) {
 
       // date for email receipt
       var date = new Date();
-
+      console.log(request.body);
       // create/send email receipt
       mailgun.sendEmail(
         'gift-confirm@clique.cc',
@@ -77,9 +77,7 @@ function createBuyer(request, response) {
         function(err) { 
           if (err) {
             console.log(err);
-            console.log(err[0]);
-            response.status(500);
-            return response.end(err);
+            return response.status(500, 'Sorry, not today');
           } 
           response.end();
         }
