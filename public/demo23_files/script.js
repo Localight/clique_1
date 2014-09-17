@@ -658,7 +658,8 @@ AppView = Backbone.View.extend({
                 url: "/recipient",
                 data: postObj
               });
-            }
+            },
+            failure: function buyerFailure()
           });    
 
         } 
