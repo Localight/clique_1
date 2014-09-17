@@ -62,6 +62,7 @@ function sendEmail(from, to, body, callback){
     body,
     function(err) {
       if (err) {
+        console.log('this sucks');
         callback(err)
       }
       else {
