@@ -35,7 +35,8 @@ var PersonaSchema = new Schema({
     occassion: String,
     cliqueCardCode: String,
     mobileNumber: String,
-    cliqueId: String
+    cliqueId: String,
+    test: String
    }]
 });
 
@@ -102,6 +103,8 @@ var findOrCreate = function(options, callback) {
   });
 
 };
+
+PersonaSchema.set('versionKey', false);
 
 PersonaSchema.plugin(function(schema, options) {
 schema.static('findOrCreate', findOrCreate);

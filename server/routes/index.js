@@ -16,6 +16,7 @@ module.exports = function(app) {
   app.route('/')
       .get(index.render);
 
+
   // web hook for initial text to activate card
   app.post('/app/sms', twilio.initialResponseSavePersona);
 
@@ -41,17 +42,25 @@ module.exports = function(app) {
     res.render('layouts/dolys');
   });
 
+  // money spent
+  app.post('/card', cards.spendCard);
+
+  // CHRIS' BUYER PATH
+  app.get('/chris', function(req, res){
+    res.render('layouts/chris');
+  });
 
 
   ///////////////////////// API Routes ///////////////
 
-  app.get('/api/cards/:id', cards.getCardInfo);
 
   ///////////////////////// API Routes ///////////////
 
 
 
   ///////////////////////////iOS Routes/////////////////////////////
+
+  app.get('/api/cards/:id', cards.getCardInfo);
 
   app.post('/api/locationinfo', ambassador.createInfo);
 
@@ -69,12 +78,8 @@ module.exports = function(app) {
 
   app.post('/charge', balanced.charge);
 
-  // app.post('/create', balanced.createMerchantBankAccount)
-
   ///////////////////////////end BalancedPayments.js Routes/////////
 
-  // app.get('/gifts/:giftId', gifts.render);
-  // app.post('/gifts', gifts.postGift);
 
 };
 

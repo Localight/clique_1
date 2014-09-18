@@ -76,29 +76,14 @@ function createTricon(request, response) {
 
   console.log(request.body.myID);
 
-
-
   var newTricon = getRandTricon(request.body);
-
-  // var triconObject = {"tricon" : newTricon}
-
-  // request.body.tricon.tricon=newTricon;
-
 
   LocationInfo.find({_id: request.body.myID})
   .exec(function(err, data){
     if (err) console.log('cant find location info b/c: ', err);
-    else console.log('this is the data', data);
+    else console.log('this is the location info: ', data);
+    // save all the information sent over to me as well as the tricon code
   })
-
-  // LocationInfo.findByIdAndUpdate(
-  //   request.body.myID,
-  //   {$push: {tricons: request.body.tricon}},
-  //   {safe: true, upsert: true},
-  //   function(err, model){
-  //     console.log(err);
-  //   }
-  // );
 
   // response.json("{tricon:"+newTricon+"}");
   response.send({"tricon": newTricon});

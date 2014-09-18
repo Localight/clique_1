@@ -1,8 +1,3 @@
-/**
- * Gifts page controller.
- * - checks the gift ID, finds the persona and renders the landing page for giving gifts.
- */
-
 var Personas = require('../models/persona') // require personas model
 
 // render view for Buyer landing page
@@ -42,6 +37,10 @@ function renderRedemption(request, response) {
   response.render('layouts/authentication');
 }
 
+// render Chris' buyer path
+function test(request, response) {
+  response.render('layouts/buyer/index');
+}
 
 function postGift(req, res) {
 
@@ -52,5 +51,6 @@ module.exports = {
     renderRecipient: renderRecipient,
     unlock: unlock,
     renderRedemption: renderRedemption,
-    postGift: postGift
+    postGift: postGift,
+    test: test
 };

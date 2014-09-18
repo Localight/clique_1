@@ -24,7 +24,7 @@ var app = angular.module('CliqueApp', ['ngRoute'])
 
   })
 
-  .controller('RecipientCtrl', function ($scope, api, $routeParams, $location, $route, $rootScope){
+  .controller('RecipientCtrl', function ($scope, api, $location){
 
     // pull cardId(uniqueLink) from URI
     var cardId = ($location.path().substr($location.path().lastIndexOf('/')).substr(1));
@@ -46,7 +46,7 @@ var app = angular.module('CliqueApp', ['ngRoute'])
 
   })
 
-  .controller('AuthenticationCtrl', function ($scope, $location) {
+  .controller('AuthenticationCtrl', function ($scope, $location, $http) {
 
     var cardId = ($location.path().substr($location.path().lastIndexOf('/')).substr(1));
 
@@ -112,6 +112,8 @@ var app = angular.module('CliqueApp', ['ngRoute'])
 
       // if pie, wine and cupcake are clicked do the following
       if ( ($scope.icons[0].slice(4,7) === 'Wht') && ($scope.icons[3].slice(4,7) === 'Wht') && ($scope.icons[8].slice(4,7) === 'Wht') ) {
+
+        $http.post('/card', {cardId: cardId});
 
         // make sure merchant info is out of view
         $scope.show = 'noShow';
