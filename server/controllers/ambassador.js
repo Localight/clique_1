@@ -5,7 +5,7 @@ var LocationInfo = require('../models/location-info');
 // function to generate random tricons
 var getRandTricon = function (data) {
 
-  return data.mainType;
+  return '0xe901';
 
 };
 
