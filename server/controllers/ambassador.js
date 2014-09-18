@@ -85,10 +85,10 @@ function createTricon(request, response) {
   // request.body.tricon.tricon=newTricon;
 
 
-  LocationInfo.find({myID: request.body.myID})
+  LocationInfo.find({_id: request.body.myID})
   .exec(function(err, data){
     if (err) console.log('cant find location info b/c: ', err);
-    else console.log(data);
+    else console.log('this is the data', data);
   })
 
   // LocationInfo.findByIdAndUpdate(
