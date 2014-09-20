@@ -11,8 +11,6 @@ function init (acctSid, authToken) {
 
 var giftConfirmationText = function (to, from, message, callback) {
 
-  // client = twilio(acctSid, authToken);
-
   client.messages.create({
       body: message,
       to: to,
@@ -20,7 +18,6 @@ var giftConfirmationText = function (to, from, message, callback) {
   }, 
 
   function(err, twilioResponse) {
-      // process.stdout.write(twilioResponse.sid);
       callback(err, twilioResponse)
   });
 

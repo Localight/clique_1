@@ -1,0 +1,98 @@
+    <div class="container-fluid wrapperAuth">
+      <p class="col-xs-12 text-center txtUpsideDown merchInfo {{show}}" ng-class="show">Staff: Enter Tricon code to accept funds.</p>
+
+      <!-- pad -->
+      <div class="col-xs-12 pad {{padPhase}}" ng-class="padPhase">
+
+        <!-- infoButton -->
+        <div class="col-xs-2 merchantOptions info {{infoSelected}}" ng-class="infoSelected" ng-click="infoClick()"></div>
+
+        <!-- clique logo -->
+        <div class="col-xs-8 merchantOptions cliqueLogoAuth txtUpsideDown"></div>
+
+        <!-- cancel button -->
+        <div class="col-xs-2 merchantOptions cancel {{cancelSelected}}" ng-class="cancelSelected" ng-click="cancelClick()"></div>
+
+        <!-- icons -->
+        <!-- <div ng-repeat="icon in icons" ng-click="clickedCSS($index)" class="icon col-xs-4 {{clickClass}} " ng-class="{icon: 'icon', shake: 'shake'}"></div> -->
+        <!-- <span class="icon" ng-class="shake"> interpolate shake in class-->
+<!--         <audio id="dog">
+          <source src="../public/demo23_files/audio/beep.mp3" type="audio/mpeg">
+        </audio> -->
+        <span ng-class="shake">
+          <audio src="/public/audio/click.wav" type="audio/wav" id="sound">
+            <source src="/public/audio/click.wav" type="audio/wav">
+          </audio>
+            <div ng-repeat="icon in icons" ng-click="clickedCSS($index)" class="icon col-xs-4 {{clickClass}}" ng-class="icon" onclick="playSound(this)">
+            </div>
+        </span>
+        <!-- </span> -->
+
+      </div>
+
+      <!-- lock -->
+      <div class="col-xs-4 lock" ng-class="lockPhase" ng-click="change()"></div>
+
+      <!-- amount -->
+      <div class="col-xs-8 amount {{amountPhase}}" ng-class="amountPhase">
+
+        <p class="txtUpsideDown" id="merchant" ng-bind="merchantName"></p>
+
+        <div class="arrow {{arrowPhase}}" ng-class="arrowPhase"></div>
+
+        <div class="txtUpsideDown spend text-center">
+          <span class="dollarSignCents">$</span>
+          <span ng-bind="spend" style="font-size: 4.308em;"></span>
+          <span class="dollarSignCents">.00</span>
+        </div>
+
+      </div>
+
+      <!-- tilt section -->
+      <!-- tilt icon -->
+      <div class="col-xs-8 tilt {{tiltPhase}}" ng-class="tiltPhase">
+        <div class="col-xs-12">
+
+          <div class="tiltIcon"></div>
+
+        </div>
+
+        <!-- tilt message -->
+        <div class="col-xs-12 msg">
+
+          <span class="tiltMsg txtUpsideDown text-center">
+            <p > Tilt your screen to face
+            <span ng-bind="merchantName"></span>
+            staff.</p>
+          </span>
+
+        </div>
+      </div>
+
+      <!-- thank you section for Recipient -->
+      <div class="col-xs-12 thankYou {{thankYouPhase}}" ng-class="thankYouPhase">
+
+        <p class="col-xs-12 text-center tyHeader">Thank you!</p>
+
+        <p class="col-xs-12 text-center tyText">The transaction was successful :)<br/>You are using the private beta version of The Local Gift Card. Please give us feedback by emailing our team. Thanks!<span ng-bind="buyerName"></span>:</p>
+
+        <!-- thank you form for Recipient -->
+        <input type="text" class="col-xs-12 tyMessageToBuyer">
+
+        <!-- send button -->
+        <div class="col-xs-12 send">
+          <p class="col-xs-2 text-right sendButton">Send</p>
+          <div class="col-xs-1 rtArrow"></div>
+        </div>
+
+      </div>
+
+      <!-- street background -->
+<!--       <div id="localstreetAuth" style="top: 350px;">
+        <img src="../public/demo23_files/local-street-low2.png">
+      </div> -->
+
+      <!-- dark overlay -->
+      <div class="overlay"></div>
+
+    </div>

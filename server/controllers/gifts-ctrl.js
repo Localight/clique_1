@@ -9,7 +9,7 @@ function renderBuyer(request, response) {
   // find person by param then render index page
   Personas.find({uniqueLink: request.params.id})
   .exec(function(err, persona){
-    response.render('layouts/default2', {persona: persona, uniqueLink: uniqueLink});
+    response.render('layouts/chris', {persona: persona, uniqueLink: uniqueLink});
   });
 
 }

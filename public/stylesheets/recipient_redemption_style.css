@@ -1,0 +1,746 @@
+@font-face {
+    font-family: 'always_in_my_heartregular';
+    src: url('../fonts/always_in_my_heart-webfont.eot');
+    src: url('../fonts/always_in_my_heart-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/always_in_my_heart-webfont.svg#always_in_my_heartregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'profontwindowsregular';
+    src: url('../fonts/ProFontWindows-webfont.eot');
+    src: url('../fonts/ProFontWindows-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/ProFontWindows-webfont.svg#profontwindowsregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+body
+{
+  background-color: #58e6df;
+}
+
+.content
+{
+  background-position: center -900px;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  min-height: 100%;
+  width: 100%;
+}
+
+/* background */
+.wrapper #container
+{
+  position: relative;
+  z-index: 20;
+}
+
+.wrapper #localstreet
+{  
+  position: fixed;
+  z-index: -10;
+  top: -860px;
+  left: 50%;
+  margin-left: -170px;
+  -webkit-filter: blur(7px);
+  -moz-filter: blur(7px);
+  -o-filter: blur(7px);
+  -ms-filter: blur(7px);
+  filter: blur(7px);
+}
+
+
+/* header section */
+.header {
+  height: 10%;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+.headerSide {
+  height: 100%;
+  margin-top: -.5%;
+  padding: 0;
+}
+
+#bowTie {
+  height: 100%;
+  padding: 0;
+  background: url('../recipient_redemption_images/gift-bow-wht.png') no-repeat;
+  background-size: 70%;
+  background-position: center;
+}
+
+#giveText {
+  height: 100%;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.22em;
+  color: rgb(255, 255, 255);
+  padding-top: 19%;
+}
+
+.cliqueLogo {
+  height: 100%;
+  background: url('../recipient_redemption_images/wht-clique-logo.png') no-repeat;
+  background-size: 68%;
+  background-position: center;
+}
+
+/* gift card section */
+.giftSection {
+  height: 50%;
+  padding: 0;
+  position: relative;
+  top: 10%;
+  border-radius: 6px;
+  background-color: rgb(43,83,82);
+}
+
+/* personal message section */
+.personalMessage {
+  position: absolute;
+  height: 33%;
+  padding: 2% 2% 0 2%;
+  margin-top: 2%;
+}
+
+#occasionIcon {
+  height: 65%;
+  width: 21%;
+  margin-top: 1.8%;
+  left: 2%;
+  background: url('../recipient_redemption_images/wht-custom-occasion-icon.png') no-repeat;
+  background-size: 80%;
+}
+
+#buyerMessage {
+  height: 65%;
+  width: 78%;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  color: white;
+  overflow: scroll;
+}
+
+#buyerName {
+  height: 35%;
+  padding: 0 5%;
+  font-family: 'always_in_my_heartregular';
+  font-size: 1.7em;
+  color: rgb(255, 255, 255);
+}
+
+/* gift card section */
+.giftCardSection {
+  top: 33%;
+  height: 67%;
+  padding: 2%;
+  position: absolute; 
+}
+
+#giftCardImage {
+  height: 95%;
+  margin-top: 2.5%;
+  padding: 1.2% 3%;
+  border-radius: 7px;
+  background: -webkit-linear-gradient(rgba(255,255,255,0), rgba(0,0,0,.6)), url('../recipient_redemption_images/dolys-delectables-crop.jpg') no-repeat;
+  background-size: 100%;
+}
+
+#giftCardAmount {
+  height: 40%;
+  padding: 0;
+  left: -5%;
+  background: url('../recipient_redemption_images/gift-value-2.png') no-repeat;
+  background-size: 100;
+  vertical-align: top;
+}
+
+#giftCardMessage {
+  height: 12%;
+  padding: 0;
+  margin-top: 29%;
+  font-family: 'Lato', sans-serif;
+  color: rgb(255, 255, 255);
+  font-size: .96em;
+  font-weight: bold;
+}
+
+/* amount to spend at merchant info section*/
+.merchantInfo {
+  margin-top: 4%;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+#useAmount {
+  margin: 0;
+}
+
+#merchantName {
+  margin: 0;
+  margin-top: -2%;
+  font-size: 1.65em;
+}
+
+/* use it now or later section */
+.useItSection {
+  height: 10%;
+  padding: 0;
+  margin-top: 3%;
+}
+
+.useNowLater {
+  height: 100%;
+  padding: 0;
+  width: 49%;
+  border-radius: 8px;
+  background-color: rgb(255, 255, 255);
+  padding-top: 4.5%;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.33em;
+  font-weight: 300;
+}
+
+#useNow {
+  /*color: #58e6df;*/
+  color: #008B8B;
+}
+
+#useLater {
+  color: #B22222;
+}
+
+/* nearby merchant section */
+.nearbyMerchant {
+  height: 10%;
+  padding: 0;
+  margin-top: 10%;
+  border: 1px solid red;
+  font-family: 'Lato', sans-serif;
+  font-size: .9em;
+  color: rgb(0, 0, 0);
+}
+
+/* ALPHA STYLING */
+.useNowLaterALPHA {
+  height: 100%;
+  padding: 0;
+  /*width: 49%;*/
+  border-radius: 8px;
+  background-color: rgb(255, 255, 255);
+  padding-top: 4.5%;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.33em;
+  font-weight: 300;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* authentication view */
+
+/* upside down text */
+.wrapperAuth {
+  padding-left:17%;
+}
+
+.txtUpsideDown 
+{
+  filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=2);  /* IE6,IE7 */
+  ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)"; /* IE8 */
+  -moz-transform: rotate(-180deg);  /* FF3.5+ */
+  -o-transform: rotate(-180deg);  /* Opera 10.5 */
+  -webkit-transform: rotate(-180deg);  /* Safari 3.1+, Chrome */
+  position: relative; 
+}
+
+/* street background */
+.wrapper #localstreetAuth
+{
+  position: fixed;
+  z-index: -10;
+  top: -860px;
+  left: 50%;
+  margin-left: -170px;
+  -webkit-filter: blur(7px);
+  -moz-filter: blur(7px);
+  -o-filter: blur(7px);
+  -ms-filter: blur(7px);
+  filter: blur(7px);
+}
+
+.wrapper #localstreet
+{  
+}
+
+/* dark background overlay */
+div.overlay {
+    opacity: .5;
+    background-color: black;
+    position: fixed;
+    left: 0; top: 0; height: 105%; width: 100%;
+    top: -5%;
+    z-index: -1;
+}
+
+
+/* lock fades out*/
+.lock {
+  height: 15%;
+  width: 60px;
+  left: 41%;
+  background-color: black;
+  position: fixed;
+}
+
+.locked {
+  opacity: 1;
+  top: 5%;
+  background: url('../images/lock-animation-sprite-60.png') 0 0 no-repeat;
+}
+
+.unlock {
+  opacity: 0;
+  top: 45%;
+  background: url('../images/lock-animation-sprite-60.png') 630px 0 no-repeat;
+  -webkit-animation: unlock 1s steps(15);
+  -webkit-transition: all 1s ease-in-out;
+  z-index: -2;
+}
+
+/* unlock animation */
+@-webkit-keyframes unlock {  
+    0% {background-position: 0 0;}
+    100% {background-position: -900px 0; } 
+}
+
+
+/* amount slides down */
+.amount {
+  height: 18%;
+  position: fixed;
+}
+
+.amountStart {
+  top: 20%;
+  color: rgb(65, 186, 181);
+}
+
+.amountEnd {
+  top: 62%;
+  color: white;
+  -webkit-transition: all 1s ease-in-out;
+}
+
+.amountFinish {
+  top: 5%;
+  color: rgb(65, 186, 181);
+  -webkit-transition: all 1s ease-in-out;
+}
+
+.arrowCorrectCode {
+  background: url('../images/up-arrow-aqua.png') 0 0 no-repeat;
+  background-size: contain;
+  -webkit-transition: all 1s ease-in-out;
+}
+/*.amountCorrectCode {
+  top: 5%;
+  color: rgb(65, 186, 181);
+  -webkit-transition: all 1s ease-in-out;
+}*/
+
+/* merchant font */
+#merchant {
+  /*color: rgb(65, 186, 181);*/
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 1.6em;
+  bottom: -10%;
+}
+
+/* arrow */
+.arrow {
+  width: 24.1666666666%;
+  height: 1.444em;
+  margin: 0 auto;
+  background-position: center center;
+}
+
+/* arrow changes from teal to white */
+.arrowStart {
+  background: url('../images/up-arrow-aqua.png') 0 0 no-repeat;
+  background-size: contain;
+  -webkit-transition: all 1s ease-in-out;
+}
+
+.arrowWht {
+  background: url('../images/up-arrow-wht.png') 0 0 no-repeat;
+  background-size: contain;
+  -webkit-transition: all 1s ease-in-out;
+}
+
+/* patron dollar spend amount */
+.spend {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  margin-top: -4%;
+}
+
+/* dollar sign and cents surrounding patron spend amount*/
+.dollarSignCents {
+  position: relative;
+  top: -1em;
+  font-size: 1.6em;
+}
+
+
+/* tilt slides down off view*/
+.tilt {
+  height: 15%;
+  position: fixed;
+}
+
+.tiltStart {
+  top: 67%
+}
+
+.tiltEnd {
+  top: 100%;
+  -webkit-transition: all 1s ease-in-out;
+}
+
+/* tilt icon */
+.tiltIcon {
+  height: 80%;
+  background: url('../images/tilt-anim-5times@2x.gif') 50% no-repeat;
+  background-size: contain;
+  margin-bottom: 7%;
+}
+
+/* tilt message */
+.msg {
+  padding: 0;
+}
+
+.tiltMsg {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  color: rgb(255, 255, 255);
+  font-size: 1.22em;
+}
+
+
+
+/* pad fades into view */
+.pad {
+  margin-top: 8%;
+  height: 50%;
+  position: fixed;
+  left: 0;
+  padding: 0;
+}
+
+.padStart {
+  opacity: 0;
+}
+
+.padEnd {
+  opacity: 1;
+  -webkit-transition: all 3s ease-in-out;
+}
+
+/* clique logo and info/cancel buttons */
+.merchantOptions {
+  height: 16%;
+}
+
+.info {
+  background: url('../images/info-btn-aqua.png') no-repeat;
+  background-size: 62%;
+  background-position: center; 
+  left: 9%;
+  padding: 0; 
+}
+
+.info.infoSelected {
+  background: url('../images/info-btn-fill-aqua.png') no-repeat;
+  background-size: 62%;
+  background-position: center;
+}
+
+/* merchant info animation */
+.merchInfo {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  color: rgb(255, 255, 255);
+  position: fixed;
+  left: -.1%;
+  top: 2%;
+}
+
+.merchInfo.noShow {
+  opacity: 0;
+}
+
+.merchInfo.show {
+  opacity: 1;
+  -webkit-transition: all .3s ease-in-out;
+}
+
+.cliqueLogoAuth {
+  background: url('../images/clique-logo.png') no-repeat;
+  background-size: 50%;
+  background-position: center;
+}
+
+.cancel {
+  background: url('../images/cancel-btn-orange.png') no-repeat;
+  background-size: 62%;
+  background-position: center;
+  left: -9%; 
+}
+
+.cancel.cancelSelected {
+  background: url('../images/cancel-btn-fill-orange.png') no-repeat;
+  background-size: 62%;
+  background-position: center;
+}
+
+/* icons */
+.icon0 {
+  background: url('../images/tricon-pie-slice.png') no-repeat;
+  right: -5%;
+}
+
+.iconWht0 {
+  background: url('../images/tricon-pie-slice-wht.png') no-repeat;
+  right: -5%;
+}
+
+.icon1 {
+  background: url('../images/tricon-sundae.png') no-repeat;
+}
+
+.iconWht1 {
+  background: url('../images/tricon-sundae-wht.png') no-repeat;
+}
+
+.icon2 {
+  background: url('../images/tricon-coffee.png') no-repeat;
+  left: -5%;
+}
+
+.iconWht2 {
+  background: url('../images/tricon-coffee-wht.png') no-repeat;
+  left: -5%;
+}
+
+.icon3 {
+  background: url('../images/tricon-wine.png') no-repeat;
+  right: -5%;
+}
+
+.iconWht3 {
+  background: url('../images/tricon-wine-wht.png') no-repeat;
+  right: -5%;
+}
+
+.icon4 {
+  background: url('../images/tricon-soup.png') no-repeat;
+}
+
+.iconWht4 {
+  background: url('../images/tricon-soup-wht.png') no-repeat;
+}
+
+.icon5 {
+  background: url('../images/tricon-dinner.png') no-repeat;
+  left: -5%;
+}
+
+.iconWht5 {
+  background: url('../images/tricon-dinner-wht.png') no-repeat;
+  left: -5%;
+}
+
+.icon6 {
+  background: url('../images/tricon-shrimp.png') no-repeat;
+  right: -5%;
+}
+
+.iconWht6 {
+  background: url('../images/tricon-shrimp-wht.png') no-repeat;
+  right: -5%;
+}
+
+.icon7 {
+  background: url('../images/tricon-sandwich.png') no-repeat;
+}
+
+.iconWht7 {
+  background: url('../images/tricon-sandwich-wht.png') no-repeat;
+}
+
+.icon8 {
+  background: url('../images/tricon-cupcake.png') no-repeat;
+  left: -5%;
+}
+
+.iconWht8 {
+  background: url('../images/tricon-cupcake-wht.png') no-repeat;
+  left: -5%;
+}
+
+/* tricon code error out shake animation */
+/*@-webkit-keyframes shake { 
+  0%, 100% {-webkit-transform: translateX(0);} 
+  10%, 30%, 50%, 70%, 90% {-webkit-transform: translateX(-10px);} 
+  20%, 40%, 60%, 80% {-webkit-transform: translateX(10px);} 
+} 
+@keyframes shake { 
+  0%, 100% {transform: translateX(0);} 
+  10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);} 
+  20%, 40%, 60%, 80% {transform: translateX(10px);} 
+} 
+
+.shake { 
+  -webkit-animation-name: shake; 
+  animation-name: shake; 
+}*/
+
+.shake > .icon { 
+    -webkit-animation-duration: .4s; 
+    animation-duration: .4s; 
+    -webkit-animation-fill-mode: both; 
+    animation-fill-mode: both; 
+    -webkit-animation-name: shake; 
+    animation-name: shake; 
+} 
+
+@-webkit-keyframes shake { 
+    0%, 100% {-webkit-transform: translateX(0);} 
+    10%, 30%, 50%, 70%, 90% {-webkit-transform: translateX(-5px);} 
+    20%, 40%, 60%, 80% {-webkit-transform: translateX(5px);} 
+} 
+@keyframes shake { 
+    0%, 100% {transform: translateX(0);} 
+    10%, 30%, 50%, 70%, 90% {transform: translateX(-5px);} 
+    20%, 40%, 60%, 80% {transform: translateX(5px);} 
+} 
+
+.icon {
+  height: 33%;
+  background-size: 73%;
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-animation-duration: .5s; 
+  animation-duration: .5s; 
+  -webkit-animation-fill-mode: both; 
+  animation-fill-mode: both; 
+  animation-iteration-count: .5s; 
+  -webkit-animation-iteration-count: .5s;
+}
+
+.thankYou {
+  height: 48%; 
+  left: 0;
+  position: fixed;
+}
+
+.thankYou.thankYouStart {
+  top: 100%;
+}
+
+.thankYou.thankYouEnd {
+  top: 38%;
+  -webkit-transition: all 1s ease-in-out;
+}
+
+.tyHeader {
+  color: rgb(255, 255, 255);
+  font-size: 2.6em;
+  margin: 0;
+  font-family: 'always_in_my_heartregular';
+}
+
+.tyText {
+  color: rgb(255, 255, 255);
+  /*font-size: 2em;*/
+  font-family: 'Lato', sans-serif;
+}
+
+.tyMessageToBuyer {
+  border: 1px;
+  border-radius: 7px;
+  padding: 0 0 34%;
+}
+
+.send {
+    top: 6%;
+}
+
+.sendButton {
+  height: 15%;
+  padding: 0;
+  left: 81%;
+  color: rgb(65, 186, 181);
+  font-size: 1.5em;
+  font-family: 'Lato', sans-serif;
+}
+
+
+.rtArrow {
+  height: 6.5%;
+  left: 83%;
+  background: url('../images/rt-blu-arrow.png') no-repeat;
+  background-size: contain;
+  margin-top: 3%;
+}
+
+
+
+/* ALPHA styling */
+.feedbackButton {
+  height: 15%;
+  padding: 0;
+  left: 59%;
+  color: rgb(65, 186, 181);
+  font-size: 1.5em;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+}
+
+.alphaRtArrow {
+  height: 6.5%;
+  left: 76%;
+  background: url('../images/rt-blu-arrow.png') no-repeat;
+  background-size: contain;
+  margin-top: 3%;  
+}
+
+
+
+
+
+
+

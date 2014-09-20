@@ -17,7 +17,7 @@ module.exports = function(app) {
       .get(index.render);
 
 
-  // web hook for initial text to activate card
+  // web hook for initial sms to activate card
   app.post('/app/sms', twilio.initialResponseSavePersona);
 
   // link from sms message that buyer follows
