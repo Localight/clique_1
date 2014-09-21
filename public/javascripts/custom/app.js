@@ -61,7 +61,7 @@
     };
   });
   
-  cliqueApp.controller('BuyerController', function($scope, $http){
+  cliqueApp.controller('BuyerController', function($scope, $http, $location){
     // NOTE: only Javascript objects declared here will be accessible by child controllers
     // Primitive variable types will NOT be accessible by child controllers
     
@@ -83,6 +83,15 @@
       UniqueLink: ''
     };
     
+    // pull cardId(uniqueLink) from URI
+    // var path = ($location.path().substr($location.path().lastIndexOf('d/')).substr(2));
+    var path = ((document.URL).substr((document.URL).lastIndexOf('d/')).substr(2));
+    var cardId = path.substr(0, path.indexOf('#'));
+    console.log(cardId);
+
+    // this object will be used to create Buyer and Recipient
+    var postObj = $scope.formData;
+
     // allocate validation variables
     $scope.pagesValid = {
       main: false,
@@ -91,6 +100,12 @@
     
     // function to process the form
     $scope.processForm = function() {
+      console.log('in processForm');
+      console.log(document.URL);
+      console.log(path);
+      console.log(cardId);
+      console.log('end processForm');
+
       // do some AJAX call to server only if both the main and review pages are valid
       if ($scope.pagesValid.main && $scope.pagesValid.review) {
         // disable the Submit Button on the review page to prevent processing
@@ -104,16 +119,19 @@
 
       // balanced.js callback to create card
       function handleResponse(response) {
-
+        console.log('in handleResponse');
         // if card is validated
         if (response.status_code === 201) {
           
           // get BP credit card href for buyer and store postObj
           var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
-          console.log(fundingInstrument);
-          // postObj.fundingInstrument = fundingInstrument;
+          console.log(postObj);
+          postObj.fundingInstrument = fundingInstrument;
+          postObj.uniqueLink = cardId;
+          console.log('after fundingInstrument and uniqueLink added');
+          console.log(postObj)
 
-          // $http.post('/buyer',)
+          $http.post('/buyer', postObj);
           
           // create Buyer and Recipient Personas and Cards
           // $.ajax({
@@ -176,7 +194,6 @@
         // $http.post('/buyer', data);
         
         // make AJAX Call
-        alert($scope.formData.To);
       }
     };
   });

@@ -7,10 +7,10 @@ var mailgun = require('../services/mailgun-service'); // require mailgun service
 var uuid = require('node-uuid');
 
 function createBuyer(request, response) {
-
+  console.log(request.body);
   // find Buyer with unqiueLink
   Persona.findOne(
-    {'cliqueCards.uniqueLink': request.body.UniqueLink}
+    {'cliqueCards.uniqueLink': request.body.uniqueLink}
   )
   .exec(function(err, persona) {
     if (err) {
@@ -27,7 +27,7 @@ function createBuyer(request, response) {
 
     // loop through Buyer's cliqueCards to find correct card to manipulate data
     for (var i=0; i<persona.cliqueCards.length; i++){
-      if (persona.cliqueCards[i].uniqueLink == request.body.UniqueLink) {
+      if (persona.cliqueCards[i].uniqueLink == request.body.uniqueLink) {
 
         // save card href created by BP for user
         persona.basicProfile.bpCardId = request.body.fundingInstrument.href;
@@ -73,12 +73,13 @@ function createBuyer(request, response) {
           '\nContent-Type: text/html; charset=utf-8' +
           '\nSubject: Your Clique Card has been sent!' +
           // '\n\nYou have just sent '+ request.body.To +' a $'+ request.body.Amount +' Clique Gift Card.',
-          '\n\n'+ request.body.From +', your gift of $'+ request.body.Amount +' is on it&#39;s way to '+ request.body.To +'! With the CLIQUE Local Gift Card you can apply your gift toward purchases at numerous locally-owned merchants in the Long Beach area, including Doly&#39;s Delectables at 245 E Broadway, Long Beach, CA.<br><br>'+' CLIQUE stands for...'+'Cooperative of Local Independent Quality Urban Establishments<br>'+'<em>Yes, that&#39;s a mouthful :-)</em><br><br>'+' CLIQUE is a Localism Project.'+' Did you know three times more money stays in our local economy when we buy from local businesses instead of big chains? That translates to more local jobs, and more of the unique shops, eateries and other businesses that give our city it&#39;s character. Make a difference with your dollars and support independent merchants.<br><br>'+' ~ The Localism Team<br><br>'+' Visit Localism.co to see what we&#39;re all about!<br><br>'+'________________________________<br><br>'+'GIFT RECEIPT '+ date +'<br><br>Amount: $'+ request.body.Amount +' Sent to '+ request.body.To +' at '+ request.body.PhoneNumber +'<br><br>Transaction ID: '+ request.body.UniqueLink + '<br><br>________________________________<br><br>'+'235 E Broadway '+'Eighth Floor '+'Long Beach, CA 90802 '+'<br><br>© 2014 Localism Inc. All rights reserved. '+'<br><br>Questions? Call is at (877) 752-1550 or email hello@localism.co',
+          '\n\n'+ request.body.From +', your gift of $'+ request.body.Amount +' is on it&#39;s way to '+ request.body.To +'! With the CLIQUE Local Gift Card you can apply your gift toward purchases at numerous locally-owned merchants in the Long Beach area, including Doly&#39;s Delectables at 245 E Broadway, Long Beach, CA.<br><br>'+' CLIQUE stands for...'+'Cooperative of Local Independent Quality Urban Establishments<br>'+'<em>Yes, that&#39;s a mouthful :-)</em><br><br>'+' CLIQUE is a Localism Project.'+' Did you know three times more money stays in our local economy when we buy from local businesses instead of big chains? That translates to more local jobs, and more of the unique shops, eateries and other businesses that give our city it&#39;s character. Make a difference with your dollars and support independent merchants.<br><br>'+' ~ The Localism Team<br><br>'+' Visit Localism.co to see what we&#39;re all about!<br><br>'+'________________________________<br><br>'+'GIFT RECEIPT '+ date +'<br><br>Amount: $'+ request.body.Amount +' Sent to '+ request.body.To +' at '+ request.body.PhoneNumber +'<br><br>Transaction ID: '+ request.body.uniqueLink + '<br><br>________________________________<br><br>'+'235 E Broadway '+'Eighth Floor '+'Long Beach, CA 90802 '+'<br><br>© 2014 Localism Inc. All rights reserved. '+'<br><br>Questions? Call is at (877) 752-1550 or email hello@localism.co',
         function(err) { 
           if (err) {
             console.log(err);
             return response.end(500, err);
           } 
+          console.log('email w/receipt sent to Buyer')
           response.end();
         }
       );
@@ -96,7 +97,7 @@ function createRecipient(request, response){
   var from = '15622836856'; // twilio account number
 
   // pass along unique id
-  var uniqueLink = request.body.UniqueLink;
+  var uniqueLink = request.body.uniqueLink;
 
   // create Recipient's profile
   var persona = new Persona({
