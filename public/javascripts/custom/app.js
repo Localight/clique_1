@@ -112,6 +112,8 @@
           var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
           console.log(fundingInstrument);
           // postObj.fundingInstrument = fundingInstrument;
+
+          // $http.post('/buyer',)
           
           // create Buyer and Recipient Personas and Cards
           // $.ajax({

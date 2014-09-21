@@ -1,7 +1,7 @@
 'use strict';
 
 // require necessary controllers
-var twilio = require('../controllers/twilio');
+var twilio = require('../controllers/twilio-ctrl');
 var gifts = require('../controllers/gifts-ctrl');
 var ambassador = require('../controllers/ambassador');
 var person = require('../controllers/persona-ctrl');

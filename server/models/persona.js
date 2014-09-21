@@ -61,8 +61,8 @@ PersonaSchema.methods.generateUniqueLink = function(options, urlpath, callback) 
   if(err) {
     console.log('Unable to save new inactiveCard in generateUniqueLink: ', err);
   }
-    // pass back URI w/uniqueLink/id for Buyer to follow
-    callback(err, 'http://42cf80bc.ngrok.com/' + urlpath + uniqueLink);
+    // pass back URI w/uniqueLink(id) for Buyer to follow
+    callback(err, 'http://2dd3ac00.ngrok.com/' + urlpath + uniqueLink);
   });
 
 };
@@ -84,7 +84,6 @@ var findOrCreate = function(options, callback) {
     }
     // if persona is found return persona data to be used in generateUniqueLink
     if (persona) {
-      console.log(persona.basicProfile.contact.mobileNumber);
       console.log('persona already exists');
       return callback(null, persona);
     }

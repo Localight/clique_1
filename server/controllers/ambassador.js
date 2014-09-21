@@ -2,12 +2,46 @@
 
 var LocationInfo = require('../models/location-info');
 
+// created for use in getRandTricon()
+var merchantType = [],
+    icons = [1,2,3]
+    merchantType = ["eatery", "service", "wellness", "venue", "market", "shop", "hospitality", "vendor", "attraction"]; 
+
 // function to generate random tricons
-var getRandTricon = function (data) {
+// var getRandTricon = function (data) {
 
-  return ['e101', 'e104', 'e107'];
+//   var tricon = [];
 
-};
+//   // loop through merchantType to find proper hundredths place value
+//   for (var i=0; i<merchantType.length; i++) {
+//     if (mongo search merchant type results === merchantType[i]) {
+//       var hundredths = i + 1;
+//     }
+//   }
+
+//   // loop through to get an array of ones digits for tricon
+//   // tricon will look like ['e101', 'e104', 'e107']
+//   for (var i=0; i<icons.length; i++) { 
+//     tricon.push(Math.floor((Math.random() * 10) + 1));
+//   }
+
+//   if (tricon != mongo search existing tricon results) {
+//     break;
+//   }
+//   else {
+//     getRandTricon();
+//   }
+
+//   // return tricon code for merchant
+//   if (tricon.length === 3) {
+//     for (var i=0; i<tricon.length; i++) {
+//       tricon[i] = 'e' + hundredths + '0' + tricon[i];
+//     }
+//   }
+
+//   return tricon;
+
+// };
 
 
 function createInfo(request, response) {
