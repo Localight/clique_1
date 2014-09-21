@@ -82,7 +82,7 @@
       Icon: '',
       UniqueLink: ''
     };
-    console.log($scope.formData);
+    
     // allocate validation variables
     $scope.pagesValid = {
       main: false,
@@ -97,8 +97,80 @@
         // the form twice in case the user double-clicks on the Submit Button
         $scope.pagesValid.review = false;
 
+        console.log($scope.formData);
+
+
+
+
+      // balanced.js callback to create card
+      function handleResponse(response) {
+
+        // if card is validated
+        if (response.status_code === 201) {
+          
+          // get BP credit card href for buyer and store postObj
+          var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
+          console.log(fundingInstrument);
+          // postObj.fundingInstrument = fundingInstrument;
+          
+          // create Buyer and Recipient Personas and Cards
+          // $.ajax({
+          //   type: "POST",
+          //   url: "/buyer",
+          //   data: postObj,
+          //   success: function() {
+          //     $.ajax({
+          //       type: "POST",
+          //       url: "/recipient",
+          //       data: postObj
+          //     });
+          //   }
+          // });
+        }
+        else {
+          console.log(' handleResponse failed');
+          // change UI based off failed verification
+          // this logic may be placed in the ajax call of /bp-create
+        }
+      }
+
+      // configure month and year to BP parameter standards
+      if ($scope.formData.Expiry.length === 7) {
+        var year = '20' + $scope.formData.Expiry.substring(5,7);
+      }
+      else {
+        var year = $scope.formData.Expiry.substr(5,9);
+      }
+      var month = $scope.formData.Expiry.substr(0,2);
+
+      // data object BP needs to validate/create card
+      var payload = {
+        name: $scope.formData.From,
+        number: $scope.formData.CreditCardNumber,
+        // number: $scope.formData.CreditCardNumber,
+        expiration_month: month,
+        expiration_year: year,
+        cvv: $scope.formData.CVV,
+        address: {
+          postal_code: $scope.formData.ZIPcode
+        }
+      };
+
+      console.log(payload);
+
+      // Create credit card
+      balanced.card.create(payload, handleResponse);
+
+
+
+
+
+
+
+
+
+
         // test to post
-        // var data = {establishmentName: 'CHRIS BUYER PATH TEST POST'};
         // $http.post('/buyer', data);
         
         // make AJAX Call
@@ -387,7 +459,7 @@
           $scope.checkValid(field,'')
         }
         // console.log(field + ': ' + newVal + ' - dirty=' + $scope.dirty[field] + ', valid=' + $scope.valid[field]);
-        console.log($scope.formData);
+        // console.log($scope.formData);
         // check if all field on the main page are valid
         $scope.pagesValid.main = true;
         for(i=0; i<fieldOrder.length; i++) {
@@ -538,7 +610,7 @@
         else { // if newVal is null or undefined, then it is invalid
           $scope.valid[field] = false;
         }
-        console.log(field + ': ' + newVal + ' - dirty=' + $scope.dirty[field] + ', valid=' + $scope.valid[field]);
+        // console.log(field + ': ' + newVal + ' - dirty=' + $scope.dirty[field] + ', valid=' + $scope.valid[field]);
         
         // check if all fields on the review page are valid
         $scope.pagesValid.review = true;
@@ -549,8 +621,8 @@
             break; // no need to check remaining fields once any field is not valid
           }
         };
-        console.log('pagesValid.main = ' + $scope.pagesValid.main);
-        console.log('pagesValid.review = ' + $scope.pagesValid.review);
+        // console.log('pagesValid.main = ' + $scope.pagesValid.main);
+        // console.log('pagesValid.review = ' + $scope.pagesValid.review);
         
         // if pagesValid.review has ever been true, the SubmitButton Button will be visible
         if ($scope.pagesValid.review)
