@@ -154,7 +154,7 @@
     };
   });
   
-  cliqueApp.controller('MainController', function($scope, TextService, OccasionService){
+  cliqueApp.controller('MainController', function ($scope, TextService, OccasionService, api){
     // on document load, give focus to "To" and make it the current input
     $( document ).ready(function() {
       $('#clique_input_to').focus().parent().addClass('currentInput');
@@ -230,8 +230,15 @@
     };
     
     $scope.getStoreName = function() {
-      $scope.storeName = 'Doly\'s Delectables'; // USING A PLACEHOLDER FOR NOW
+      // $scope.storeName = 'Doly\'s Delectables'; // USING A PLACEHOLDER FOR NOW
+      // api.getStoreName($scope.formData.Code)
+      // .then(function(data){
+        // $scope.storeName = 'Doly\'s Delectables';
+        console.log(api.getStoreName);
+        $scope.storeName = api.getStoreName;
+      // })
     };
+
     
     $('#clique_code_message').on('click', function(){
       $('#flip_container, #clique_code').show();
@@ -623,6 +630,23 @@
   cliqueApp.controller('FinalController', function(){
     // begin fade in transition 100ms after page loads
     window.setTimeout(function(){$('#finalOverlay').addClass('complete')}, 100);
+  });
+
+  cliqueApp.service('api', function($http) {
+    return {
+      // use card code to find merchant info
+      // getStoreName: function(cardCode) {
+      getStoreName: 'Doly\'s Delectables'
+        // var url = merchantInfo;
+        // // query url for data
+        // var promise = $http.get(url)
+        // .then(function(response){
+        //   return response.data;
+        // });
+        // return promise;
+        // return 'Doly\'s Delectables';
+      }
+    // }
   });
   
   cliqueApp.factory('TextService', function(){

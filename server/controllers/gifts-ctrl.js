@@ -27,30 +27,13 @@ function renderRecipient(request, response) {
   })  
 }
 
-// unlock to Redemption page
-function unlock(request, response) {
-  response.render('layouts/unlock');
-}
-
 // render view for Redemption landing page
 function renderRedemption(request, response) {
-  response.render('layouts/authentication');
-}
-
-// render Chris' buyer path
-function test(request, response) {
-  response.render('layouts/buyer/index');
-}
-
-function postGift(req, res) {
-
+  response.render('layouts/recipient_redemption_index');
 }
 
 module.exports = {
     renderBuyer: renderBuyer,
     renderRecipient: renderRecipient,
-    unlock: unlock,
     renderRedemption: renderRedemption,
-    postGift: postGift,
-    test: test
 };

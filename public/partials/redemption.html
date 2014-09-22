@@ -77,11 +77,11 @@
         <p class="col-xs-12 text-center tyText">The transaction was successful :)<br/>You are using the private beta version of The Local Gift Card. Please give us feedback by emailing our team. Thanks!<span ng-bind="buyerName"></span>:</p>
 
         <!-- thank you form for Recipient -->
-        <input type="text" class="col-xs-12 tyMessageToBuyer">
+        <input type="text" class="col-xs-12 tyMessageToBuyer" ng-model="recipient.message">
 
         <!-- send button -->
         <div class="col-xs-12 send">
-          <p class="col-xs-2 text-right sendButton">Send</p>
+          <p class="col-xs-2 text-right sendButton" ng-click="sendRecipientMessage()">Send</p>
           <div class="col-xs-1 rtArrow"></div>
         </div>
 

@@ -17,7 +17,7 @@ function getCardInfo(request, response) {
 
 }
 
-// find card by id and add status of spent
+// find card by id and add change status from activated to spent
 function spendCard(request, response) {
 
   Card.find({
@@ -34,13 +34,23 @@ function spendCard(request, response) {
     };
   });
 
-  // Card.update(
-  // {'cliqueCards.uniqueLink' : request.body.cardId},
-  // {$set: {'cliqueCards.status': 'spent'}}
-  // );
+}
+
+function getBuyerNumber(request,response) {
+
+  // query URI for filter
+  var filter = request.params.id;
+
+  Card.find(
+    {'cliqueCards.uniqueLink': filter}, {'basicProfile.contact.mobileNumber': 1, 'basicProfile.firstName': 1, _id: 0}
+  )
+  .exec(function(err, data){
+      response.json(data[0]);
+  });
 }
 
 module.exports = {
   getCardInfo: getCardInfo, 
-  spendCard: spendCard
+  spendCard: spendCard,
+  getBuyerNumber: getBuyerNumber
 }

@@ -32,27 +32,24 @@ module.exports = function(app) {
   // recipient view
   app.get('/recipient-gift-card/:id', gifts.renderRecipient);
 
-  // unlock to redemption view
-  app.get('/unlock', gifts.unlock);
-
   // redemption view
-  app.get('/redemption', gifts.renderRedemption);
-
-  app.get('/recipient-gift-card', function(req, res) {
-    res.render('layouts/dolys');
-  });
+  app.get('/redemption/:id', gifts.renderRedemption);
 
   // money spent
   app.post('/card', cards.spendCard);
 
-  // CHRIS' BUYER PATH
-  app.get('/chris', function(req, res){
-    res.render('layouts/chris');
-  });
+  // send Thank You message to Buyer from Recipient
+  app.post('/sendThankYou', cards.spendCard);
+
 
 
   ///////////////////////// API Routes ///////////////
 
+  // get Buyer name and message
+  app.get('/api/cards/:id', cards.getCardInfo);
+
+  // get Buyer phone number
+  app.get('/api/buyernumber/:id', cards.getBuyerNumber);
 
   ///////////////////////// API Routes ///////////////
 
@@ -60,7 +57,6 @@ module.exports = function(app) {
 
   ///////////////////////////iOS Routes/////////////////////////////
 
-  app.get('/api/cards/:id', cards.getCardInfo);
 
   app.post('/api/locationinfo', ambassador.createInfo);
 

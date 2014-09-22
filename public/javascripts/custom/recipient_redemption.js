@@ -46,9 +46,17 @@ var app = angular.module('CliqueApp', ['ngRoute'])
 
   })
 
-  .controller('AuthenticationCtrl', function ($scope, $location, $http) {
+  .controller('AuthenticationCtrl', function ($scope, $location, $http, api) {
 
     var cardId = ($location.path().substr($location.path().lastIndexOf('/')).substr(1));
+
+
+    api.getBuyerNumber(cardId)
+    .then(function(data){
+      $scope.buyerName = data.bName;
+      console.log(data.bName);
+      console.log(data.bNumber);
+    });
 
     // default classes
     $scope.lockPhase = 'locked';
@@ -71,9 +79,6 @@ var app = angular.module('CliqueApp', ['ngRoute'])
 
     // merchant name
     $scope.merchantName = "DoLy's Delectables";
-
-    // buyer name
-    $scope.buyerName = "Jerry";
 
     // spend amount
     $scope.spend = '2';
@@ -156,9 +161,16 @@ var app = angular.module('CliqueApp', ['ngRoute'])
       $location.path('/recipient-gift-card/' + cardId);
     };
 
+    $scope.sendRecipientMessage = function () {
+      console.log($scope.recipient.message);
+      api.test;
+    };
+
+
+
   })
 
-  .service('api', function($http) {
+  .service('api', function($http, $q) {
 
     return {
       getCards: function(cardId){
@@ -173,6 +185,26 @@ var app = angular.module('CliqueApp', ['ngRoute'])
           return response.data;
         });
         return promise;
+      },
+      getBuyerNumber: function(cardId){
+        var deferred = $q.defer();
+        // url to be queried
+        var url = '/api/buyernumber/';
+        if (cardId) {
+          url += cardId;
+        }
+        // query url for data
+        var promise = $http.get(url)
+        .success(function(data){
+          deferred.resolve({
+            bName: data.basicProfile.firstName,
+            bNumber: data.basicProfile.contact.mobileNumber
+          });
+        });
+        return deferred.promise;
+      },
+      sendThankYou: function(message) {
+        $http.post('/sendThankYou', message);
       }
     };
 
