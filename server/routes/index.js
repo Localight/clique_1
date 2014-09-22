@@ -74,9 +74,9 @@ module.exports = function(app) {
 
   ///////////////////////////BalancedPayments.js Routes/////////////
 
-  app.get('/new-merchant', balanced.registerMerchant);
-
-  app.post('/charge', balanced.charge);
+  app.get('/new-merchant', function(req, res){
+    res.render('layouts/merchant-registration');
+  });
 
   ///////////////////////////end BalancedPayments.js Routes/////////
 

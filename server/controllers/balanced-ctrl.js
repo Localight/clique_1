@@ -1,8 +1,6 @@
 // require balanced payment module
 balanced = require('balanced-official');
 
-// var Merchant = require('../models/merchant') // require personas model
-
 function registerMerchant(request, response) {
   response.render('layouts/merchant-registration');
 }
@@ -28,29 +26,10 @@ function debitBuyerCard(request, response) {
     "amount": request.amount * 100, 
     "description": "Clique Gift Card Purhcase of"
   })
-  // .then(function successCallback(success){
-  //   console.log('debitBuyerCard method success');
-  // },
-  // function failureCallback(failure){
-  //   console.log('debitBuyerCard method failure', failure);
-  // });
-
-}
-
-function charge(request, response) {
-  console.log('in charge');
-
-  balanced.get('/bank_accounts/MP49D7DEEhJAukYqr8dLNdKM')
-  .credit({
-    "amount": 200,
-    "appears_on_statement_as": "CliquePayment"
-  });
-  response.end();
 
 }
 
 module.exports = {
   registerMerchant: registerMerchant,
   debitBuyerCard: debitBuyerCard,
-  charge: charge
 }
