@@ -7,7 +7,7 @@ var mailgun = require('../services/mailgun-service'); // require mailgun service
 var uuid = require('node-uuid');
 
 function createBuyer(request, response) {
-  console.log(request.body);
+
   // find Buyer with unqiueLink
   Persona.findOne(
     {'cliqueCards.uniqueLink': request.body.uniqueLink}
@@ -58,7 +58,7 @@ function createBuyer(request, response) {
       console.log('Buyer Persona and Card created');
 
       // debit Buyer's newly created credit card
-      balanced.debitBuyerCard({bpCardId: persona.basicProfile.bpCardId});
+      balanced.debitBuyerCard({bpCardId: persona.basicProfile.bpCardId, amount: request.body.Amount});
       console.log('Buyer card debited');
 
       // date for email receipt
@@ -90,11 +90,24 @@ function createBuyer(request, response) {
 
 }
 
-
 function createRecipient(request, response){
 
+  // search for original districtNumber Buyer messaged for Recipient sms message
+  Persona.find(
+    {'cliqueCards.uniqueLink': request.body.uniqueLink}, {'cliqueCards.districtNumber': 1, 'cliqueCards.typeOfCard': 1, _id: 0}
+  )
+  .exec(function(err, data){
+    if (err) console.log('could not find districtNumber b/c: ', err);
+    else {
+      for (var i=0; i<data[0].cliqueCards.length; i++) {
+        if (data[0].cliqueCards[i].typeOfCard) {
+          var from = data[0].cliqueCards[i].districtNumber;
+        }
+      }
+    }
+  });
+
   var to = request.body.PhoneNumber; // Recipient number
-  var from = '15622836856'; // twilio account number
 
   // pass along unique id
   var uniqueLink = request.body.uniqueLink;
@@ -116,7 +129,7 @@ function createRecipient(request, response){
   else {
    persona.basicProfile.typeOfUser = "recipient" 
   }
-  console.log(request.body);
+
   // create Recipient card
   var card = {
 

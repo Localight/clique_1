@@ -20,11 +20,12 @@ function registerMerchant(request, response) {
 
 function debitBuyerCard(request, response) {
   console.log('in debitBuyerCard');
+  console.log(request);
 
   balanced.get(request.bpCardId)
   .debit({
     "appears_on_statement_as": "CliqueGiftCard", 
-    "amount": 200, 
+    "amount": request.amount * 100, 
     "description": "Clique Gift Card Purhcase of"
   })
   // .then(function successCallback(success){

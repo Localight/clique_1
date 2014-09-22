@@ -87,7 +87,6 @@
     // var path = ($location.path().substr($location.path().lastIndexOf('d/')).substr(2));
     var path = ((document.URL).substr((document.URL).lastIndexOf('d/')).substr(2));
     var cardId = path.substr(0, path.indexOf('#'));
-    console.log(cardId);
 
     // this object will be used to create Buyer and Recipient
     var postObj = $scope.formData;
@@ -100,11 +99,6 @@
     
     // function to process the form
     $scope.processForm = function() {
-      console.log('in processForm');
-      console.log(document.URL);
-      console.log(path);
-      console.log(cardId);
-      console.log('end processForm');
 
       // do some AJAX call to server only if both the main and review pages are valid
       if ($scope.pagesValid.main && $scope.pagesValid.review) {
@@ -112,88 +106,50 @@
         // the form twice in case the user double-clicks on the Submit Button
         $scope.pagesValid.review = false;
 
-        console.log($scope.formData);
+        // balanced.js callback to create card
+        function handleResponse(response) {
+          // if card is validated
+          if (response.status_code === 201) {
+            
+            // get BP credit card href for buyer and store postObj
+            var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
 
+            postObj.fundingInstrument = fundingInstrument;
+            postObj.uniqueLink = cardId;
 
+            // create Buyer and upon POST success create Recipient
+            $http.post('/buyer', postObj)
+              .success($http.post('/recipient', postObj));
+          }
+          else {
+            console.log('handleResponse failed');
+          }
+        }
 
-
-      // balanced.js callback to create card
-      function handleResponse(response) {
-        console.log('in handleResponse');
-        // if card is validated
-        if (response.status_code === 201) {
-          
-          // get BP credit card href for buyer and store postObj
-          var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
-          console.log(postObj);
-          postObj.fundingInstrument = fundingInstrument;
-          postObj.uniqueLink = cardId;
-          console.log('after fundingInstrument and uniqueLink added');
-          console.log(postObj)
-
-          $http.post('/buyer', postObj);
-          
-          // create Buyer and Recipient Personas and Cards
-          // $.ajax({
-          //   type: "POST",
-          //   url: "/buyer",
-          //   data: postObj,
-          //   success: function() {
-          //     $.ajax({
-          //       type: "POST",
-          //       url: "/recipient",
-          //       data: postObj
-          //     });
-          //   }
-          // });
+        // configure month and year to BP parameter standards
+        if ($scope.formData.Expiry.length === 7) {
+          var year = '20' + $scope.formData.Expiry.substring(5,7);
         }
         else {
-          console.log(' handleResponse failed');
-          // change UI based off failed verification
-          // this logic may be placed in the ajax call of /bp-create
+          var year = $scope.formData.Expiry.substr(5,9);
         }
-      }
+        var month = $scope.formData.Expiry.substr(0,2);
 
-      // configure month and year to BP parameter standards
-      if ($scope.formData.Expiry.length === 7) {
-        var year = '20' + $scope.formData.Expiry.substring(5,7);
-      }
-      else {
-        var year = $scope.formData.Expiry.substr(5,9);
-      }
-      var month = $scope.formData.Expiry.substr(0,2);
+        // data object BP needs to validate/create card
+        var payload = {
+          name: $scope.formData.From,
+          number: $scope.formData.CreditCardNumber,
+          // number: $scope.formData.CreditCardNumber,
+          expiration_month: month,
+          expiration_year: year,
+          cvv: $scope.formData.CVV,
+          address: {
+            postal_code: $scope.formData.ZIPcode
+          }
+        };
 
-      // data object BP needs to validate/create card
-      var payload = {
-        name: $scope.formData.From,
-        number: $scope.formData.CreditCardNumber,
-        // number: $scope.formData.CreditCardNumber,
-        expiration_month: month,
-        expiration_year: year,
-        cvv: $scope.formData.CVV,
-        address: {
-          postal_code: $scope.formData.ZIPcode
-        }
-      };
-
-      console.log(payload);
-
-      // Create credit card
-      balanced.card.create(payload, handleResponse);
-
-
-
-
-
-
-
-
-
-
-        // test to post
-        // $http.post('/buyer', data);
-        
-        // make AJAX Call
+        // Create credit card
+        balanced.card.create(payload, handleResponse);
       }
     };
   });
