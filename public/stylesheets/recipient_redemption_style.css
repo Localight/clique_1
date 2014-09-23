@@ -212,7 +212,6 @@ body
 }
 
 #useNow {
-  /*color: #58e6df;*/
   color: #008B8B;
 }
 
@@ -353,9 +352,9 @@ div.overlay {
 }
 
 .amountFinish {
-  top: 5%;
+  top: -25%;
   color: rgb(65, 186, 181);
-  -webkit-transition: all 1s ease-in-out;
+  -webkit-transition: all 1.3s ease-in-out;
 }
 
 .arrowCorrectCode {
@@ -662,7 +661,7 @@ div.overlay {
 }
 
 .thankYou {
-  height: 48%; 
+  height: 70%; 
   left: 0;
   position: fixed;
 }
@@ -672,14 +671,14 @@ div.overlay {
 }
 
 .thankYou.thankYouEnd {
-  top: 38%;
-  -webkit-transition: all 1s ease-in-out;
+  top: 13%;
+  -webkit-transition: all 1.3s ease-in-out;
 }
 
 .tyHeader {
   color: rgb(255, 255, 255);
   font-size: 2.6em;
-  margin: 0;
+  margin: 6% 0 0;
   font-family: 'always_in_my_heartregular';
 }
 
@@ -692,11 +691,45 @@ div.overlay {
 .tyMessageToBuyer {
   border: 1px;
   border-radius: 7px;
-  padding: 0 0 34%;
+  padding: 3% 5% 32%;
+  margin-top: 5%;
+}
+
+.thankYouIcon {
+  height: 18%;
+  background: url('../recipient_redemption_images/wht-custom-occasion-icon.png') no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.recipientThankYouSection {
+  height: 12.5%;
+  padding: 0;
+  margin-top: 3%;
+}
+
+
+.recipientSMS {
+  height: 100%;
+  padding: 0;
+  width: 49%;
+  border-radius: 8px;
+  background-color: rgb(255, 255, 255);
+  padding-top: 3.5%;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.33em;
+}
+
+#remindMe {
+  color: #B22222;
+}
+
+#sendNow {
+  color: #008B8B;
 }
 
 .send {
-    top: 6%;
+  top: 6%;
 }
 
 .sendButton {
@@ -718,18 +751,6 @@ div.overlay {
 }
 
 
-
-/* ALPHA styling */
-.feedbackButton {
-  height: 15%;
-  padding: 0;
-  left: 59%;
-  color: rgb(65, 186, 181);
-  font-size: 1.5em;
-  font-family: 'Lato', sans-serif;
-  font-weight: 300;
-}
-
 .alphaRtArrow {
   height: 6.5%;
   left: 76%;
@@ -737,10 +758,6 @@ div.overlay {
   background-size: contain;
   margin-top: 3%;  
 }
-
-
-
-
 
 
 

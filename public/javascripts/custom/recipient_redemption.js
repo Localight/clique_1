@@ -44,6 +44,12 @@ var app = angular.module('CliqueApp', ['ngRoute'])
       $location.path('/redemption/' + cardId);
     };
 
+    // route Recipient back to Buyer view
+    $scope.giveGift = function () {
+      $location.path('/new-gift-card/' + cardId);
+      $scope.apply();
+    };
+
   })
 
   .controller('AuthenticationCtrl', function ($scope, $location, $http, api) {
@@ -159,11 +165,9 @@ var app = angular.module('CliqueApp', ['ngRoute'])
     $scope.cancelClick = function () {
       $scope.cancelSelected = 'cancelSelected';
       $location.path('/recipient-gift-card/' + cardId);
-    };
+    };    
 
     $scope.sendRecipientMessage = function () {
-      console.log($scope.recipient.message);
-      console.log($scope.buyerNumber);
       var messageObject = {
         message: $scope.recipient.message,
         to: $scope.buyerNumber,

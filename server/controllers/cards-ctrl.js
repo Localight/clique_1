@@ -19,7 +19,7 @@ function getCardInfo(request, response) {
 }
 
 // find card by id and add change status from activated to spent
-function spendCard(request, response) {
+function spendCard(request,response) {
 
   Card.find({
     'cliqueCards.uniqueLink': request.body.cardId
@@ -70,9 +70,14 @@ function sendThankYou(request,response) {
 
 }
 
+function getAllInfo(request,response){
+
+}
+
 module.exports = {
   getCardInfo: getCardInfo, 
   spendCard: spendCard,
   getBuyerNumber: getBuyerNumber,
-  sendThankYou: sendThankYou
+  sendThankYou: sendThankYou,
+  getAllInfo: getAllInfo
 }
