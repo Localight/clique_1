@@ -39,7 +39,7 @@ module.exports = function(app) {
   app.post('/card', cards.spendCard);
 
   // send Thank You message to Buyer from Recipient
-  app.post('/sendThankYou', cards.spendCard);
+  app.post('/sendThankYou', cards.sendThankYou);
 
 
 

@@ -9,7 +9,7 @@ function init (acctSid, authToken) {
 
 }
 
-var giftConfirmationText = function (to, from, message, callback) {
+var sendSMS = function (to, from, message, callback) {
 
   client.messages.create({
       body: message,
@@ -25,5 +25,5 @@ var giftConfirmationText = function (to, from, message, callback) {
 
 module.exports = {
     init: init,
-    giftConfirmationText: giftConfirmationText,
+    sendSMS: sendSMS,
 };

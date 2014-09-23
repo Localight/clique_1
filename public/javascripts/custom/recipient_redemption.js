@@ -54,8 +54,8 @@ var app = angular.module('CliqueApp', ['ngRoute'])
     api.getBuyerNumber(cardId)
     .then(function(data){
       $scope.buyerName = data.bName;
-      console.log(data.bName);
-      console.log(data.bNumber);
+      $scope.buyerNumber = data.bNumber;
+      $scope.districtNumber = data.districtNumber;
     });
 
     // default classes
@@ -163,7 +163,13 @@ var app = angular.module('CliqueApp', ['ngRoute'])
 
     $scope.sendRecipientMessage = function () {
       console.log($scope.recipient.message);
-      api.test;
+      console.log($scope.buyerNumber);
+      var messageObject = {
+        message: $scope.recipient.message,
+        to: $scope.buyerNumber,
+        from: $scope.districtNumber
+      }
+      api.sendThankYou(messageObject);
     };
 
 
@@ -196,9 +202,16 @@ var app = angular.module('CliqueApp', ['ngRoute'])
         // query url for data
         var promise = $http.get(url)
         .success(function(data){
+          // find the district number originally messaged by Buyer and use as From number
+          for (var i=0; i<data.cliqueCards.length; i++){
+            if (data.cliqueCards[i].uniqueLink === cardId) {
+              var districtNumber = data.cliqueCards[i].districtNumber;
+            }
+          }
           deferred.resolve({
             bName: data.basicProfile.firstName,
-            bNumber: data.basicProfile.contact.mobileNumber
+            bNumber: data.basicProfile.contact.mobileNumber,
+            districtNumber: districtNumber
           });
         });
         return deferred.promise;

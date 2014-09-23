@@ -201,7 +201,7 @@ function createRecipient(request, response){
 
   if (message){
     // text unique recipient landing page link
-    twilio.giftConfirmationText(to, from, message, 
+    twilio.sendSMS(to, from, message, 
       function(err, twilioResponse){
         if (err){
           console.log('twilio error ', err);
