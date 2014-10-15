@@ -74,10 +74,21 @@ function getAllInfo(request,response){
 
 }
 
+// get data for Recipients
+function getRecipientCards(request, response){
+  Card.find({'basicProfile.typeOfUser': 'recipient'})
+  .exec(function(err, data){
+    if (err) console.log('getRecipientCards err: ', err);
+    console.log(data.length)
+    response.json(data);
+  })
+}
+
 module.exports = {
   getCardInfo: getCardInfo, 
   spendCard: spendCard,
   getBuyerNumber: getBuyerNumber,
   sendThankYou: sendThankYou,
-  getAllInfo: getAllInfo
+  getAllInfo: getAllInfo,
+  getRecipientCards: getRecipientCards
 }

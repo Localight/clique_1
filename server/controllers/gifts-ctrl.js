@@ -32,8 +32,14 @@ function renderRedemption(request, response) {
   response.render('layouts/recipient_redemption_index');
 }
 
+// render view for Balance View landing page
+function renderBalance(request, response) {
+  response.render('layouts/balance');
+}
+
 module.exports = {
     renderBuyer: renderBuyer,
     renderRecipient: renderRecipient,
     renderRedemption: renderRedemption,
+    renderBalance: renderBalance
 };

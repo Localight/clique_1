@@ -128,7 +128,7 @@ body
   font-family: 'Lato', sans-serif;
   font-weight: 300;
   color: white;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 #buyerName {
@@ -152,7 +152,8 @@ body
   margin-top: 2.5%;
   padding: 1.2% 3%;
   border-radius: 7px;
-  background: -webkit-linear-gradient(rgba(255,255,255,0), rgba(0,0,0,.6)), url('../recipient_redemption_images/dolys-delectables-crop.jpg') no-repeat;
+  background: url('../recipient_redemption_images/dolys-delectables-crop.jpg') no-repeat;
+  /*background: -webkit-linear-gradient(rgba(255,255,255,0), rgba(0,0,0,.6)), url('../recipient_redemption_images/dolys-delectables-crop.jpg') no-repeat;*/
   background-size: 100%;
 }
 
@@ -209,6 +210,7 @@ body
   font-family: 'Lato', sans-serif;
   font-size: 1.33em;
   font-weight: 300;
+  text-decoration: none;
 }
 
 #useNow {
@@ -527,7 +529,9 @@ div.overlay {
 
 /* icons */
 .icon0 {
-  background: url('../images/tricon-pie-slice.png') no-repeat;
+  background: url('../images/tricon-pie-slice.png') no-repeat -1285px -3px;
+/*  width: 152px;
+  height: 152px;*/
   right: -5%;
 }
 
@@ -758,6 +762,30 @@ div.overlay {
   background-size: contain;
   margin-top: 3%;  
 }
+
+
+
+
+
+
+
+
+/* Balance View Styling */
+.blkHeader {
+  height: 80%;
+  padding: 0;
+  border: 1px solid red;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

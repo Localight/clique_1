@@ -16,9 +16,9 @@ var app = angular.module('CliqueApp', ['ngRoute'])
         controller: 'AuthenticationCtrl',
         templateUrl: '/public/partials/redemption.html',
       })
-      .when('/unlock', {
-        controller: 'UnlockCtrl'
-      })
+      .when('/balance', {
+        controller: 'BalanceCtrl'
+      });
       // .otherwise({redirectTo: '/'});
     $locationProvider.html5Mode(true);
 
@@ -176,8 +176,10 @@ var app = angular.module('CliqueApp', ['ngRoute'])
       api.sendThankYou(messageObject);
     };
 
+  })
 
-
+  .controller('BalanceCtrl', function ($scope) {
+    $scope.gifts = [1,2,3];
   })
 
   .service('api', function($http, $q) {

@@ -100,7 +100,7 @@
     // function to process the form
     $scope.processForm = function() {
 
-      // do some AJAX call to server only if both the main and review pages are valid
+      // perform balanced and server POSTs only if both the main and review pages are valid
       if ($scope.pagesValid.main && $scope.pagesValid.review) {
         // disable the Submit Button on the review page to prevent processing
         // the form twice in case the user double-clicks on the Submit Button

@@ -23,8 +23,10 @@
           <audio src="/public/audio/click.wav" type="audio/wav" id="sound">
             <source src="/public/audio/click.wav" type="audio/wav">
           </audio>
+          <div class="height">
             <div ng-repeat="icon in icons" ng-click="clickedCSS($index)" class="icon col-xs-4 {{clickClass}}" ng-class="icon" onclick="playSound(this)">
             </div>
+          </div>
         </span>
         <!-- </span> -->
 
@@ -78,7 +80,7 @@
 
         <p class="col-xs-12 text-center tyHeader">Thank you!</p>
 
-        <p class="col-xs-12 text-center tyText">$10.00 was successfully transferred<br/>Wanna send a note to <span ng-bind="buyerName"></span>?</p>
+        <p class="col-xs-12 text-center tyText">$10.00 was successfully transferred.<br/>Wanna send a note to <span ng-bind="buyerName"></span>?</p>
 
         <!-- thank you form for Recipient -->
         <textarea type="text" class="col-xs-12 tyMessageToBuyer" ng-model="recipient.message"></textarea>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- mobile this is here -->
+  <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> 
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <!-- google font -->
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+  
+  <!-- angular dependencies -->
+  <script src="http://code.angularjs.org/1.2.22/angular.min.js"></script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.js'></script>
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+  <!-- stylesheet -->
+  <link type="text/css" rel="stylesheet" href="../public/stylesheets/balance_view.css"> 
+
+  <!-- javascript -->
+  <script src="/public/javascripts/custom/recipient_redemption.js"></script>
+</head>
+<body ng-app="CliqueApp" ng-cloak>
+
+  <div class="container-fluid wrapper" ng-controller="BalanceCtrl">
+
+
+    <div class="col-xs-12 userInfo">
+      <div class="col-xs-5 userName"></div>
+      <div class="col-xs-6 col-xs-offset-5 userEdit"></div>
+    </div>
+
+    <div class="col-xs-12 receivedHeader">
+      <div class="col-xs-6 gReceivedHeader"></div>
+    </div>
+    
+    <!-- <div class="unusedHeader"></div> -->
+
+    <!-- <div class="col-xs-12 gifts" ng-repeat="gift in gifts"></div> -->
+
+    <div class="col-xs-12 gifts" ng-repeat="gift in gifts">
+      <div class="col-xs-2 box occasionIcon"></div>
+      <div class="col-xs-4 box from"></div>
+      <div class="col-xs-3 box amountIcon"></div>
+      <div class="col-xs-3 box arrowIcon"></div>
+    </div>
+
+      <div class="col-xs-12 redeemedHeader"></div>
+
+
+  </div>
+
+</body>
+</html>

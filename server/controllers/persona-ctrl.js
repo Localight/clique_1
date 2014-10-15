@@ -92,7 +92,7 @@ function createBuyer(request, response) {
 
 function createRecipient(request, response){
 
-  // search for original districtNumber Buyer messaged for Recipient sms message
+  // search for original districtNumber that the Buyer messaged for the 'from' part of the Recipient sms message
   Persona.find(
     {'cliqueCards.uniqueLink': request.body.uniqueLink}, {'cliqueCards.districtNumber': 1, 'cliqueCards.typeOfCard': 1, _id: 0}
   )
@@ -133,7 +133,8 @@ function createRecipient(request, response){
   // create Recipient card
   var card = {
 
-    amount: request.body.Amount,
+    uniqueLink: request.body.uniqueLink,
+    amount: parseInt(request.body.Amount),
     giftBuyer: request.body.From,
     occassion: request.body.Occasion,
     cliqueCardCode: request.body.Code,

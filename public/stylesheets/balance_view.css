@@ -1,0 +1,110 @@
+html, body {
+  height: 100%;
+}
+
+.wrapper {
+  padding: 0;
+  height: 100%;
+}
+
+.userInfo {
+  top: 8%;
+  padding: 0;
+  height: 8%;
+  border:1px solid red;
+  position: relative;
+}
+
+.userName {
+  height: 100%;
+  border:1px solid purple;
+  position: absolute;
+}
+
+.userEdit {
+  height: 100%;
+  border:1px solid green; 
+  position: absolute;
+}
+
+.receivedHeader {
+  top: 9.5%;
+  padding: 0;
+  height: 10%;
+  border:1px solid blue;
+  position: relative;
+}
+
+.gReceivedHeader {
+  position: absolute;
+  padding: 0;
+  height: 75%;
+  border: 1px solid black;
+}
+
+.gifts {
+  top: 14%;
+  padding: 0;
+  height: 8%;
+  margin-bottom: .5%;
+  background-color: rgba(204, 204, 204, .35);
+}
+
+.occasionIcon {
+  height: 100%;
+  padding: 0;
+  width: 16%;
+  border: 1px solid black;
+}
+
+.from {
+  height: 100%;
+  width: 50%;
+  border: 1px solid black;
+}
+
+.amountIcon {
+  height: 100%;
+  width: 20%;
+  border: 1px solid black;
+}
+
+.arrowIcon {
+  height: 100%;
+  width: 7%;
+  border: 1px solid black;
+}
+
+.redeemedHeader {
+  top: 24%;
+  padding: 0;
+  height: 8%;
+  margin-bottom: .5%;
+  background-color: rgba(204, 204, 204, .6);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,11 +1,8 @@
 'use strict';
 
-/**
- * Module dependencies.
- */
 var mongoose = require('mongoose'),
-  uuid = require('node-uuid'),
-  Schema = mongoose.Schema;
+    uuid = require('node-uuid'),
+    Schema = mongoose.Schema;
 
 var PersonaSchema = new Schema({
 
@@ -21,7 +18,7 @@ var PersonaSchema = new Schema({
       }
     }
   },
-  cliqueCards: [{    // holds all cards user has texted for, but not yet activated.
+  cliqueCards: [{
     typeOfCard: String, // purchased or received
     issueDate: { type: Date, default: Date.now },
     activationDate: String,

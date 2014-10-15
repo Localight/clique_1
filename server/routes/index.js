@@ -35,6 +35,9 @@ module.exports = function(app) {
   // redemption view
   app.get('/redemption/:id', gifts.renderRedemption);
 
+  // balance view
+  app.get('/balance', gifts.renderBalance);
+
   // money spent
   app.post('/card', cards.spendCard);
 
@@ -50,6 +53,8 @@ module.exports = function(app) {
 
   // get Buyer phone number
   app.get('/api/buyernumber/:id', cards.getBuyerNumber);
+
+  app.get('/api/recipients', cards.getRecipientCards);
 
   ///////////////////////// API Routes ///////////////
 
