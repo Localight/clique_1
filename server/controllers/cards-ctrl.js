@@ -10,7 +10,7 @@ function getCardInfo(request, response) {
   // find by unique link id
   // limit results to occassion and firstName
   Card.find(
-    {'cliqueCards.uniqueLink' : filter} , {'cliqueCards.occassion' : 1, 'basicProfile.firstName' : 1, _id : 0}
+    {'cliqueCards.uniqueLink' : filter} , {'cliqueCards.occassion' : 1, 'basicProfile.firstName' : 1, 'basicProfile.totalAmount' : 1, _id : 0}
   )
   .exec(function(err, data){
       response.json(data[0]);
@@ -71,7 +71,7 @@ function sendThankYou(request,response) {
 }
 
 function getAllInfo(request,response){
-
+  console.log('getAllInfo');
 }
 
 // get data for Recipients
@@ -84,11 +84,46 @@ function getRecipientCards(request, response){
   })
 }
 
+function spendAmount(request, response){
+  console.log('spendAmount');
+  // unique link
+  var filter = request.params.id;
+
+  // spend amount variable
+  var spend = request.body.amount;
+  console.log(spend);
+
+  Card.find({'cliqueCards.uniqueLink': filter})
+  .exec(function(err, data){
+    if (err) {console.log('spendAmount err: ', err)}
+    var originalAmount = data[0].basicProfile.totalAmount;
+    console.log(originalAmount);
+    data[0].basicProfile.totalAmount = originalAmount - spend;
+    data[0].save(function(err,data){
+      console.log(data);
+    });
+  })
+}
+
 module.exports = {
   getCardInfo: getCardInfo, 
   spendCard: spendCard,
   getBuyerNumber: getBuyerNumber,
   sendThankYou: sendThankYou,
   getAllInfo: getAllInfo,
-  getRecipientCards: getRecipientCards
+  getRecipientCards: getRecipientCards,
+  spendAmount: spendAmount
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

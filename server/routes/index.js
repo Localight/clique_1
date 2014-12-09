@@ -44,6 +44,12 @@ module.exports = function(app) {
   // send Thank You message to Buyer from Recipient
   app.post('/sendThankYou', cards.sendThankYou);
 
+  // Buyer spend amount view
+  app.get('/spend/:id', gifts.selectAmount);
+
+  // spend selected amount
+  app.post('/spend/:id', cards.spendAmount);
+
 
 
   ///////////////////////// API Routes ///////////////

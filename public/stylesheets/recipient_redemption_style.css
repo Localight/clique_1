@@ -84,7 +84,16 @@ body
   font-family: 'Lato', sans-serif;
   font-size: 1.22em;
   color: rgb(255, 255, 255);
-  padding-top: 19%;
+  margin-top: 22.5%;
+}
+
+#chooseAmount {
+  height: 100%;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.22em;
+  color: rgb(255, 255, 255);
+  margin-top: 5%;
 }
 
 .cliqueLogo {
@@ -223,10 +232,10 @@ body
 
 /* nearby merchant section */
 .nearbyMerchant {
-  height: 10%;
+  height: 4%;
   padding: 0;
-  margin-top: 10%;
-  border: 1px solid red;
+  margin-top: 8%;
+  /*border: 1px solid red;*/
   font-family: 'Lato', sans-serif;
   font-size: .9em;
   color: rgb(0, 0, 0);
@@ -245,9 +254,35 @@ body
   font-weight: 300;
 }
 
+.giftToUseItSections {
+  /*-webkit-transition: all 1.5s ease-in-out;*/
+  margin-top: -159.65%;
+}
 
+.merchantArrow {
+  border: 1px solid black;
+  margin-top: 6%;
+  height: 5%;
+}
 
+.merchantList {
+  /*border: 1px solid red;*/
+  margin-top: 5%;
+  padding: 0;
+  height: 100%;
+}
 
+.district {
+
+}
+
+.shop {
+  font-size: 1em;
+  height: 7%;
+  background:rgba(0,0,0,0.2);
+  margin-bottom: .2%;
+  font-color: white;
+}
 
 
 
@@ -776,6 +811,233 @@ div.overlay {
   padding: 0;
   border: 1px solid red;
 }
+
+
+
+
+
+
+
+
+/* Spend View Styling */
+
+.num1 {
+  background: url('../images/auth-outline-1.png') no-repeat;
+  right: -5%;
+}
+
+.num2 {
+  background: url('../images/auth-outline-2.png') no-repeat;
+}
+
+.num3 {
+  background: url('../images/auth-outline-3.png') no-repeat;
+  left: -5%;
+}
+
+.num4 {
+  background: url('../images/auth-outline-4.png') no-repeat;
+  right: -5%;
+}
+
+.num5 {
+  background: url('../images/auth-outline-5.png') no-repeat;
+}
+
+.num6 {
+  background: url('../images/auth-outline-6.png') no-repeat;
+  left: -5%;
+}
+
+.num7 {
+  background: url('../images/auth-outline-7.png') no-repeat;
+  right: -5%;
+}
+
+.num8 {
+  background: url('../images/auth-outline-8.png') no-repeat;
+}
+
+.num9 {
+  background: url('../images/auth-outline-9.png') no-repeat;
+  left: -5%;
+}
+
+.num0 {
+  background: url('../images/auth-outline-0.png') no-repeat;
+  /*margin: 0 33%;*/
+}
+
+.numberPad {
+  height: 17%;
+  padding: 0;
+  /*margin-top: -3%;*/
+  background-size: 73%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.numback {
+  background: url('../images/auth-lft-arrow.png') no-repeat;
+  background-size: 20%;
+  background-position: center;
+}
+
+.numpay {
+  background: url('../images/rt-blu-arrow.png') no-repeat;
+  background-size: 26.7%;
+  background-position: center; 
+}
+
+.spendHeader {
+  height: 15%;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  font-weight: 100;
+}
+
+.leftHeader {
+  height: 100%;
+  color: #fff;
+  padding: 0;
+  font-size: 4.3em;
+  left: 8%;
+}
+
+.dollarWrapper {
+  font-size: .5em;
+  margin-top: -5%;
+}
+
+.rightHeader {
+  height: 100%;
+  padding: 0;
+  background: url('../images/auth-delete-btn-aqua.png') no-repeat;
+  background-size: 42%;
+  background-position: 28% 35%;
+}
+
+
+.back {
+  height: 10%;
+  width: 10%;
+  border: 1px solid red;
+  margin-bottom: 20%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* BALANCE VIEW STYLING */
+
+/*.wrapper {
+  padding: 0;
+  height: 100%;
+}*/
+
+.userInfo {
+  top: 8%;
+  padding: 0;
+  height: 8%;
+  border:1px solid red;
+  position: relative;
+}
+
+.userName {
+  height: 100%;
+  border:1px solid purple;
+  position: absolute;
+}
+
+.userEdit {
+  height: 100%;
+  border:1px solid green; 
+  position: absolute;
+}
+
+.receivedHeader {
+  top: 9.5%;
+  padding: 0;
+  height: 10%;
+  border:1px solid blue;
+  position: relative;
+}
+
+.gReceivedHeader {
+  position: absolute;
+  padding: 0;
+  height: 75%;
+  border: 1px solid black;
+}
+
+.gifts {
+  top: 14%;
+  padding: 0;
+  height: 8%;
+  margin-bottom: .5%;
+  background-color: rgba(204, 204, 204, .35);
+}
+
+.occasionIcon {
+  height: 100%;
+  padding: 0;
+  width: 16%;
+  border: 1px solid black;
+}
+
+.from {
+  height: 100%;
+  width: 50%;
+  border: 1px solid black;
+}
+
+.amountIcon {
+  height: 100%;
+  width: 20%;
+  border: 1px solid black;
+}
+
+.arrowIcon {
+  height: 100%;
+  width: 7%;
+  border: 1px solid black;
+}
+
+.redeemedHeader {
+  top: 24%;
+  padding: 0;
+  height: 8%;
+  margin-bottom: .5%;
+  background-color: rgba(204, 204, 204, .6);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

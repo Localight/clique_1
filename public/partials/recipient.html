@@ -1,56 +1,68 @@
   <div class="container-fluid wrapper">
 
-    <!-- header section with give option, clique logo and available balance -->
-    <span class="header col-xs-12">
-      <div class="col-xs-3 headerSide" ng-click="giveGift()">
-        <div class="col-xs-5" id="bowTie"></div>
-        <div class="col-xs-7" id="giveText">Give</div>
-      </div>
-      <div class="col-xs-6 cliqueLogo"></div>
+    <div ng-class="{giftToUseItSections: merchantList }" style="-webkit-transition: all 1.5s ease-in-out;">
 
-      <div class="col-xs-3 headerSide" ng-bind="amount"></div>
-    </span>
-
-    <!-- gift section -->
-    <div class="col-xs-12 giftSection">
-      
-      <!-- personal message -->
-      <div class="col-xs-12 personalMessage">
-        <div class="col-xs-3" id="occasionIcon"></div>
-        <div class="col-xs-9 pull-right" id="buyerMessage" ng-bind="message"></div>
-        <div class="col-xs-9 pull-right text-right" id="buyerName" ng-bind="from"></div>
-      </div>
-      
-      <!-- gift card image -->
-      <div class="col-xs-12 giftCardSection">
-        <div class="col-xs-12" id="giftCardImage">
-          <div class="col-xs-4" id="giftCardAmount"></div>
-<!--           <div class="col-xs-12 text-center" id="giftCardMessage">
-            Coffee, Macarons & Sandwiches? Yum.
-          </div> -->
+      <!-- header section with give option, clique logo and available balance -->
+      <span class="header col-xs-12">
+        <div class="col-xs-3 headerSide" ng-click="giveGift()">
+          <div class="col-xs-5" id="bowTie"></div>
+          <div class="col-xs-7" id="giveText">Give</div>
         </div>
+        <div class="col-xs-6 cliqueLogo"></div>
+
+        <div class="col-xs-3 headerSide text-center" id="chooseAmount" ng-click="selectAmountView()">+${{amount}}</div>
+      </span>
+
+
+      <!-- gift section -->
+      <div class="col-xs-12 giftSection">
+        
+        <!-- personal message -->
+        <div class="col-xs-12 personalMessage">
+          <div class="col-xs-3" id="occasionIcon"></div>
+          <div class="col-xs-9 pull-right" id="buyerMessage" ng-bind="message"></div>
+          <div class="col-xs-9 pull-right text-right" id="buyerName" ng-bind="from"></div>
+        </div>
+        
+        <!-- gift card image -->
+        <div class="col-xs-12 giftCardSection">
+          <div class="col-xs-12" id="giftCardImage">
+            <div class="col-xs-4" id="giftCardAmount"></div>
+  <!--           <div class="col-xs-12 text-center" id="giftCardMessage">
+              Coffee, Macarons & Sandwiches? Yum.
+            </div> -->
+          </div>
+        </div>
+
+      </div>
+      
+      <!-- amount to use at which merchant section -->
+      <div class="col-xs-12 text-center merchantInfo">
+        <p class="col-xs-12" id="useAmount">Use this $2 gift at</p>
+        <p class="col-xs-12" id="merchantName">DoLy's Delectables</p>
+      </div>
+
+      <!-- use it now/later section -->
+      <div class="col-xs-12 useItSection">
+        <div class="col-xs-5 text-center useNowLater" ng-click="change()" id="useNow">Use it now</div>
+        <div class="col-xs-5 text-center pull-right useNowLater" id="useLater">Use it later</div>
       </div>
 
     </div>
-    
-    <!-- amount to use at which merchant section -->
-    <div class="col-xs-12 text-center merchantInfo">
-      <p class="col-xs-12" id="useAmount">Use this $2 gift at</p>
-      <p class="col-xs-12" id="merchantName">DoLy's Delectables</p>
-    </div>
-
-    <!-- use it now/later section -->
-    <div class="col-xs-12 useItSection">
-      <div class="col-xs-5 text-center useNowLater" ng-click="change()" id="useNow">Use it now</div>
-      <div class="col-xs-5 text-center pull-right useNowLater" id="useLater">Use it later</div>
-    </div>
-
     <!-- for beta -->
-    <!-- <div class="col-xs-12 text-center nearbyMerchant">
+    <div class="col-xs-12 text-center nearbyMerchant">
       <p>Or use it at one of many local merchants</p>
-    </div> -->
+    </div>
+    <div class="col-xs-4"></div>
+    <div class="col-xs-4 merchantArrow" ng-click="showMerchantList()"></div>
+    <div class="col-xs-4"></div>
 
-
+    <div class="col-xs-12 merchantList">
+      <div class="district" ng-repeat="location in locations">
+        {{location.location}}
+        <div class="shop" ng-repeat="shop in location.shops">{{shop.name}}</div>
+      </div>
+    </div>
 
     <!-- image of town -->
     <div id="localstreet" style="top: 350px;">

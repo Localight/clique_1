@@ -10,6 +10,7 @@ var PersonaSchema = new Schema({
     firstName: String,
     bpCardId: String,
     typeOfUser: String, //buyer, recipient or both
+    totalAmount: Number,
     contact: {
       mobileNumber: String,
       email: {
@@ -59,7 +60,7 @@ PersonaSchema.methods.generateUniqueLink = function(options, urlpath, callback) 
     console.log('Unable to save new inactiveCard in generateUniqueLink: ', err);
   }
     // pass back URI w/uniqueLink(id) for Buyer to follow
-    callback(err, 'http://2dd3ac00.ngrok.com/' + urlpath + uniqueLink);
+    callback(err, 'http://6c6570d9.ngrok.com/' + urlpath + uniqueLink);
   });
 
 };

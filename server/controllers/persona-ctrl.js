@@ -154,7 +154,7 @@ function createRecipient(request, response){
     console.log('Recipient Persona and Card created');
 
     // create unique URI path for recipient landing page
-    var uniqueCreditLink = 'http://2dd3ac00.ngrok.com/recipient-gift-card/' + uniqueLink;
+    var uniqueCreditLink = 'http://6c6570d9.ngrok.com/recipient-gift-card/' + uniqueLink;
 
     // get icon type for icon and message in sms message
     var iconType = request.body.Icon;

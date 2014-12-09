@@ -37,9 +37,14 @@ function renderBalance(request, response) {
   response.render('layouts/balance');
 }
 
+function selectAmount(request, response) {
+  response.render('layouts/recipient_redemption_index');
+}
+
 module.exports = {
     renderBuyer: renderBuyer,
     renderRecipient: renderRecipient,
     renderRedemption: renderRedemption,
-    renderBalance: renderBalance
+    renderBalance: renderBalance,
+    selectAmount: selectAmount
 };

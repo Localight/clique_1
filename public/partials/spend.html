@@ -1,0 +1,17 @@
+<div ng-controller="SpendCtrl">
+
+  <div class="col-xs-12 spendHeader" >
+    <div class="col-xs-9 leftHeader text-left">
+      <span class="dollarWrapper">$</span>{{spend}}<span class="dollarWrapper">.00</span>
+    </div>
+    <div class="col-xs-3 rightHeader" ng-click="removeDigit()"></div>
+  </div>
+
+  <div class="numberPad col-xs-4 num{{number}}" ng-repeat="number in numbers" ng-click="selectSpendAmount(number)"></div>
+
+  <button ng-click="spendAmount()"></button>
+
+</div>
+
+<div class="overlay"></div>
+
