@@ -37,9 +37,9 @@ module.exports = {
         disableSigCheck: false,
     },
     mailgun: {
-            apiKey: 'key-212g0rzf7j9z-n9b7zdl797o3bxrsu38'
-            , domain: 'https://api.mailgun.net/v2/rs56424.mailgun.org/messages'
-            , from: 'auction@TeachArt.org'
+            apiKey: 'key-212g0rzf7j9z-n9b7zdl797o3bxrsu38',
+            domain: 'https://api.mailgun.net/v2/rs56424.mailgun.org/messages',
+            from: 'auction@TeachArt.org'
     },
     balancedPayments: 'ak-test-1XRsGC5ekgHQMepPbyO6zc9GuMXmVG4JM',
     subledger: {

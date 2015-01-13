@@ -1,13 +1,13 @@
 <div class="wrapper">
   <!--Logo-->
   <img id="clique_logo" src="../public/images/logo-local-gift-card-blk.png">
-  
+
   <!--To-->
   <div id="clique_to">
     <label for="To" class="inputlabel">To</label>
     <input type="text" id="clique_input_to" class="heart rightColumn" placeholder="First Name" maxlength="16" ng-model="formData.To" autofocus required>
   </div>
-  
+
   <!--Amount-->
   <div id="clique_amt_wrapper">
     <div id="clique_amt_selection">
@@ -17,19 +17,19 @@
       </div>
       <span class="rightarrow"></span>
     </div>
-    
+
     <div id="clique_amt" class="hide" ng-click="showHide('#clique_amt_selection', '#clique_amt')">
       <label class="inputlabel">$</label>
       <div class="helveticaInput rightColumn">{{formData.Amount}}</div>
     </div>
   </div>
-  
+
   <!--From-->
   <div id="clique_from" ng-class="{nextInput: isNextInput('From')}">
     <label for="From" class="inputlabel">From</label>
     <input type="text" id="clique_input_from" class="heart rightColumn" placeholder="Your Name" maxlength="16" ng-model="formData.From" required>
   </div>
-  
+
   <!--Code-->
   <div id="clique_code_wrapper" ng-show="allDirtyBefore('Code')">
     <div id="flip_container" class="marginBottom hide">
@@ -45,7 +45,7 @@
       <label for="Code" class="inputlabel">Code</label>
       <input type="text" id="clique_input_code" class="profont rightColumn number" placeholder="XXXXX" maxlength="5" pattern="\d*" data-formance_length=5 ng-model="formData.Code" ng-change="getStoreName()" required>
     </div>
-    
+
     <div id="clique_code_message" class="hide">
       <label class="inputlabel">
         <img src="../public/images/at-icon-blk.png">
@@ -56,7 +56,7 @@
       </div>
     </div>
   </div>
-  
+
   <!--Occasion-->
   <div id="clique_occasion_wrapper" ng-show="dirty.Occasion || valid.Code">
     <div id="clique_occasion_selection" class="roundWhiteBorder">
@@ -66,7 +66,7 @@
         </li>
       </ul>
     </div>
-    
+
     <div id="clique_occasion" class="hide">
       <label for="clique_input_occasion" class="inputlabel">
         <img ng-src="{{occasions.selectedIcon}}">
@@ -94,7 +94,7 @@
         </div>
       </div>
     </div>
-    
+
     <div id="clique_date" class="hide">
       <label for="clique_input_date" class="inputlabel">
         <img ng-src="{{dateTypeImg}}" alt="Chosen Date">
@@ -102,14 +102,14 @@
       <input type="text" id="clique_input_date" class="rightColumn" pick-a-date="" required>
     </div>
   </div>
-  
+
   <!--Payment Type-->
 <!--   <div id="clique_paymenttype" class="hide nextinput textinput">
     <span style="width:53%;" class="inputlabel">Check or Card?</span>
     <img class="paybycheck" alt="Pay by Check" src="images/paybycheck.png" />
     <img class="paybycard" alt="Pay by Card" src="images/paybycard.png" style="margin-left:5px;" />
   </div> -->
-  
+
     <!-- *** The pay by check section is not functional yet *** -->
 <!--   <div id="clique_paymenttypeselectedcheck" class="hide nextinput textinput">
       <div class="accountnumbercontainer paymenttypecontainer textinput currentinput">
@@ -121,7 +121,7 @@
           <input type="text" id="clique_input_routingnumber" class="textinput hide" style="width:100%;" value="mm/dd/yyyy" />
       </div>
   </div> -->
-  
+
   <!--Pay by card-->
   <div id="clique_payment_card" class="roundWhiteBorder"
     ng-show="allDirtyBefore('CreditCardNumber')">
@@ -137,7 +137,7 @@
       <div class="checkmark"></div>
     </div>
   </div>
-  
+
   <!--Go to Review Order-->
   <div>
     <a ui-sref="review" ng-show="dirty.ProceedButton">
