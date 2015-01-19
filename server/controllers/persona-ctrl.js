@@ -217,7 +217,7 @@ function createRecipient(request, response){
 
 }
 
-
+// interesting way to do exports @jamesHall
 module.exports = {
   createBuyer: createBuyer,
   createRecipient: createRecipient
