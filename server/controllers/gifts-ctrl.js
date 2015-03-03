@@ -1,7 +1,8 @@
-var Personas = require('../models/persona') // require personas model
+'use strict';
+var Personas = require('../models/persona'); // require personas model
 
 // render view for Buyer landing page
-function renderBuyer(request, response) {
+exports.renderBuyer = function (request, response) {
 
   // console.log(request.params.id);
   var uniqueLink = request.params.id;
@@ -11,11 +12,10 @@ function renderBuyer(request, response) {
   .exec(function(err, persona){
     response.render('layouts/chris', {persona: persona, uniqueLink: uniqueLink});
   });
-
-}
+};
 
 // render view for Recipient landing page
-function renderRecipient(request, response) {
+exports.renderReciepent = function (request, response) {
 
   // uniqueLink is pulled from URI param
   var uniqueLink = request.params.id;
@@ -24,27 +24,18 @@ function renderRecipient(request, response) {
   Personas.find({uniqueLink: request.params.id})
   .exec(function(err, persona){
     response.render('layouts/recipient_redemption_index', {persona: persona, uniqueLink: uniqueLink});
-  })  
-}
-
+  });
+};
 // render view for Redemption landing page
-function renderRedemption(request, response) {
+exports.renderRedemption = function(request, response){
   response.render('layouts/recipient_redemption_index');
-}
+};
 
 // render view for Balance View landing page
-function renderBalance(request, response) {
+exports.renderBalacne = function(request, response) {
   response.render('layouts/balance');
-}
+};
 
-function selectAmount(request, response) {
+exports.selectAmount = function (request, response) {
   response.render('layouts/recipient_redemption_index');
-}
-
-module.exports = {
-    renderBuyer: renderBuyer,
-    renderRecipient: renderRecipient,
-    renderRedemption: renderRedemption,
-    renderBalance: renderBalance,
-    selectAmount: selectAmount
 };

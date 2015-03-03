@@ -15,7 +15,7 @@ function getCardInfo(request, response) {
   .exec(function(err, data){
       response.json(data[0]);
   });
-
+  
 }
 
 // find card by id and add change status from activated to spent
@@ -27,7 +27,7 @@ function spendCard(request,response) {
   .exec(function(err, data) {
     for(var i=0; i<data[0].cliqueCards.length;i++) {
       if(data[0].cliqueCards[i]) data[0].cliqueCards[i].status = 'spent';
-      
+
       data[0].save(function(err, data) {
         if (err) console.log('Could not update card spent status b/c: ', err);
         else console.log('card status updated to spent');
@@ -41,7 +41,7 @@ function getBuyerNumber(request,response) {
 
   // query URI for filter
   var filter = request.params.id;
- 
+
   // limit results to mobileNumber, firstName, districtNumber and uniqueLink
   Card.find(
     {'cliqueCards.uniqueLink': filter}, {'basicProfile.contact.mobileNumber': 1, 'basicProfile.firstName': 1, 'cliqueCards.districtNumber': 1, 'cliqueCards.uniqueLink': 1, _id: 0}
@@ -57,7 +57,7 @@ function sendThankYou(request,response) {
   var from = request.body.from;
   var message = request.body.message;
 
-  twilio.sendSMS(to, from, message, 
+  twilio.sendSMS(to, from, message,
     function(err, twilioResponse){
       if (err){
         console.log('twilio error ', err);
@@ -106,7 +106,7 @@ function spendAmount(request, response){
 }
 
 module.exports = {
-  getCardInfo: getCardInfo, 
+  getCardInfo: getCardInfo,
   spendCard: spendCard,
   getBuyerNumber: getBuyerNumber,
   sendThankYou: sendThankYou,
@@ -114,16 +114,3 @@ module.exports = {
   getRecipientCards: getRecipientCards,
   spendAmount: spendAmount
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

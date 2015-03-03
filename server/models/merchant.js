@@ -10,10 +10,9 @@ var mongoose = require('mongoose'),
  * Merchant Schema
  */
 
-
  var MerchantSchema = new Schema({
 
-  type: String,
+  type: String,// could be associated with tricon, or tricon assioate with it.
   storefrontName: String,
   generalManager: String,
   basicInfo: {
@@ -56,4 +55,3 @@ var mongoose = require('mongoose'),
  // mongoose.model('merchant', MerchantSchema);
 
  module.exports = mongoose.model('Merchant', MerchantSchema);
-

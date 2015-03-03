@@ -1,7 +1,8 @@
-function playSound() {
-  var audio = document.getElementById('sound');
-  audio.play();
-};     
+// function playSound() {
+//   var audio = document.getElementById('sound');
+//   audio.play();
+// };
+'use strict';
 
 var app = angular.module('CliqueApp', ['ngRoute'])
 
@@ -168,7 +169,7 @@ var app = angular.module('CliqueApp', ['ngRoute'])
         }
         $scope.shake = 'shake';
         counter = 0;
-      }  
+      }
     };
 
     // show merchant instruction when info icon clicked
@@ -189,7 +190,7 @@ var app = angular.module('CliqueApp', ['ngRoute'])
     $scope.cancelClick = function () {
       $scope.cancelSelected = 'cancelSelected';
       $location.path('/recipient-gift-card/' + cardId);
-    };    
+    };
 
     $scope.sendRecipientMessage = function () {
       var messageObject = {
@@ -304,7 +305,7 @@ var app = angular.module('CliqueApp', ['ngRoute'])
     };
 
   })
-  
+
   .service('merchants', function(){
     return {
       merchants: [
@@ -363,4 +364,3 @@ var app = angular.module('CliqueApp', ['ngRoute'])
 
     }
   });
-

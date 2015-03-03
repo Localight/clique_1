@@ -4,9 +4,9 @@
 
 
 // Insantialize variables
-var mg, 
-    domain, 
-    key, 
+var mg,
+    domain,
+    key,
     from;
 
 // Require needed modules

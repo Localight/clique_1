@@ -1,7 +1,7 @@
 (function(){
   var cliqueApp = angular.module('clique',['ui.router']);
-  
-  // configuring our routes 
+
+  // configuring our routes
   cliqueApp.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('main', { // route to show our main page (/)
@@ -19,11 +19,11 @@
         templateUrl: '/public/partials/buyer_final.html',
         controller: 'FinalController'
       });
-       
+
     // catch all route: send users to the main page
     $urlRouterProvider.otherwise('/');
   });
-  
+
   cliqueApp.directive('pickADate', function () {
     return {
       restrict: "A",
@@ -43,14 +43,14 @@
             element.blur(); // remove focus from input element
           }
         });
-        
+
         var picker = element.pickadate('picker');
-        
+
         // when "Send Today" is clicked, set picker to Today, but don't open the popup
         $('#sendToday').on('click', function(event){
           picker.set('select', new Date()); // set picker to today --> triggers onSet()
         });
-        
+
         // when "Send On Date" is clicked, remove 'nextInput' class and open picker
         $('#sendOnDate').on('click', function(event){
           $('#clique_date_wrapper').removeClass('nextInput');
@@ -60,12 +60,13 @@
       }
     };
   });
-  
+
   cliqueApp.controller('BuyerController', function($scope, $http, $location){
     // NOTE: only Javascript objects declared here will be accessible by child controllers
     // Primitive variable types will NOT be accessible by child controllers
-    
+
     // we will store all of our form data in this object
+    // need to understand how to change this to what i use.
     $scope.formData = {
       To: '',
       From: '',
@@ -82,7 +83,7 @@
       Icon: '',
       UniqueLink: ''
     };
-    
+
     // pull cardId(uniqueLink) from URI
     // var path = ($location.path().substr($location.path().lastIndexOf('d/')).substr(2));
     var path = ((document.URL).substr((document.URL).lastIndexOf('d/')).substr(2));
@@ -96,7 +97,7 @@
       main: false,
       review: false
     };
-    
+
     // function to process the form
     $scope.processForm = function() {
 
@@ -107,21 +108,21 @@
         $scope.pagesValid.review = false;
 
         // balanced.js callback to create card
-        function handleResponse(response) {
+        var handleResponse = function(response) {
           // if card is validated
           if (response.status_code === 201) {
-            
-            // get BP credit card href for buyer and store postObj
-            var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
 
-            postObj.fundingInstrument = fundingInstrument;
-            postObj.uniqueLink = cardId;
+            // get BP credit card href for buyer and store postObj
+            var fundingInstrument = response.cards !== null ? response.cards[0] : response.bank_accounts[0];
+
+            postObj.fundingInstrument = fundingInstrument;// I think this is adding fundingInstrument to the file
+            postObj.uniqueLink = cardId;// same with this one too.
 
             // create Buyer and upon POST success create Recipient
+            // found it V this is what I was looking for.
             $http.post('/buyer', postObj)
               .success($http.post('/recipient', postObj));
-          }
-          else {
+          } else {
             console.log('handleResponse failed');
           }
         }
@@ -153,30 +154,30 @@
       }
     };
   });
-  
+
   cliqueApp.controller('MainController', function ($scope, TextService, OccasionService, api){
     // on document load, give focus to "To" and make it the current input
     $( document ).ready(function() {
       $('#clique_input_to').focus().parent().addClass('currentInput');
     });
-    
+
     // when an input is focused, scroll it to the bottom of the screen with 50px padding below
     // use setTimeout so other DOM manipulation finishes before scroll happens
     // do not trigger this on the occasion textarea so that the occasion selection does not get hidden
     $('input').on('focus', function() {
       elem = $(this);
-      setTimeout(function(){ 
+      setTimeout(function(){
         elem[0].scrollIntoView(false);
         window.scrollBy(0,50);
       }, 500);
     });
-    
+
     // General show/hide function
     $scope.showHide = function(elemsToShow, elemsToHide) {
       $(elemsToShow).show();
       $(elemsToHide).hide();
     };
-    
+
     // if any field after "To" becomes dirty, blur the background and stop watching $scope.dirty
     var background = $scope.$watchCollection('dirty', function() {
       for(i=1; i<fieldOrder.length; i++) { // start "i" at 1 to avoid "To"
@@ -187,7 +188,7 @@
         }
       };
     });
-    
+
     /**********
     * To / From / Code
     **********/
@@ -198,37 +199,37 @@
       .on('focus', function() {
         $(this).parent().removeClass('nextInput').addClass('currentInput');
     });
-    
+
     /**********
     * Amount
     **********/
     // price options to display
     $scope.prices = [2,25,50,75,100,250,500];
-    
+
     // set new amount
     $scope.setAmount = function(newAmount){
       $scope.formData.Amount = newAmount;
       $('#clique_amt').show();
       $('#clique_amt_selection').hide();
-      
+
       // give focus to "From" if it isn't dirty yet
       if(!$scope.dirty.From) $('#clique_input_from').focus();
     };
-    
+
     $scope.isAmount = function(checkAmount){
       return $scope.formData.Amount == checkAmount; // boolean
     };
-    
+
     /**********
     * Clique Code
     **********/
     $scope.flipCard = function() {
       $('#flip_container').show();
-      
+
       // delay the flip by 0.5 seconds
       window.setTimeout(function(){$('.card').addClass('flipped')}, 500);
     };
-    
+
     $scope.getStoreName = function() {
       // $scope.storeName = 'Doly\'s Delectables'; // USING A PLACEHOLDER FOR NOW
       // api.getStoreName($scope.formData.Code)
@@ -239,24 +240,24 @@
       // })
     };
 
-    
+
     $('#clique_code_message').on('click', function(){
       $('#flip_container, #clique_code').show();
       $('#clique_input_code').focus();
     });
-    
+
     /**********
     * Occasion
     **********/
     // import occasions object from OccasionService
     $scope.occasions = OccasionService;
-    
+
     // set default occasion icon to display
     $scope.occasions.selectedIcon = '../public/images/occasion-custom-icon-blk.png';
-    
+
     $scope.occasions.charsLeft = 100;
     var occCharLimit = 100; // no need to include the character limit inside $scope
-    
+
     $scope.setOccasion = function(occasion){
       // change occasion text only if a new occasion is selected
       if ($scope.formData.Icon != occasion.name) {
@@ -265,72 +266,72 @@
         $scope.occasions.selectedIcon = occasion.images.selected;
       }
       $scope.limitOccText(); // limit occasion text to 100 characters
-      
+
       $('#clique_occasion').show();
       $('#clique_occasion_selection').hide();
     	$('#clique_input_occasion').focus();
     };
-    
+
     // calls on TextService to limit occasion text to 100 characters
     $scope.limitOccText = function() {
       var textarea = $('#clique_input_occasion');
       textarea.val(textarea.val().replace(/(\r\n|\n|\r)/gm,"")); // remove all line breaks
       $scope.occasions.charsLeft = TextService.limit($scope.formData.Occasion, occCharLimit);
     };
-    
+
     // when occasion label is clicked, show occasion selection and focus on textarea
     $('#clique_occasion label').on('click', function() {
       $('#clique_occasion_selection').show();
       $('#clique_input_occasion').focus();
     });
-    
+
     // hide #clique_occasion_selection when user clicks outside of #clique_occasion_wrapper
     var hide_clique_occasion_selection = function(event) {
       var occasionWrapper = $('#clique_occasion_wrapper')[0];
-      
+
       // if event.target is outside of #clique_occasion_wrapper
       if(!$.contains(occasionWrapper, event.target) && event.target != occasionWrapper) {
         $('#clique_occasion_selection').hide();
         $('html').off('click', hide_clique_occasion_selection);
       }
     };
-    
+
     // When #clique_input_occasion loses focus, only hide #clique_occasion_selection if the click was
     // outside of #clique_occasion_wrapper. This prevents #clique_occasion_selection from hiding when
     // the occasion label is clicked.
     $('#clique_input_occasion').on('blur', function() {
       // remove all previous click event listeners on $('html') to save memory
       $('html').off('click', hide_clique_occasion_selection);
-      
+
       // add new click event listener to $('html')
       $('html').on('click', hide_clique_occasion_selection);
-      
+
       $('#occCharCount').hide();
       $('#clique_occasion').removeClass('currentInput');
     });
-    
+
     $('#clique_input_occasion').on('focus', function() {
       $('#clique_occasion').addClass('currentInput');
       $('#occCharCount').show();
     });
-    
+
     /**********
     * Date
     **********/
     // set default img
     $scope.dateTypeImg = '../public/images/send-today-blk.png';
-    
+
     // changes the date image based on what the user selects
     $scope.setDateType = function(type) {
       if(type=='today')
         $scope.dateTypeImg = '../public/images/send-today-blk.png';
       else if(type=='on-date')
         $scope.dateTypeImg = '../public/images/send-on-date-blk.png';
-      
+
       $('#clique_date_selection').hide()
       $('#clique_date').show();
     };
-    
+
     /**********
     * Payment
     **********/
@@ -339,38 +340,38 @@
       // $scope.formData.ExpireMonth = res[0];
       // $scope.formData.ExpireYear = res[1];
     // };
-    
+
     // set default img
     $scope.cardTypeImg = '../public/images/cc-basic-blk.png';
-    
+
     $scope.updateCreditCardImg = function(){
       var type = $.formance.creditCardType($scope.formData.CreditCardNumber);
       var acceptedTypes = ['amex', 'discover', 'mastercard', 'visa'];
-      
+
       if(acceptedTypes.indexOf(type) != -1)
         $scope.cardTypeImg = '../public/images/cc-' + type;
       else
-        $scope.cardTypeImg = '../public/images/cc-basic';      
-      
+        $scope.cardTypeImg = '../public/images/cc-basic';
+
       var filledIn = $('#creditcardnumbercontainer').hasClass('filledIn');
       if(filledIn)
         $scope.cardTypeImg += '-wht.png';
       else
         $scope.cardTypeImg += '-blk.png';
     };
-    
+
     $scope.ccnFocus = function() {
       $('#creditcardnumbercontainer').removeClass('filledIn');
       $('#creditcardinfo').addClass('filledIn');
       $scope.updateCreditCardImg();
     };
-    
+
     $scope.expiryFocus = function() {
       $('#creditcardnumbercontainer').addClass('filledIn');
       $('#creditcardinfo').removeClass('filledIn');
       $scope.updateCreditCardImg();
     };
-    
+
     /**********
     * Validation
     **********/
@@ -381,7 +382,7 @@
         $('input.'+value).formance('format_'+value);
       });
     });
-    
+
     $scope.dirty = {
       To: false,
       Amount: false,
@@ -395,7 +396,7 @@
       ZIPcode: false,
       ProceedButton: false
     };
-    
+
     $scope.valid = {
       To: false,
       Amount: false,
@@ -408,25 +409,25 @@
       CVV: false,
       ZIPcode: false
     };
-    
+
     var fieldOrder = ['To', 'Amount', 'From', 'Code', 'Occasion', 'Date', 'CreditCardNumber', 'Expiry', 'CVV', 'ZIPcode'];
-    
+
     $scope.isNextInput = function(input) {
       // this function returns true only if 'input' is not dirty and the element before 'input' is not valid
       thisIndex = fieldOrder.indexOf(input);
       return !$scope.dirty[fieldOrder[thisIndex]]; // && !$scope.valid[fieldOrder[thisIndex-1]];
     };
-    
+
     $scope.allDirtyBefore = function(input) {
       // this function returns true only if all elements before 'input' are dirty
       thisIndex = fieldOrder.indexOf(input);
       for(i=0; i<thisIndex; i++) {
-        if (!$scope.dirty[fieldOrder[i]]) 
+        if (!$scope.dirty[fieldOrder[i]])
           return false;
       }
       return true;
     };
-    
+
     // watch each field separately
     angular.forEach(fieldOrder, function(field) { // for each field in fieldOrder
       $scope.$watch('formData.'+field, function (newVal, oldVal) {
@@ -436,7 +437,7 @@
         }
         else { // if newVal is null or undefined, then it is invalid
           $scope.valid[field] = false;
-          
+
           // we still need to call checkValid with empty val so that checkmarks will be shown appropriately
           $scope.checkValid(field,'')
         }
@@ -452,13 +453,13 @@
           }
         };
         // console.log('pagesValid.main = ' + $scope.pagesValid.main);
-        
+
         // if pagesValid.main has ever been true, the Proceed Button will be visible
         if ($scope.pagesValid.main)
           $scope.dirty.ProceedButton = true;
       });
     });
-    
+
     // giant validation switch for each field
     $scope.checkValid = function(field, val) {
       switch(field) {
@@ -535,16 +536,16 @@
       }
     };
   });
-  
+
   cliqueApp.controller('ReviewController', function($scope){
     // scroll to top of page
     window.scrollTo(0, 0);
-    
+
     // on document load, give focus to "Phone Number" and make it the current input
     $( document ).ready(function() {
       $('#clique_input_phonenumber').focus().parent().removeClass('nextInput').addClass('currentInput');
     });
-    
+
     /**********
     * Phone Number / Email
     **********/
@@ -555,7 +556,7 @@
       .on('focus', function() {
         $(this).parent().addClass('currentInput');
     });
-    
+
     /**********
     * Validation
     **********/
@@ -568,20 +569,20 @@
         $('input.'+value).formance('format_'+value);
       });
     });
-    
+
     $scope.dirty = {
       PhoneNumber: false,
       Email: false,
       SubmitButton: false
     };
-    
+
     $scope.valid = {
       PhoneNumber: false,
       Email: false
     };
-    
+
     var fieldOrder = ['PhoneNumber', 'Email'];
-    
+
     // watch each field separately
     angular.forEach(fieldOrder, function(field) { // for each field in fieldOrder
       $scope.$watch('formData.'+field, function (newVal, oldVal) {
@@ -593,7 +594,7 @@
           $scope.valid[field] = false;
         }
         // console.log(field + ': ' + newVal + ' - dirty=' + $scope.dirty[field] + ', valid=' + $scope.valid[field]);
-        
+
         // check if all fields on the review page are valid
         $scope.pagesValid.review = true;
         for(i=0; i<fieldOrder.length; i++) {
@@ -605,13 +606,13 @@
         };
         // console.log('pagesValid.main = ' + $scope.pagesValid.main);
         // console.log('pagesValid.review = ' + $scope.pagesValid.review);
-        
+
         // if pagesValid.review has ever been true, the SubmitButton Button will be visible
         if ($scope.pagesValid.review)
           $scope.dirty.SubmitButton = true;
       });
     });
-    
+
     // giant validation switch for each field
     $scope.checkValid = function(field, val) {
       switch(field) {
@@ -626,7 +627,7 @@
       }
     };
   });
-  
+
   cliqueApp.controller('FinalController', function(){
     // begin fade in transition 100ms after page loads
     window.setTimeout(function(){$('#finalOverlay').addClass('complete')}, 100);
@@ -648,7 +649,7 @@
       }
     // }
   });
-  
+
   cliqueApp.factory('TextService', function(){
     var TextService = {};
     TextService.limit = function(text, charLimit) {
@@ -663,7 +664,7 @@
     };
     return TextService;
   });
-  
+
   cliqueApp.factory('OccasionService', function(){
     var occasions = [
       {
